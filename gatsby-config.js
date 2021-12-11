@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
@@ -11,6 +15,25 @@ module.exports = {
         trackingId: "XXXXXX",
       },
     },
+    {
+      resolve: "gatsby-source-storyblok",
+      options: {
+        accessToken: process.env.STORY_BLOK,
+        version: process.env.NODE_ENV === "production" ? "published" : "draft",
+        // Optional parameter. Omission will retrieve all languages by default.
+        languages: ["it", "en"],
+      },
+    },
+    /*
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        // string; add your MC list endpoint here; see instructions below
+        endpoint: process.env.MAIL_CHIMP,
+        timeout: 3500,
+      },
+    },
+    */
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
