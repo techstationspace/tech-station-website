@@ -3,10 +3,12 @@ import Page from "../bloks/page"
 import Section from "../components/section";
 import Link from "../elements/link";
 import Button from "../elements/button";
+import Menu from "../elements/menu";
 
 const Components = {
   page: Page,
   section: Section,
+  menu: Menu,
   link: Link,
   button: Button,
 }

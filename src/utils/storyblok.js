@@ -20,9 +20,7 @@ export default function useStoryblok(originalStory, location) {
     const { StoryblokBridge } = window;
 
     if (typeof StoryblokBridge !== "undefined") {
-      const storyblokInstance = new StoryblokBridge({
-        resolveRealtions: "post-list.posts",
-      });
+      const storyblokInstance = new StoryblokBridge();
 
       storyblokInstance.on(["published", "change"], (event) => {
         window.location.reload(true);
@@ -34,9 +32,8 @@ export default function useStoryblok(originalStory, location) {
 
       storyblokInstance.on("enterEditmode", (event) => {
         sbClient
-          .get(`cdn/stories&/${event.storyId}`, {
+          .get(`cdn/stories/${event.storyId}`, {
             version: "draft",
-            resolve_relations: "posts-list.posts",
           })
           .then(({ data }) => {
             console.log(data);
