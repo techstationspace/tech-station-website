@@ -1,33 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-const defaultLang = process.env.DEFAULT_LANG;
+import SbEditable from "storyblok-react";
+import { createClasses, getUrl } from "../utils/utils";
 
 const Link = ({ blok }) => {
-  let url = blok.url.cached_url;
-  const isHome = url.includes("/home");
-  const isDefaultLang = url.includes(defaultLang);
-  const isInternal = blok.url.url === "";
+  blok.style = blok.style || blok.parentStyle.linkStyle;
+  blok.type = blok.type || blok.parentType;
+  blok.size = blok.size || blok.parentSize;
 
-  if (isInternal) {
-    if (isHome) {
-      url = url.replace("/home", "");
-    }
-    if (isDefaultLang) {
-      url = url.replace(defaultLang, "");
-    }
-    url = `/${url}`;
-  }
+  const linkClasses = createClasses(blok, ["type", "style", "size"]);
 
   return (
-    <a
-      className="link"
-      href={url}
-      target={blok.target ? "_blank" : null}
-      rel={blok.target ? "noreferrer" : null}
-    >
-      {blok.text}
-    </a>
+    <SbEditable content={blok} key={blok._uid}>
+      <a
+        className={linkClasses.join(" ")}
+        href={getUrl(blok.url)}
+        target={blok.target ? "_blank" : null}
+        rel={blok.target ? "noreferrer" : null}
+      >
+        {blok.text}
+      </a>
+    </SbEditable>
   );
 };
 
@@ -48,7 +41,16 @@ Link.propTypes = {
       cached_url: PropTypes.string,
     }).isRequired,
     target: PropTypes.bool,
-    style: PropTypes.array,
+    type: PropTypes.oneOf(["filled", "text", "rounded"]),
+    style: PropTypes.oneOf([
+      "",
+      "primary",
+      "secondary",
+      "service",
+      "light",
+      "dark",
+    ]),
+    size: PropTypes.oneOf(["default", "small", "medium", "large"]),
   }),
 };
 

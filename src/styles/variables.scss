@@ -1,0 +1,144 @@
+// Breakpoints
+$break-mobile: 428px;
+$break-tablet: 1024px;
+$break-laptop: 1366px;
+$break-desktop: 1920px;
+
+// Colors
+$primary: #2c264c;
+$primary-dark: adjust_hue(desaturate(darken($primary, 8), 8), 14);
+$primary-darken: adjust_hue(desaturate(darken($primary, 16), 16), 14);
+$primary-light: desaturate(lighten($primary, 8), 4);
+$primary-lighten: adjust_hue(desaturate(lighten($primary, 71), 21), 14);
+
+$secondary: #15979e;
+$secondary-dark: adjust_hue(desaturate(darken($secondary, 8), 8), 14);
+$secondary-darken: adjust_hue(desaturate(darken($secondary, 16), 16), 14);
+$secondary-light: desaturate(lighten($secondary, 8), 4);
+$secondary-lighten: adjust_hue(desaturate(lighten($secondary, 59), 48), 14);
+
+$white: #fff;
+$black: #000;
+$gray-darken: #353538;
+$gray-dark: #525252;
+$gray-middle-dark: #414143;
+$gray-middle: #58585a;
+$gray-middle-light: #9a9a9c;
+$gray-light: #e0e0e1;
+$gray-lighten: #f7f7f8;
+
+$error-light: #f0c4c1;
+$error: #f36259;
+$error-dark: #f36259;
+$success-light: #b7e0c3;
+$success: #63ce81;
+$success-dark: #3eba61;
+$alert-light: #fce6bb;
+$alert: #f7c35e;
+$alert-dark: #f1b43d;
+$info-light: #c6e0ee;
+$info: #73bae2;
+$info-dark: #539ec9;
+
+// Default color
+$default-background: $white;
+$default-color: $gray-darken;
+
+// Typhography
+// Default
+$default-size: 1rem;
+$default-weight: 400;
+$default-line: normal;
+$default-spacing: normal;
+$default-margin: 0;
+// Title
+$title-family: $secondary-font-family;
+$title-size: 3rem;
+$title-weight: 900;
+$title-line: 1.1;
+$title-spacing: -0.05rem;
+$title-margin: 0.75rem;
+// Subtitle
+$subtitle-family: $primary-font-family;
+$subtitle-size: 1.75rem;
+$subtitle-weight: 700;
+$subtitle-line: 1;
+$subtitle-spacing: normal;
+$subtitle-margin: 1.5rem;
+// Heading
+$heading-family: $secondary-font-family;
+$heading-size: 2rem;
+$heading-weight: 800;
+$heading-line: 1.1;
+$heading-spacing: -0.05rem;
+$heading-margin: 0.75rem;
+// Subheading
+$subheading-family: $primary-font-family;
+$subheading-size: 1.5rem;
+$subheading-weight: 600;
+$subheading-line: normal;
+$subheading-spacing: normal;
+$subheading-margin: 1.125rem;
+// Notehead
+$notehead-family: $secondary-font-family;
+$notehead-size: 1.125rem;
+$notehead-weight: 700;
+$notehead-line: 1;
+$notehead-spacing: normal;
+$notehead-margin: 0.875rem;
+// Quote
+$quote-family: $primary-font-family;
+$quote-size: 1.25rem;
+$quote-weight: 600;
+$quote-line: 1.1;
+$quote-spacing: normal;
+$quote-margin: 1.125rem;
+// Paragraph
+$paragraph-family: $primary-font-family;
+$paragraph-size: 1.125rem;
+$paragraph-weight: 600;
+$paragraph-line: normal;
+$paragraph-spacing: normal;
+$paragraph-margin: 0.875rem;
+// Caption
+$caption-family: $secondary-font-family;
+$caption-size: 0.875rem;
+$caption-weight: 400;
+$caption-line: 1.1;
+$caption-spacing: normal;
+$caption-margin: 0.5rem;
+// Message
+$message-family: $secondary-font-family;
+$message-size: 0.75rem;
+$message-weight: 500;
+$message-line: 1;
+$message-spacing: normal;
+$message-margin: 0.25rem;
+
+// Button & link
+$button-weight: 600;
+$button-radius: .25rem;
+
+
+// Z axis
+$header-index: 50;
+$modal-index: 100;
+
+// Header variables
+$header-height: 4rem;
+
+// Columns
+$columns-gap-default: 1.25rem;
+$columns-gap-xs: 0.75rem;
+$columns-gap-sm: 1rem;
+$columns-gap-md: 1.5rem;
+$columns-gap-lg: 3rem;
+$columns-gap-xl: 5rem;
+
+// Contents
+$contents-gap-default: 0.5em;
+$contents-gap-xs: 0.375em;
+$contents-gap-sm: 0.75em;
+$contents-gap-md: 1em;
+$contents-gap-lg: 1.25em;
+$contents-gap-xl: 1.5em;

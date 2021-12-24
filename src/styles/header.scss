@@ -1,0 +1,88 @@
+.header {
+  height: $header-height;
+  display: flex;
+  align-items: center;
+
+  background-color: $white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+  &--wrapper {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: inherit;
+    column-gap: 1rem;
+  }
+
+  &--menu {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: inherit;
+    background-color: inherit;
+
+    @include untilTablet {
+      visibility: hidden;
+      transition: visibility 0s ease-out 0.23s, opacity 0.23s ease-out;
+      opacity: 0;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      padding: 0.75rem;
+      background-color: inherit;
+      flex-direction: column;
+      row-gap: 1rem;
+      align-items: stretch;
+
+      &.active {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.23s ease-in 25ms;
+      }
+    }
+  }
+  &--nav {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: inherit;
+    column-gap: 0.5rem;
+    row-gap: 0.5rem;
+    @include untilTablet {
+      & > * {
+        align-items: stretch !important;
+      }
+    }
+  }
+
+  &--lang {
+    @include untilTablet {
+      order: -1;
+    }
+  }
+
+  &--toggle {
+    display: none;
+    @include untilTablet {
+      display: block;
+    }
+  }
+
+  &.__fixed {
+    z-index: $header-index;
+    position: sticky;
+    top: 0;
+  }
+
+  $styles: primary $white $primary-dark, secondary $white $secondary-dark,
+    dark $white $gray-middle-dark, light $gray-middle-dark $gray-lighten;
+
+  @each $name, $color, $background in $styles {
+    &.__style_#{$name} {
+      color: $color;
+      background-color: $background;
+    }
+  }
+}

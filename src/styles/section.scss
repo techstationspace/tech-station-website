@@ -1,0 +1,59 @@
+@use "sass:meta";
+
+.section {
+  min-height: 15rem;
+  padding: 2rem 0;
+
+  $gaps: small 0.75rem, mid 3rem, large 6rem;
+  @each $label, $gap in $gaps {
+    &.__gap_#{$label} {
+      padding-top: $gap;
+      padding-bottom: $gap;
+    }
+  }
+
+  &.__height_auto {
+    min-height: auto;
+  }
+
+  $heights: 100, 66, 50, 33, 25;
+  @each $height in $heights {
+    &.__height_#{$height} {
+      min-height: calc(($height * 1vh) - $header-height);
+    }
+  }
+
+  &--wrapper {
+    min-height: inherit;
+  }
+
+  &.__has_background {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  $x-positions: top, center, bottom;
+  @each $pos in $x-positions {
+    &.__#{$pos}_x {
+      background-position-x: $pos;
+    }
+  }
+
+  $y-positions: right, center, left;
+  @each $pos in $y-positions {
+    &.__#{$pos}_x {
+      background-position-y: $pos;
+    }
+  }
+
+  $styles: primary $white $primary-light, secondary $white $secondary-light,
+    dark $white $gray-dark, light $gray-darken $gray-lighten;
+
+  @each $name, $color, $background in $styles {
+    &.__style_#{$name} {
+      color: $color;
+      background-color: $background;
+    }
+  }
+}

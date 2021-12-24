@@ -1,32 +1,43 @@
-import React from "react"
-import Page from "../bloks/page"
-import Section from "../components/section";
+import React from "react";
+// Globals
+import Page from "../globals/page";
+// Bloks
+import Section from "../bloks/section";
+// Components
+import Flow from "../components/flow";
+// Elements
 import Link from "../elements/link";
 import Button from "../elements/button";
-import Menu from "../elements/menu";
+import Heading from "../elements/heading";
+import Tale from "../elements/tale";
+import Media from "../elements/media";
 
 const Components = {
   page: Page,
   section: Section,
-  menu: Menu,
+  heading: Heading,
+  tale: Tale,
+
+  flow: Flow,
   link: Link,
   button: Button,
-}
+  media: Media,
+};
 
 const ComponentNotFound = ({ componentName }) => (
   <div className="component-not-found">
     The component {componentName} has not been created yet.
   </div>
-)
+);
 
 const DynamicComponent = ({ blok, parent }) => {
   if (typeof Components[blok.component] !== "undefined") {
-    const Component = Components[blok.component]
-    return <Component blok={blok} key={blok._uid} parent={parent} />
+    const Component = Components[blok.component];
+    return <Component blok={blok} key={blok._uid} parent={parent} />;
   }
   return blok.component ? (
     <ComponentNotFound componentName={blok.component} />
-  ) : null
-}
+  ) : null;
+};
 
-export default DynamicComponent
+export default DynamicComponent;

@@ -1,0 +1,46 @@
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+
+  // Sizes
+  flex: 1 1 0;
+
+  &.__sized {
+    flex: none;
+  }
+
+  @include mobileOnly {
+    flex: 1 0 calc((15rem - 2rem) / 2) !important;
+  }
+
+  // Alignements and justifications
+  align-items: center;
+  justify-content: center;
+
+  &.__direction_col {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: start;
+  }
+
+  $alignments: start, center, end, stretch;
+  @each $align in $alignments {
+    &.__align_#{$align} {
+      align-items: $align;
+    }
+    &.__direction_col.__align_#{align} {
+      justify-content: $align;
+    }
+  }
+
+  $justifications: start, center, end, stretch;
+  @each $justify in $justifications {
+    &.__justify_#{$justify} {
+      justify-content: $justify;
+    }
+    &.__direction_col.__justify_#{$justify} {
+      align-items: $justify;
+    }
+  }
+}

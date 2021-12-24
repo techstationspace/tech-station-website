@@ -1,0 +1,62 @@
+// Main
+h1 {
+  font-size: 4rem;
+}
+h4 {
+  font-size: 1.75rem;
+}
+// Hign
+h2 {
+  font-size: 3rem;
+}
+h5 {
+  font-size: 1.5rem;
+}
+// Low
+h3 {
+  font-size: 2rem;
+}
+h6 {
+  font-size: 1.25rem;
+}
+// others tags
+p {
+  font-size: 1.125rem;
+}
+a {
+  font-size: 1.25rem;
+}
+q {
+  font-size: 1.375rem;
+}
+
+@include mobileOnly {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2.25rem;
+  }
+}
+
+.heading {
+  width: 100%;
+  &--title {
+    line-height: 1.1;
+  }
+
+  &--subtitle {
+    line-height: 1;
+    margin-top: 0.75rem;
+  }
+}
+
+.tale {
+  width: 100%;
+  &--paragraph {
+  }
+
+  &--caption {
+    margin-top: 0.5em;
+  }
+}

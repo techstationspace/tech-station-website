@@ -1,0 +1,42 @@
+.footer {
+  font-size: 0.75rem;
+
+  &--head {
+    flex: none;
+    width: 25%;
+    margin-right: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  &--wrapper {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-wrap: wrap;
+  }
+
+  &--menu {
+    padding: 1rem 0;
+  }
+
+  &--navs {
+    flex-grow: 1;
+  }
+
+  $styles: primary $white $primary-dark, secondary $white $secondary-dark,
+    dark $white $gray-middle-dark, light $gray-middle-dark $gray-lighten;
+
+  @each $name, $color, $background in $styles {
+    &.__style_#{$name} {
+      .footer--menu {
+        color: $color;
+        background-color: $background;
+      }
+    }
+  }
+  &--copyright {
+    padding: 0.5rem 0;
+    color: $gray-middle-light;
+    background-color: $gray-darken;
+  }
+}

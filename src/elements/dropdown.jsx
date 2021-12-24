@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
-const Dropdown = ({ text, list }) => {
+const Dropdown = ({ text, list, styles }) => {
   const ref = useRef(null);
   const [_visibility, setVisibility] = useState(false);
+
+  const dropdownClasses = [!!styles ? styles : "", "dropdown"].join(" ");
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -22,7 +24,7 @@ const Dropdown = ({ text, list }) => {
   };
 
   return (
-    <div ref={ref} className="dropdown">
+    <div ref={ref} className={dropdownClasses}>
       <button
         className="dropdown--button"
         onClick={() => setVisibility(!_visibility)}

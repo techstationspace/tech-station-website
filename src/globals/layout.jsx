@@ -14,9 +14,9 @@ const Layout = ({ settings, children }) => {
       <Helmet title="Website template" defer={false}>
         Seo
       </Helmet>
-      <Header blok={header} languages={settings.languages} />
+      {!!header && <Header blok={header} languages={settings.languages} />}
       <main>{children}</main>
-      <Footer blok={footer} />
+      {!!footer && <Footer blok={footer} languages={settings.languages} />}
     </>
   );
 };

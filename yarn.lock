@@ -4001,7 +4001,7 @@ date-fns@^2.25.0:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.27.0.tgz#e1ff3c3ddbbab8a2eaadbb6106be2929a5a2d92b"
   integrity sha512-sj+J0Mo2p2X1e306MHq282WS4/A8Pz/95GIFcsPNMPMZVI3EUrAdSv90al1k+p74WGLCruMXk23bfEDZa71X9Q==
 
-debug@2, debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
+debug@2, debug@2.6.9, debug@^2.1.3, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
@@ -4368,6 +4368,11 @@ electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.896:
   version "1.4.16"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.16.tgz#38ddecc616385e6f101359d1b978c802664157d2"
   integrity sha512-BQb7FgYwnu6haWLU63/CdVW+9xhmHls3RCQUFiV4lvw3wimEHTVcUk2hkuZo76QhR8nnDdfZE7evJIZqijwPdA==
+
+email-validator@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/email-validator/-/email-validator-2.0.4.tgz#b8dfaa5d0dae28f1b03c95881d904d4e40bfe7ed"
+  integrity sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -5377,6 +5382,22 @@ gatsby-core-utils@^3.3.0:
     tmp "^0.2.1"
     xdg-basedir "^4.0.0"
 
+gatsby-core-utils@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-3.4.0.tgz#6d5658dc045dcf60a314d4f2d0bc85e260659837"
+  integrity sha512-dYQpyo1BLGJzxQOXgGs1Fbj7jzGj5cKAIPYz2hz2l4Aus6skwjjaUlOjZlrWIahNHoLkx3mH0f5y6E8205T/aQ==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    ci-info "2.0.0"
+    configstore "^5.0.1"
+    file-type "^16.5.3"
+    fs-extra "^10.0.0"
+    got "^11.8.3"
+    node-object-hash "^2.3.10"
+    proper-lockfile "^4.1.2"
+    tmp "^0.2.1"
+    xdg-basedir "^4.0.0"
+
 gatsby-graphiql-explorer@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/gatsby-graphiql-explorer/-/gatsby-graphiql-explorer-2.3.0.tgz#8ca3b5bc5ef272891cc4f735751285ae90c90380"
@@ -5442,6 +5463,14 @@ gatsby-plugin-image@^2.3.0:
     gatsby-core-utils "^3.3.0"
     objectFitPolyfill "^2.3.5"
     prop-types "^15.7.2"
+
+gatsby-plugin-mailchimp@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-mailchimp/-/gatsby-plugin-mailchimp-5.2.2.tgz#bed94cb70b9d91267329a5e6a0220e821d8ff6e8"
+  integrity sha512-O9JizVPJAe5YT1QAHZNRh1xUVdPnfayfIRhsBULiK2629TQRvEzzQxTDbt/WZU02cVm8415Fx2CneaxYKLt0ag==
+  dependencies:
+    email-validator "^2.0.4"
+    jsonp "^0.2.1"
 
 gatsby-plugin-manifest@^4.3.0:
   version "4.3.0"
@@ -5658,6 +5687,25 @@ gatsby-recipes@^1.3.0:
     xstate "^4.9.1"
     yoga-layout-prebuilt "^1.9.6"
 
+gatsby-source-filesystem@^4.2.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-4.4.0.tgz#9921ac0600166e4ee0cd561d194c2df89a42e11d"
+  integrity sha512-tN+aJdOnBf92V9oHXaGzPB6gL0EhpYH0mh/dfszroy25CtSq07fZu8SynS/B3ClJVi22MkD0imcDVMlPJGSQ3w==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    chokidar "^3.5.2"
+    fastq "^1.13.0"
+    file-type "^16.5.3"
+    fs-extra "^10.0.0"
+    gatsby-core-utils "^3.4.0"
+    got "^9.6.0"
+    md5-file "^5.0.0"
+    mime "^2.5.2"
+    pretty-bytes "^5.4.1"
+    progress "^2.0.3"
+    valid-url "^1.0.9"
+    xstate "^4.26.1"
+
 gatsby-source-filesystem@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-4.3.0.tgz#0a4f21cecc0cc942096c11c1b583a698f1edf2d8"
@@ -5676,6 +5724,15 @@ gatsby-source-filesystem@^4.3.0:
     progress "^2.0.3"
     valid-url "^1.0.9"
     xstate "^4.25.0"
+
+gatsby-source-storyblok@^3.0.2:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-storyblok/-/gatsby-source-storyblok-3.1.0.tgz#801d0550f8d2dc29f11a4499ef47bde20acf3efd"
+  integrity sha512-vUO2IqaNI+m8unOOLdITUtv4VRNj5tCF7shR8O8jmwyFQYcEhj1dnGdwIvQZoKQIZ0DqQowYXZqEuv4Z9adtRw==
+  dependencies:
+    gatsby-source-filesystem "^4.2.0"
+    json-stringify-safe "^5.0.1"
+    storyblok-js-client "^4.1.5"
 
 gatsby-telemetry@^3.3.0:
   version "3.3.0"
@@ -6119,7 +6176,7 @@ globby@^11.0.3, globby@^11.0.4:
     merge2 "^1.3.0"
     slash "^3.0.0"
 
-got@^11.8.2:
+got@^11.8.2, got@^11.8.3:
   version "11.8.3"
   resolved "https://registry.yarnpkg.com/got/-/got-11.8.3.tgz#f496c8fdda5d729a90b4905d2b07dbd148170770"
   integrity sha512-7gtQ5KiPh1RtGS9/Jbv1ofDpBFuq42gyfEib+ejaRBJuj/3tQFeR5+gw57e4ipaU8c/rCjvX6fkQz2lyDlGAOg==
@@ -7325,6 +7382,11 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "https://registry.yarnpkg.com/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha1-nbe1lJatPzz+8wp1FC0tkwrXJlE=
 
+json-stringify-safe@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
+  integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
+
 json5@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-1.0.1.tgz#779fb0018604fa854eacbf6252180d83543e3dbe"
@@ -7347,6 +7409,13 @@ jsonfile@^6.0.1:
     universalify "^2.0.0"
   optionalDependencies:
     graceful-fs "^4.1.6"
+
+jsonp@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/jsonp/-/jsonp-0.2.1.tgz#a65b4fa0f10bda719a05441ea7b94c55f3e15bae"
+  integrity sha1-pltPoPEL2nGaBUQep7lMVfPhW64=
+  dependencies:
+    debug "^2.1.3"
 
 "jsx-ast-utils@^2.4.1 || ^3.0.0", jsx-ast-utils@^3.2.1:
   version "3.2.1"
@@ -10880,6 +10949,18 @@ static-site-generator-webpack-plugin@^3.4.2:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
+storyblok-js-client@^4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-4.1.5.tgz#d0ceb811a9b4847850bf4856046e01816ac221c6"
+  integrity sha512-0cd9AtU1JE0Q7lyda7NSyfwasvuy3X5v9z1kMm4TWmcbUiQEjUjiNaZ9o0bu7iTpgVeatoa2j6XGLRqPQKz8dw==
+  dependencies:
+    qs "^6.9.4"
+
+storyblok-react@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/storyblok-react/-/storyblok-react-0.1.2.tgz#798672e1111cec68dc487985b1fbba15129fc90d"
+  integrity sha512-68KtSgkAT/0XZ9diz3wfoPl6xOt3WJmCv03qZOZUNPs1uDFh1FHF7P9OHt6TfMcxPrv3ldjTypkQXbFdT7JnvA==
+
 stream-parser@~0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/stream-parser/-/stream-parser-0.3.1.tgz#1618548694420021a1182ff0af1911c129761773"
@@ -12308,7 +12389,7 @@ xss@^1.0.6:
     commander "^2.20.3"
     cssfilter "0.0.10"
 
-xstate@^4.25.0, xstate@^4.26.0, xstate@^4.9.1:
+xstate@^4.25.0, xstate@^4.26.0, xstate@^4.26.1, xstate@^4.9.1:
   version "4.26.1"
   resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.26.1.tgz#4fc1afd153f88cf302a9ee2b758f6629e6a829b6"
   integrity sha512-JLofAEnN26l/1vbODgsDa+Phqa61PwDlxWu8+2pK+YbXf+y9pQSDLRvcYH2H1kkeUBA5fGp+xFL/zfE8jNMw4g==

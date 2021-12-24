@@ -36,7 +36,6 @@ export default function useStoryblok(originalStory, location) {
             version: "draft",
           })
           .then(({ data }) => {
-            console.log(data);
             if (data.story) {
               setStory(data.story);
             }
