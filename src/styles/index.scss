@@ -1,9 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
-
 // Fonts families
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 $primary-font-family: "Open Sans", serif;
 $secondary-font-family: $primary-font-family;
-$icon-family: "icon-basic-set";
+
+// Icon font
+$icon-family: "icon" !default;
+$icon-path: "fonts/icon" !default;
+@font-face {
+  font-family: "#{$icon-family}";
+  src: url("../#{$icon-path}/#{$icon-family}.eot?jujil1");
+  src: url("../#{$icon-path}/#{$icon-family}.eot?jujil1#iefix")
+      format("embedded-opentype"),
+    url("../#{$icon-path}/#{$icon-family}.ttf?jujil1") format("truetype"),
+    url("../#{$icon-path}/#{$icon-family}.woff?jujil1") format("woff"),
+    url("../#{$icon-path}/#{$icon-family}.svg?jujil1##{$icon-family}")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
 
 // Imports
 @import "./variables.scss";
@@ -16,6 +31,7 @@ $icon-family: "icon-basic-set";
 @import "./flow.scss";
 @import "./media.scss";
 @import "./button.scss";
+@import "./icon.scss";
 
 // Base unit
 $base-unit: 16px;
@@ -94,6 +110,13 @@ input,
 textarea {
   cursor: pointer;
 }
+
+button {
+  padding: 0;
+  min-width: 2em;
+  min-height: 2em;
+}
+
 main {
   min-height: calc(100vh - $header-height);
 }

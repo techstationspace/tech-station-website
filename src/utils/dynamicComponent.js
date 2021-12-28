@@ -1,6 +1,7 @@
 import React from "react";
 // Globals
 import Page from "../globals/page";
+import Project from "../globals/project";
 // Bloks
 import Section from "../bloks/section";
 // Components
@@ -14,11 +15,11 @@ import Media from "../elements/media";
 
 const Components = {
   page: Page,
+  project: Project,
   section: Section,
   heading: Heading,
-  tale: Tale,
-
   flow: Flow,
+  tale: Tale,
   link: Link,
   button: Button,
   media: Media,

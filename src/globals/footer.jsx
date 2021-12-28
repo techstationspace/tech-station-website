@@ -9,7 +9,6 @@ const Footer = ({ blok }) => {
   const menus =
     blok.body &&
     blok.body.map((childBlok) => {
-      childBlok.size = "oneThird";
       childBlok.parentStyle = styleSwitch(blok.style);
       return <DynamicComponent blok={childBlok} key={childBlok._uid} />;
     });

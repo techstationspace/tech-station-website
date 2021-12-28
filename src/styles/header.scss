@@ -65,6 +65,7 @@
 
   &--toggle {
     display: none;
+    color: inherit;
     @include untilTablet {
       display: block;
     }

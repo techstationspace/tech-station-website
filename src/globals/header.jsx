@@ -4,6 +4,7 @@ import DynamicComponent from "../utils/dynamicComponent";
 import { createClasses, styleSwitch } from "../utils/utils";
 import Container from "./container";
 import Dropdown from "../elements/dropdown";
+import Icon from "../elements/icon";
 
 const defaultLang = process.env.DEFAULT_LANG;
 
@@ -25,6 +26,8 @@ const Header = ({ blok, languages }) => {
     });
 
   const headerClasses = createClasses(blok, ["style", "fixed"]);
+
+  const toggleIcon = showMenu ? "interact-close" : "menu-hamburger";
 
   return (
     <header className={headerClasses.join(" ")}>
@@ -51,7 +54,7 @@ const Header = ({ blok, languages }) => {
           className="header--toggle"
           onClick={() => setShowMenu(!showMenu)}
         >
-          menu
+          <Icon name={toggleIcon} />
         </button>
       </Container>
     </header>

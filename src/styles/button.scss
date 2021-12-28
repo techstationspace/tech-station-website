@@ -109,19 +109,20 @@
     font-weight: 600;
   }
   &--list {
-    font-size: 80%;
+    // font-size: 80%;
     font-weight: 600;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: inherit;
+    background-color: transparentize(black, .85);
     // border-top: 1px solid $gray-light;
     transition: visibility 0s ease-out 0.23s, opacity 0.23s ease-out;
     opacity: 0;
     visibility: hidden;
     flex-direction: column;
     display: flex;
+    column-gap: 1rem;
 
     &.active {
       visibility: visible;
@@ -131,7 +132,6 @@
   }
   &--item {
     color: inherit;
-    padding: 0.25rem 0.5rem;
     font-size: inherit;
     font-weight: inherit;
     text-transform: uppercase;
