@@ -135,8 +135,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       },
     };
-    console.log("page: ", page.path);
     createPage(page);
+    // console.log("page: ", page);
   });
 
   ////////////////////////////////////// QUERY AND CREATE PROJECTS
@@ -191,7 +191,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     };
     createPage(project);
-    console.log("project: ", project.path);
+    // console.log("project: ", project);
   });
 
   ////////////////////////////////////// QUERY AND CREATE COURSES
@@ -245,7 +245,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         // },
       },
     };
-    console.log("course: ", course.path);
     createPage(course);
+    // console.log("course: ", course);
   });
 };

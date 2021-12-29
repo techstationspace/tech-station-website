@@ -6,7 +6,7 @@ import Project from "../globals/project";
 import Section from "../bloks/section";
 import Reel from "../bloks/reel";
 // Components
-import Flow from "../components/flow";
+import Display from "../components/display";
 // Elements
 import Link from "../elements/link";
 import Button from "../elements/button";

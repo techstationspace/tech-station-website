@@ -4,7 +4,7 @@ import SbEditable from "storyblok-react";
 import DynamicComponent from "../utils/dynamicComponent";
 import { createClasses } from "../utils/utils";
 
-const Flow = ({ blok, children }) => {
+const Display = ({ blok, children }) => {
   const childs = !!blok.body ? blok.body.length - 1 : 0;
   const body =
     blok.body &&
@@ -13,7 +13,7 @@ const Flow = ({ blok, children }) => {
       return <DynamicComponent blok={childBlok} key={childBlok._uid} />;
     });
 
-  const flowClasses = createClasses(blok, ["direction", "align", "justify"]);
+  const displayClasses = createClasses(blok, ["direction", "align", "justify"]);
 
   const gaps = {
     default: "1.25rem",
@@ -29,27 +29,27 @@ const Flow = ({ blok, children }) => {
     full: "100%",
   };
 
-  const flowStyles = {};
+  const displayStyles = {};
   const { gap, size } = blok;
 
   if (!!size) {
-    flowStyles.width = `calc(${sizes[size]} - ${
+    displayStyles.width = `calc(${sizes[size]} - ${
       gaps[gap || "default"]
     } * ${childs})`;
-    flowClasses.push("__sized");
+    displayClasses.push("__sized");
   }
-  flowStyles.gap = gaps[gap || "default"];
+  displayStyles.gap = gaps[gap || "default"];
 
   return (
     <SbEditable content={blok} key={blok._uid}>
-      <div className={flowClasses.join(" ")} style={flowStyles}>
+      <div className={displayClasses.join(" ")} style={displayStyles}>
         {children || body}
       </div>
     </SbEditable>
   );
 };
 
-Flow.propTypes = {
+Display.propTypes = {
   blok: PropTypes.shape({
     body: PropTypes.array,
     direction: PropTypes.oneOf(["", "row", "col"]),
@@ -60,4 +60,4 @@ Flow.propTypes = {
   }),
 };
 
-export default Flow;
+export default Display;
