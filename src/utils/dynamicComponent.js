@@ -4,6 +4,7 @@ import Page from "../globals/page";
 import Project from "../globals/project";
 // Bloks
 import Section from "../bloks/section";
+import Reel from "../bloks/reel";
 // Components
 import Flow from "../components/flow";
 // Elements
@@ -17,6 +18,7 @@ const Components = {
   page: Page,
   project: Project,
   section: Section,
+  reel: Reel,
   heading: Heading,
   flow: Flow,
   tale: Tale,

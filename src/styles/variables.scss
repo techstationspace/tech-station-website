@@ -4,6 +4,13 @@ $break-tablet: 1024px;
 $break-laptop: 1366px;
 $break-desktop: 1920px;
 
+:export {
+  breakMobile: $break-mobile;
+  breakTablet: $break-tablet;
+  breakLaptop: $break-laptop;
+  breakDesktop: $break-desktop;
+}
+
 // Colors
 $primary: #2c264c;
 $primary-dark: adjust_hue(desaturate(darken($primary, 8), 8), 14);
@@ -45,6 +52,8 @@ $default-background: $white;
 $default-color: $gray-darken;
 
 // Typhography
+$primary-font-family: "Open Sans", serif;
+$secondary-font-family: $primary-font-family;
 // Default
 $default-size: 1rem;
 $default-weight: 400;
@@ -117,8 +126,7 @@ $message-margin: 0.25rem;
 
 // Button & link
 $button-weight: 600;
-$button-radius: .25rem;
-
+$button-radius: 0.25rem;
 
 // Z axis
 $header-index: 50;
@@ -142,7 +150,6 @@ $contents-gap-sm: 0.75em;
 $contents-gap-md: 1em;
 $contents-gap-lg: 1.25em;
 $contents-gap-xl: 1.5em;
-
 
 // Icons
 $icon-accordion-fold: "\e900";
@@ -215,4 +222,3 @@ $icon-user-defalut: "\e942";
 $icon-user-group: "\e943";
 $icon-visibility-hidden: "\e944";
 $icon-visibility-visible: "\e945";
-

@@ -4,22 +4,22 @@
   margin-right: auto;
 
   min-height: inherit;
-
-  &.__responsive {
-    @include mobileOnly {
-      max-width: calc(100% - 2rem);
-    }
-    @include fromTablet {
-      max-width: calc(100% - 4rem);
-    }
-    @include fromLaptop {
-      max-width: 996px;
-    }
-    @include fromDesktop {
-      max-width: 1240px;
-    }
-    @include fromWidescreen {
-      max-width: 1440px;
-    }
+  height: inherit;
+}
+.container.__responsive {
+  @include mobileOnly {
+    max-width: calc(100% - 2rem);
+  }
+  @include fromTablet {
+    max-width: calc(100% - 4rem);
+  }
+  @include fromLaptop {
+    max-width: 996px;
+  }
+  @include fromDesktop {
+    max-width: 1240px;
+  }
+  @include fromWidescreen {
+    max-width: 1440px;
   }
 }

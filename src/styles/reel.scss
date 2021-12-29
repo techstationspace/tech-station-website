@@ -1,0 +1,30 @@
+.reel {
+  &--container {
+    position: relative;
+    height: 50vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  &--wrapper {
+    display: flex;
+    height: 100%;
+  }
+  &--slide {
+    width: 100%;
+    display: inherit;
+    align-items: center;
+    justify-content: center;
+  }
+  &--button {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    &.__next {
+      right: 5%;
+    }
+    &.__prev {
+      left: 5%;
+    }
+  }
+}
