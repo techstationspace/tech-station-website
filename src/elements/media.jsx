@@ -2,22 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 import SbEditable from "storyblok-react";
 import { getUrl } from "../utils/utils";
-import Container from "../globals/container";
 
-const Media = ({ blok }) => {
+const Media = ({ blok, parent }) => {
+  const parentProps = parent?.media || {};
+  blok.size = blok.size || parentProps?.size || 100;
   const image = () => (
-    <div className="media">
-      <img
-        className="media--image"
-        src={blok.image.filename}
-        alt={blok.image.alt}
-      />
-    </div>
+    <img
+      className="media media--image"
+      width={`${blok.size}%`}
+      src={blok.image.filename}
+      alt={blok.image.alt}
+    />
   );
+
   const background = () => (
     <div
-      style={{ backgroundImage: `url(${blok.image.filename})` }}
-      className="media--cover"
+      style={{
+        backgroundImage: `url(${blok.image.filename})`,
+        paddingTop: `${blok.size}%`,
+      }}
+      className="media media--cover"
       title={blok.image.alt}
     />
   );
@@ -39,6 +43,11 @@ const Media = ({ blok }) => {
 };
 
 Media.propTypes = {
+  parent: PropTypes.shape({
+    media: PropTypes.shape({
+      size: PropTypes.string,
+    }),
+  }),
   blok: PropTypes.shape({
     image: PropTypes.shape({
       filename: PropTypes.string,
@@ -47,6 +56,7 @@ Media.propTypes = {
     link: PropTypes.shape({
       cached_url: PropTypes.string,
     }),
+    size: PropTypes.string,
     background: PropTypes.bool,
   }),
 };

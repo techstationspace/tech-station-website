@@ -28,7 +28,8 @@ $icon-path: "fonts/icon" !default;
 @import "./reel.scss";
 @import "./display.scss";
 @import "./media.scss";
-@import "./button.scss";
+@import "./action.scss";
+@import "./dropdown.scss";
 @import "./icon.scss";
 
 // Base unit
@@ -42,16 +43,16 @@ html {
   color: $default-color;
 
   @include fromTablet {
-    font-size: $base-unit + 1px;
+    font-size: $base-unit * 1.075;
   }
   @include fromLaptop {
-    font-size: $base-unit + 2px;
+    font-size: $base-unit * 1.125;
   }
   @include fromDesktop {
-    font-size: $base-unit + 3px;
+    font-size: $base-unit * 1.25;
   }
   @include fromWidescreen {
-    font-size: $base-unit + 4px;
+    font-size: $base-unit * 1.375;
   }
 }
 

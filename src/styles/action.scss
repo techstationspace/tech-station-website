@@ -1,0 +1,82 @@
+@use "sass:map";
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+  &:not(::first-letter) {
+    text-transform: lowercase;
+  }
+
+  font-size: $action-size-default;
+  font-weight: $action-weight-default;
+  gap: $action-size-default * 0.375;
+
+  transition: all 0.32s ease-out;
+  &:hover {
+    transition: all 0.23s ease-in;
+  }
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.action {
+  &.__button {
+    padding: $action-size-default * 0.375 $action-size-default * 0.75;
+    border-radius: $button-radius-default;
+    color: map-get($action-button-style-default, "color");
+    background-color: map-get($action-button-style-default, "background");
+    box-shadow: 0 4px 8px hsla(0, 0%, 0%, 0.25);
+    &:hover {
+      box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.25);
+    }
+    &:disabled {
+      color: $gray-middle-light;
+      background-color: $gray-middle-light;
+    }
+  }
+  &.__link {
+    color: $action-link-style-default;
+    &:disabled {
+      color: $gray-middle-light;
+    }
+  }
+  &.__rounded {
+    border-radius: 999px;
+    padding: $action-size-default * 0.375 $action-size-default * 1.125;
+  }
+  @each $name, $size in $action-size {
+    &.__size_#{$name} {
+      font-size: $size;
+      gap: $size * 0.375;
+      &.__button {
+        padding: $size * 0.375 $size * 0.75;
+      }
+      &.__rounded {
+        padding: $size * 0.375 $size * 1.125;
+      }
+    }
+  }
+
+  @each $name, $color, $background in $action-style {
+    &.__button.__#{$name},
+    &.__rounded.__#{$name} {
+      color: $color;
+      background-color: $background;
+      &:hover {
+        background-color: darken($background, 2%);
+      }
+    }
+    &.__link.__#{$name} {
+      color: $background;
+      &:hover {
+        color: darken($background, 2%);
+      }
+    }
+  }
+}

@@ -6,7 +6,8 @@
   min-height: inherit;
   height: inherit;
 }
-.container.__responsive {
+.container__responsive {
+  @extend .container;
   @include mobileOnly {
     max-width: calc(100% - 2rem);
   }

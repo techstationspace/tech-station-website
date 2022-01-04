@@ -1,44 +1,50 @@
 const createClasses = (props, styles) => {
   const classes = [];
+  const directProps = ["direction", "type", "style"];
   classes.push(props.component);
   !!styles.length &&
     styles.map((key) => {
       if (!!props[key]) {
-        classes.push(
-          typeof props[key] === "boolean"
-            ? `__${key}`
-            : `__${key}_${props[key]}`
-        );
+        if (typeof props[key] === "boolean") {
+          classes.push(`__${key}`);
+        } else if (directProps.includes(key)) {
+          classes.push(`__${props[key]}`);
+        } else {
+          classes.push(`__${key}_${props[key]}`);
+        }
       }
     });
   return classes;
 };
 
+const gaps = {
+  none: "0",
+  small: ".75rem",
+  default: "1.25rem",
+  mid: "1.75rem",
+  large: "3rem",
+};
+
+const widths = {
+  quarter: "25%",
+  oneThird: "33.3333%",
+  half: "50%",
+  full: "100%",
+};
+
 const styleSwitch = (style) => {
-  let linkStyle, buttonStyle;
   switch (style) {
     case "primary":
-      linkStyle = "light";
-      buttonStyle = "secondary";
-      break;
+      return "secondary";
     case "secondary":
-      linkStyle = "light";
-      buttonStyle = "primary";
-      break;
+      return "primary";
     case "light":
-      linkStyle = "dark";
-      buttonStyle = "primary";
-      break;
+      return "primary";
     case "dark":
-      linkStyle = "light";
-      buttonStyle = "secondary";
-      break;
+      return "secondary";
     default:
-      linkStyle = "dark";
-      buttonStyle = "primary";
-      break;
+      return "primary";
   }
-  return { linkStyle, buttonStyle };
 };
 
 const defaultLang = process.env.DEFAULT_LANG;
@@ -56,9 +62,9 @@ const getUrl = (link) => {
       url = url.replace(defaultLang, "");
     }
     url = `/${url}`;
-
-    return url;
   }
+
+  return url;
 };
 
-export { createClasses, styleSwitch, getUrl };
+export { createClasses, styleSwitch, getUrl, gaps, widths };

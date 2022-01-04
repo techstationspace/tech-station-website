@@ -60,98 +60,152 @@ $default-weight: 400;
 $default-line: normal;
 $default-spacing: normal;
 $default-margin: 0;
-// Title
-$title-family: $secondary-font-family;
-$title-size: 3rem;
-$title-weight: 900;
-$title-line: 1.1;
-$title-spacing: -0.05rem;
-$title-margin: 0.75rem;
-// Subtitle
-$subtitle-family: $primary-font-family;
-$subtitle-size: 1.75rem;
-$subtitle-weight: 700;
-$subtitle-line: 1;
-$subtitle-spacing: normal;
-$subtitle-margin: 1.5rem;
-// Heading
-$heading-family: $secondary-font-family;
-$heading-size: 2rem;
-$heading-weight: 800;
-$heading-line: 1.1;
-$heading-spacing: -0.05rem;
-$heading-margin: 0.75rem;
-// Subheading
-$subheading-family: $primary-font-family;
-$subheading-size: 1.5rem;
-$subheading-weight: 600;
-$subheading-line: normal;
-$subheading-spacing: normal;
-$subheading-margin: 1.125rem;
-// Notehead
-$notehead-family: $secondary-font-family;
-$notehead-size: 1.125rem;
-$notehead-weight: 700;
-$notehead-line: 1;
-$notehead-spacing: normal;
-$notehead-margin: 0.875rem;
-// Quote
-$quote-family: $primary-font-family;
-$quote-size: 1.25rem;
-$quote-weight: 600;
-$quote-line: 1.1;
-$quote-spacing: normal;
-$quote-margin: 1.125rem;
-// Paragraph
-$paragraph-family: $primary-font-family;
-$paragraph-size: 1.125rem;
-$paragraph-weight: 600;
-$paragraph-line: normal;
-$paragraph-spacing: normal;
-$paragraph-margin: 0.875rem;
-// Caption
-$caption-family: $secondary-font-family;
-$caption-size: 0.875rem;
-$caption-weight: 400;
-$caption-line: 1.1;
-$caption-spacing: normal;
-$caption-margin: 0.5rem;
-// Message
-$message-family: $secondary-font-family;
-$message-size: 0.75rem;
-$message-weight: 500;
-$message-line: 1;
-$message-spacing: normal;
-$message-margin: 0.25rem;
+// Heading titles
+$h1-style: (
+  family: $secondary-font-family,
+  size: 3.125rem,
+  weight: 900,
+  line: 1.1,
+  spacing: -0.05rem,
+  margin: 0.75rem,
+  mobile-size: 2.5rem,
+);
+$h2-style: (
+  family: $secondary-font-family,
+  size: 2.5rem,
+  weight: 800,
+  line: 1.1,
+  spacing: -0.05rem,
+  margin: 0.75rem,
+  mobile-size: 2.25rem,
+);
+$h3-style: (
+  family: $secondary-font-family,
+  size: 2rem,
+  weight: 700,
+  line: 1,
+  spacing: normal,
+  margin: 0.75rem,
+);
+// Heading subtitles
+$h4-style: (
+  family: $primary-font-family,
+  size: 1.75rem,
+  weight: 700,
+  line: 1,
+  spacing: normal,
+  margin: 1.5rem,
+);
+$h5-style: (
+  family: $primary-font-family,
+  size: 1.5rem,
+  weight: 600,
+  line: normal,
+  spacing: normal,
+  margin: 1.125rem,
+);
+$h6-style: (
+  family: $primary-font-family,
+  size: 1.5rem,
+  weight: 600,
+  line: normal,
+  spacing: normal,
+  margin: 1.125rem,
+);
+// Quote q
+$quote-style: (
+  family: $primary-font-family,
+  size: 1.25rem,
+  weight: 600,
+  line: 1.1,
+  spacing: normal,
+  margin: 1.125rem,
+);
+// Paragraph p
+$paragraph-style: (
+  family: $primary-font-family,
+  size: 1rem,
+  weight: 400,
+  line: normal,
+  spacing: normal,
+  margin: 0.875rem,
+);
+// Caption small
+$small-style: (
+  family: $secondary-font-family,
+  size: 0.75rem,
+  weight: 400,
+  line: 1.1,
+  spacing: normal,
+  margin: 0.5rem,
+);
 
-// Button & link
-$button-weight: 600;
-$button-radius: 0.25rem;
+// action
+$action-size-default: 1rem;
+$action-weight-default: 600;
+$button-radius-default: 0.25rem;
+
+$action-link-style-default: $gray-dark;
+$action-button-style-default: (
+  color: $white,
+  background: $action-link-style-default,
+);
+$action-size: (
+  small: 0.75rem,
+  mid: 1.125rem,
+  large: 1.25rem,
+);
+$action-style: primary $white $primary, secondary $white $secondary,
+  dark $white $gray-darken, light $gray-darken $white,
+  service $gray-middle-dark $gray-lighten;
 
 // Z axis
 $header-index: 50;
 $modal-index: 100;
 
-// Header variables
+// Header
 $header-height: 4rem;
 
-// Columns
-$columns-gap-default: 1.25rem;
-$columns-gap-xs: 0.75rem;
-$columns-gap-sm: 1rem;
-$columns-gap-md: 1.5rem;
-$columns-gap-lg: 3rem;
-$columns-gap-xl: 5rem;
+// Section
+$section-spacing-default: 2rem;
+$section-spacing: (
+  none: 0,
+  small: 1rem,
+  mid: 4rem,
+  large: 6rem,
+);
+$section-height: (
+  none: 0,
+  quarter: 25,
+  oneThird: 33.3333,
+  half: 50,
+  twoThird: 66.6666,
+  full: 100,
+);
 
-// Contents
-$contents-gap-default: 0.5em;
-$contents-gap-xs: 0.375em;
-$contents-gap-sm: 0.75em;
-$contents-gap-md: 1em;
-$contents-gap-lg: 1.25em;
-$contents-gap-xl: 1.5em;
+// Reel
+
+// Display
+$display-mobile-min-width: 240px;
+$display-tablet-min-width: 320px;
+
+$display-gap-default: 1rem;
+$display-card-shadow: 0 2px 8px transparentize(black, 0.5);
 
 // Icons
+$icon-size-default: 1rem;
+$icon-size: (
+  small: 0.75rem,
+  mid: 1.5rem,
+  large: 2rem,
+);
+$icon-style: (
+  primary: $primary,
+  secondary: $secondary,
+  dark: $gray-darken,
+  light: $white,
+);
+
 $icon-accordion-fold: "\e900";
 $icon-accordion-unfold: "\e901";
 $icon-action-add: "\e902";

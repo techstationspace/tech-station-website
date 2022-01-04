@@ -1,30 +1,33 @@
-@use "sass:meta";
-
 .section {
-  min-height: 15rem;
-  padding: 2rem 0;
+  display: flex;
+  position: relative;
+  // Space prop
+  padding: $section-spacing-default 0;
 
-  $gaps: small 0.75rem, mid 3rem, large 6rem;
-  @each $label, $gap in $gaps {
-    &.__gap_#{$label} {
-      padding-top: $gap;
-      padding-bottom: $gap;
+  @each $label, $space in $section-spacing {
+    &.__space_#{$label} {
+      padding: $space 0;
+    }
+    &.__space_#{$label} .section--wrapper > .display:not(:last-child) {
+      margin-bottom: $space * 0.75;
     }
   }
-
-  &.__height_auto {
-    min-height: auto;
-  }
-
-  $heights: 100, 66, 50, 33, 25;
-  @each $height in $heights {
-    &.__height_#{$height} {
+  // Height prop
+  min-height: auto;
+  @each $label, $height in $section-height {
+    &.__height_#{$label} {
       min-height: calc(($height * 1vh) - $header-height);
     }
   }
 
   &--wrapper {
     min-height: inherit;
+    > .display {
+      min-height: inherit;
+      &:not(:last-child) {
+        margin-bottom: $section-spacing-default * 0.75;
+      }
+    }
   }
 
   &.__has_background {
@@ -51,7 +54,7 @@
     dark $white $gray-dark, light $gray-darken $gray-lighten;
 
   @each $name, $color, $background in $styles {
-    &.__style_#{$name} {
+    &.__#{$name} {
       color: $color;
       background-color: $background;
     }

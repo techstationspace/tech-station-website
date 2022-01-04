@@ -1,23 +1,13 @@
 .media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   &--image {
-    width: 100%;
     height: auto;
     max-width: 20em;
     max-height: 30em;
   }
-  
-  &--cover {
-    position: absolute;
-    width: auto;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
 
+  &--cover {
+    width: 100%;
+    padding-top: 100%;
     background-size: cover;
     background-position: center;
   }

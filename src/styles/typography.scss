@@ -1,60 +1,50 @@
-// Main
+@use "sass:map";
+
+.heading,
+.tale {
+  // width: 100%;
+}
+
+@mixin fontStyle($style) {
+  font-family: map-get($style, "family");
+  font-size: map-get($style, "size");
+  font-weight: map-get($style, "weight");
+  line-height: map-get($style, "line");
+  letter-spacing: map-get($style, "space");
+  margin-bottom: map-get($style, "margin");
+  @if (map-get($style, "mobile-size")) {
+    @include mobileOnly {
+      font-size: map-get($style, "mobile-size");
+    }
+  }
+}
+// title
 h1 {
-  font-size: 4rem;
+  @include fontStyle($h1-style);
 }
-h4 {
-  font-size: 1.75rem;
-}
-// Hign
 h2 {
-  font-size: 3rem;
+  @include fontStyle($h2-style);
+}
+h3 {
+  @include fontStyle($h3-style);
+}
+// subtitle
+h4 {
+  @include fontStyle($h4-style);
 }
 h5 {
-  font-size: 1.5rem;
-}
-// Low
-h3 {
-  font-size: 2rem;
+  @include fontStyle($h5-style);
 }
 h6 {
-  font-size: 1.25rem;
+  @include fontStyle($h6-style);
 }
 // others tags
 p {
-  font-size: 1.125rem;
+  @include fontStyle($paragraph-style);
 }
-a {
-  font-size: 1.25rem;
+small {
+  @include fontStyle($small-style);
 }
 q {
-  font-size: 1.375rem;
-}
-
-@include mobileOnly {
-  h1 {
-    font-size: 2.5rem;
-  }
-  h2 {
-    font-size: 2.25rem;
-  }
-}
-
-.heading {
-  width: 100%;
-  &--title {
-    line-height: 1.1;
-  }
-
-  &--subtitle {
-    line-height: 1;
-    margin-top: 0.75rem;
-  }
-}
-
-.tale {
-  width: 100%;
-
-  &--caption {
-    margin-top: 0.5em;
-  }
+  @include fontStyle($quote-style);
 }

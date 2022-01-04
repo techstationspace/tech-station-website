@@ -1,7 +1,7 @@
 import React from "react";
 import useStoryblok from "../utils/storyblok";
-import Course from "../globals/course";
-import Layout from "../globals/layout";
+import Course from "../stories/course";
+import Layout from "../components/layout";
 
 const CourseIndex = ({ pageContext, location }) => {
   const story = useStoryblok(pageContext.story, location);

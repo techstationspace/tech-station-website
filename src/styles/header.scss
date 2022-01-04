@@ -1,5 +1,8 @@
 .header {
   height: $header-height;
+  @include mobileOnly {
+    height: $header-height - 1rem;
+  }
   display: flex;
   align-items: center;
 
@@ -13,6 +16,16 @@
     justify-content: space-between;
     background-color: inherit;
     column-gap: 1rem;
+    @extend .container__responsive;
+  }
+
+  &--logo {
+    width: auto;
+    height: $header-height * 0.5;
+    img {
+      height: inherit;
+      width: inherit;
+    }
   }
 
   &--menu {
@@ -46,7 +59,7 @@
   }
   &--nav {
     display: inline-flex;
-    align-items: center;
+    align-items: start;
     flex-direction: inherit;
     column-gap: 0.5rem;
     row-gap: 0.5rem;
@@ -81,7 +94,7 @@
     dark $white $gray-middle-dark, light $gray-middle-dark $gray-lighten;
 
   @each $name, $color, $background in $styles {
-    &.__style_#{$name} {
+    &.__#{$name} {
       color: $color;
       background-color: $background;
     }

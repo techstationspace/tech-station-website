@@ -13,6 +13,8 @@
     align-items: start;
     justify-content: start;
     flex-wrap: wrap;
+    gap: 1.25rem;
+    @extend .container__responsive;
   }
 
   &--menu {
@@ -27,7 +29,7 @@
     dark $white $gray-middle-dark, light $gray-middle-dark $gray-lighten;
 
   @each $name, $color, $background in $styles {
-    &.__style_#{$name} {
+    &.__#{$name} {
       .footer--menu {
         color: $color;
         background-color: $background;

@@ -1,18 +1,17 @@
 import React from "react";
-// Globals
-import Page from "../globals/page";
-import Project from "../globals/project";
+// Stories
+import Page from "../stories/page";
+import Project from "../stories/project";
 // Bloks
 import Section from "../bloks/section";
-import Reel from "../bloks/reel";
 // Components
 import Display from "../components/display";
+import Reel from "../components/reel";
 // Elements
-import Link from "../elements/link";
-import Button from "../elements/button";
 import Heading from "../elements/heading";
 import Tale from "../elements/tale";
 import Media from "../elements/media";
+import Action from "../elements/action";
 
 const Components = {
   page: Page,
@@ -20,10 +19,9 @@ const Components = {
   section: Section,
   reel: Reel,
   heading: Heading,
-  flow: Flow,
+  display: Display,
   tale: Tale,
-  link: Link,
-  button: Button,
+  action: Action,
   media: Media,
 };
 

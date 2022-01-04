@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SbEditable from "storyblok-react";
+import { createClasses } from "../utils/utils";
 
-const Heading = ({ blok }) => {
+const Heading = ({ blok, parent }) => {
   const Tags = {};
   switch (blok.relevance) {
     case "main":
@@ -23,9 +24,13 @@ const Heading = ({ blok }) => {
       break;
   }
 
+  const parentProps = parent?.heading || {};
+  blok.style = blok.style || parentProps?.style;
+  const headingClasses = createClasses(blok, ["style"]);
+
   return (
     <SbEditable content={blok} key={blok._uid}>
-      <div className="heading">
+      <div className={headingClasses.join(" ")}>
         {!!blok.title && (
           <Tags.title className="heading--title">{blok.title}</Tags.title>
         )}
@@ -39,15 +44,12 @@ const Heading = ({ blok }) => {
   );
 };
 
-Heading.defaultProps = {
-  blok: {
-    title: "Title of the heading",
-    subtitle: "Subtitle of the heading",
-    relevance: "low",
-  },
-};
-
 Heading.propTypes = {
+  parent: PropTypes.shape({
+    heading: PropTypes.shape({
+      style: PropTypes.string,
+    }),
+  }),
   blok: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,

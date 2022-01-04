@@ -1,6 +1,5 @@
 .icon {
   color: inherit;
-  font-size: 2em;
   font-family: $icon-family;
   font-style: normal;
   font-weight: normal;
@@ -10,359 +9,371 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  height: 2em;
-  width: 2em;
+  height: $icon-size-default;
+  width: $icon-size-default;
+  font-size: $icon-size-default * 1.25;
+
+  @each $name, $size in $icon-size {
+    &.__#{$name} {
+      font-size: $size * 1.25;
+      height: $size;
+      width: $size;
+    }
+  }
+  @each $name, $style in $icon-style {
+    &.__#{$name} {
+      color: $style;
+    }
+  }
 }
-
-
 
 .icon.accordion-fold {
   &:before {
-    content: $icon-accordion-fold; 
+    content: $icon-accordion-fold;
   }
 }
 .icon.accordion-unfold {
   &:before {
-    content: $icon-accordion-unfold; 
+    content: $icon-accordion-unfold;
   }
 }
 .icon.action-add {
   &:before {
-    content: $icon-action-add; 
+    content: $icon-action-add;
   }
 }
 .icon.action-circle-add {
   &:before {
-    content: $icon-action-circle-add; 
+    content: $icon-action-circle-add;
   }
 }
 .icon.action-circle-clear {
   &:before {
-    content: $icon-action-circle-clear; 
+    content: $icon-action-circle-clear;
   }
 }
 .icon.action-circle-filled-add {
   &:before {
-    content: $icon-action-circle-filled-add; 
+    content: $icon-action-circle-filled-add;
   }
 }
 .icon.action-circle-filled-clear {
   &:before {
-    content: $icon-action-circle-filled-clear; 
+    content: $icon-action-circle-filled-clear;
   }
 }
 .icon.action-circle-filled-info {
   &:before {
-    content: $icon-action-circle-filled-info; 
+    content: $icon-action-circle-filled-info;
   }
 }
 .icon.action-circle-filled-remove {
   &:before {
-    content: $icon-action-circle-filled-remove; 
+    content: $icon-action-circle-filled-remove;
   }
 }
 .icon.action-circle-filled-settings {
   &:before {
-    content: $icon-action-circle-filled-settings; 
+    content: $icon-action-circle-filled-settings;
   }
 }
 .icon.action-circle-remove {
   &:before {
-    content: $icon-action-circle-remove; 
+    content: $icon-action-circle-remove;
   }
 }
 .icon.action-clear {
   &:before {
-    content: $icon-action-clear; 
+    content: $icon-action-clear;
   }
 }
 .icon.action-delete {
   &:before {
-    content: $icon-action-delete; 
+    content: $icon-action-delete;
   }
 }
 .icon.action-info {
   &:before {
-    content: $icon-action-info; 
+    content: $icon-action-info;
   }
 }
 .icon.action-remove {
   &:before {
-    content: $icon-action-remove; 
+    content: $icon-action-remove;
   }
 }
 .icon.alarm-add {
   &:before {
-    content: $icon-alarm-add; 
+    content: $icon-alarm-add;
   }
 }
 .icon.alarm-default {
   &:before {
-    content: $icon-alarm-default; 
+    content: $icon-alarm-default;
   }
 }
 .icon.alarm-off {
   &:before {
-    content: $icon-alarm-off; 
+    content: $icon-alarm-off;
   }
 }
 .icon.alarm-on {
   &:before {
-    content: $icon-alarm-on; 
+    content: $icon-alarm-on;
   }
 }
 .icon.alert-circle-empty {
   &:before {
-    content: $icon-alert-circle-empty; 
+    content: $icon-alert-circle-empty;
   }
 }
 .icon.alert-circle-full {
   &:before {
-    content: $icon-alert-circle-full; 
+    content: $icon-alert-circle-full;
   }
 }
 .icon.alert-explosion {
   &:before {
-    content: $icon-alert-explosion; 
+    content: $icon-alert-explosion;
   }
 }
 .icon.alert-hexagonal {
   &:before {
-    content: $icon-alert-hexagonal; 
+    content: $icon-alert-hexagonal;
   }
 }
 .icon.alert-triangle {
   &:before {
-    content: $icon-alert-triangle; 
+    content: $icon-alert-triangle;
   }
 }
 .icon.arrow-down {
   &:before {
-    content: $icon-arrow-down; 
+    content: $icon-arrow-down;
   }
 }
 .icon.arrow-left {
   &:before {
-    content: $icon-arrow-left; 
+    content: $icon-arrow-left;
   }
 }
 .icon.arrow-right {
   &:before {
-    content: $icon-arrow-right; 
+    content: $icon-arrow-right;
   }
 }
 .icon.arrow-up {
   &:before {
-    content: $icon-arrow-up; 
+    content: $icon-arrow-up;
   }
 }
 .icon.calendar-date {
   &:before {
-    content: $icon-calendar-date; 
+    content: $icon-calendar-date;
   }
 }
 .icon.calendar-default {
   &:before {
-    content: $icon-calendar-default; 
+    content: $icon-calendar-default;
   }
 }
 .icon.checkbox-checked {
   &:before {
-    content: $icon-checkbox-checked; 
+    content: $icon-checkbox-checked;
   }
 }
 .icon.checkbox-null {
   &:before {
-    content: $icon-checkbox-null; 
+    content: $icon-checkbox-null;
   }
 }
 .icon.checkbox-unchecked {
   &:before {
-    content: $icon-checkbox-unchecked; 
+    content: $icon-checkbox-unchecked;
   }
 }
 .icon.dart-down {
   &:before {
-    content: $icon-dart-down; 
+    content: $icon-dart-down;
   }
 }
 .icon.dart-left {
   &:before {
-    content: $icon-dart-left; 
+    content: $icon-dart-left;
   }
 }
 .icon.dart-right {
   &:before {
-    content: $icon-dart-right; 
+    content: $icon-dart-right;
   }
 }
 .icon.dart-up {
   &:before {
-    content: $icon-dart-up; 
+    content: $icon-dart-up;
   }
 }
 .icon.display-float {
   &:before {
-    content: $icon-display-float; 
+    content: $icon-display-float;
   }
 }
 .icon.display-full {
   &:before {
-    content: $icon-display-full; 
+    content: $icon-display-full;
   }
 }
 .icon.interact-close {
   &:before {
-    content: $icon-interact-close; 
+    content: $icon-interact-close;
   }
 }
 .icon.interact-delete {
   &:before {
-    content: $icon-interact-delete; 
+    content: $icon-interact-delete;
   }
 }
 .icon.interact-done-all {
   &:before {
-    content: $icon-interact-done-all; 
+    content: $icon-interact-done-all;
   }
 }
 .icon.interact-done {
   &:before {
-    content: $icon-interact-done; 
+    content: $icon-interact-done;
   }
 }
 .icon.interact-update {
   &:before {
-    content: $icon-interact-update; 
+    content: $icon-interact-update;
   }
 }
 .icon.map-location {
   &:before {
-    content: $icon-map-location; 
+    content: $icon-map-location;
   }
 }
 .icon.menu-hamburger {
   &:before {
-    content: $icon-menu-hamburger; 
+    content: $icon-menu-hamburger;
   }
 }
 .icon.menu-points-vertical {
   &:before {
-    content: $icon-menu-points-vertical; 
+    content: $icon-menu-points-vertical;
   }
 }
 .icon.menu-setting {
   &:before {
-    content: $icon-menu-setting; 
+    content: $icon-menu-setting;
   }
 }
 .icon.menu-points-horizontal {
   &:before {
-    content: $icon-menu-points-horizontal; 
+    content: $icon-menu-points-horizontal;
   }
 }
 .icon.notification-disabled {
   &:before {
-    content: $icon-notification-disabled; 
+    content: $icon-notification-disabled;
   }
 }
 .icon.notification-none {
   &:before {
-    content: $icon-notification-none; 
+    content: $icon-notification-none;
   }
 }
 .icon.notification-notify {
   &:before {
-    content: $icon-notification-notify; 
+    content: $icon-notification-notify;
   }
 }
 .icon.notification-ring {
   &:before {
-    content: $icon-notification-ring; 
+    content: $icon-notification-ring;
   }
 }
 .icon.operation-download {
   &:before {
-    content: $icon-operation-download; 
+    content: $icon-operation-download;
   }
 }
 .icon.operation-upload {
   &:before {
-    content: $icon-operation-upload; 
+    content: $icon-operation-upload;
   }
 }
 .icon.organize-grid {
   &:before {
-    content: $icon-organize-grid; 
+    content: $icon-organize-grid;
   }
 }
 .icon.organize-list {
   &:before {
-    content: $icon-organize-list; 
+    content: $icon-organize-list;
   }
 }
 .icon.radio-checked {
   &:before {
-    content: $icon-radio-checked; 
+    content: $icon-radio-checked;
   }
 }
 .icon.radio-unchecked {
   &:before {
-    content: $icon-radio-unchecked; 
+    content: $icon-radio-unchecked;
   }
 }
 .icon.star-empty {
   &:before {
-    content: $icon-star-empty; 
+    content: $icon-star-empty;
   }
 }
 .icon.star-full {
   &:before {
-    content: $icon-star-full; 
+    content: $icon-star-full;
   }
 }
 .icon.star-half {
   &:before {
-    content: $icon-star-half; 
+    content: $icon-star-half;
   }
 }
 .icon.triangle-down {
   &:before {
-    content: $icon-triangle-down; 
+    content: $icon-triangle-down;
   }
 }
 .icon.triangle-up {
   &:before {
-    content: $icon-triangle-up; 
+    content: $icon-triangle-up;
   }
 }
 .icon.user-add-group {
   &:before {
-    content: $icon-user-add-group; 
+    content: $icon-user-add-group;
   }
 }
 .icon.user-add {
   &:before {
-    content: $icon-user-add; 
+    content: $icon-user-add;
   }
 }
 .icon.user-defalut {
   &:before {
-    content: $icon-user-defalut; 
+    content: $icon-user-defalut;
   }
 }
 .icon.user-group {
   &:before {
-    content: $icon-user-group; 
+    content: $icon-user-group;
   }
 }
 .icon.visibility-hidden {
   &:before {
-    content: $icon-visibility-hidden; 
+    content: $icon-visibility-hidden;
   }
 }
 .icon.visibility-visible {
   &:before {
-    content: $icon-visibility-visible; 
+    content: $icon-visibility-visible;
   }
 }

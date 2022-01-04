@@ -1,37 +1,65 @@
 .display {
-  display: flex;
-  flex-wrap: wrap;
   position: relative;
 
   // Sizes
-  flex: 1 1 0;
+  flex: 1 1;
+  @extend .display__responsive;
 
   &.__sized {
     flex: none;
+    @extend .display__responsive;
   }
 
-  @include mobileOnly {
-    flex: 1 0 calc((15rem - 2rem) / 2) !important;
-    width: 100% !important;
+  // Directions
+  $display-type: (
+    row: row,
+    col: column,
+    card: column,
+    slide: row,
+  );
+  @each $label, $type in $display-type {
+    &.__#{$label} {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: $type;
+    }
+  }
+
+  &.__card {
+    background-color: $white;
+    border-radius: 3px;
+    color: $gray-darken;
+    overflow: hidden;
+    box-shadow: $display-card-shadow;
+    margin: 0.75rem;
+
+    & > .display {
+      width: 100%;
+      padding: 0 0.75rem;
+      &:first-child {
+        padding-top: 0.75rem;
+      }
+      &:last-child {
+        padding-bottom: 0.75rem;
+      }
+    }
+  }
+
+  &.__slide {
+
   }
 
   // Alignements and justifications
-  align-items: center;
-  justify-content: center;
-
-  &.__direction_col {
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: start;
-  }
-
   $alignments: start, center, end, stretch;
   @each $align in $alignments {
     &.__align_#{$align} {
       align-items: $align;
     }
-    &.__direction_col.__align_#{align} {
-      justify-content: $align;
+    &.__col,
+    &.__card {
+      & > .__align_#{$align} {
+        justify-content: $align;
+      }
     }
   }
 
@@ -40,8 +68,31 @@
     &.__justify_#{$justify} {
       justify-content: $justify;
     }
-    &.__direction_col.__justify_#{$justify} {
-      align-items: $justify;
+    &.__col,
+    &.__card {
+      & > .__justify_#{$justify} {
+        align-items: $justify;
+      }
     }
+  }
+  &.__col,
+  &.__card {
+    & > .display {
+      @include untilTablet {
+        flex: 1 0 auto;
+        width: 100% !important;
+      }
+    }
+  }
+}
+
+.display__responsive {
+  @include mobileOnly {
+    flex: 1 0 $display-mobile-min-width;
+    width: 100% !important;
+  }
+  @include tabletOnly {
+    flex: 1 0 $display-tablet-min-width;
+    width: 100% !important;
   }
 }

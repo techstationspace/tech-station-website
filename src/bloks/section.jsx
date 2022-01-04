@@ -3,28 +3,35 @@ import PropTypes from "prop-types";
 import SbEditable from "storyblok-react";
 import DynamicComponent from "../utils/dynamicComponent";
 import { createClasses, styleSwitch } from "../utils/utils";
-import Container from "../globals/container";
-import Flow from "../components/flow";
 
 const Section = ({ blok }) => {
   const { image } = blok;
+
+  const bodyProps = {
+    action: {
+      style: styleSwitch(blok.style),
+    },
+  };
   const body =
     blok.body &&
     blok.body.map((childBlok) => {
-      childBlok.parentStyle = styleSwitch(blok.style);
-      return <DynamicComponent blok={childBlok} key={childBlok._uid} />;
+      return (
+        <DynamicComponent
+          blok={childBlok}
+          parent={{...bodyProps}}
+          key={childBlok._uid}
+        />
+      );
     });
 
-  const sectionClasses = createClasses(blok, ["height", "style", "gap"]);
-  !!image && !!image.filename && sectionClasses.push(`__has_background`);
+  const sectionClasses = createClasses(blok, ["height", "style", "space"]);
+  !!image && !!image.filename && sectionClasses.push("__has_background");
 
-  const flowProps = {
-    component: "flow",
-    align: "stretch",
-    justify: "start",
-    size: "full",
-    gap: blok.gap,
-  };
+  const wrapperClasses = [
+    "section--wrapper",
+    blok.responsive ? "container" : "container__responsive",
+  ];
+
   const sectionStyles = {
     backgroundImage:
       !!image && !!image.filename ? `url(${image.filename})` : null,
@@ -37,9 +44,7 @@ const Section = ({ blok }) => {
         className={sectionClasses.join(" ")}
         style={sectionStyles}
       >
-        <Container responsive={!blok.responsive}>
-          <Flow blok={flowProps}>{body}</Flow>
-        </Container>
+        <div className={wrapperClasses.join(" ")}>{body}</div>
       </section>
     </SbEditable>
   );
@@ -51,8 +56,15 @@ Section.propTypes = {
     body: PropTypes.array,
     responsive: PropTypes.bool,
     style: PropTypes.oneOf(["", "primary", "secondary", "dark", "light"]),
-    height: PropTypes.oneOf(["auto", "100", "66", "50", "33", "25"]),
-    gap: PropTypes.oneOf(["", "small", "mid", "large"]),
+    height: PropTypes.oneOf([
+      "",
+      "full",
+      "twoThird",
+      "half",
+      "oneThird",
+      "quarter",
+    ]),
+    space: PropTypes.oneOf(["", "none", "small", "mid", "large"]),
     image: PropTypes.shape({
       filename: PropTypes.string,
       alt: PropTypes.string,
