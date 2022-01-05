@@ -18,7 +18,7 @@ const Section = ({ blok }) => {
       return (
         <DynamicComponent
           blok={childBlok}
-          parent={{...bodyProps}}
+          parent={{ ...bodyProps }}
           key={childBlok._uid}
         />
       );

@@ -17,7 +17,7 @@ const Action = ({ blok, parent, value, disabled, onChange = () => null }) => {
   };
 
   const actionType = !!blok.function ? "button" : "link";
-  const parentProps = parent.action || {};
+  const parentProps = parent?.action || {};
 
   blok.style = blok.style || parentProps.style;
   blok.type = blok.type || parentProps.type || actionType;
@@ -30,7 +30,7 @@ const Action = ({ blok, parent, value, disabled, onChange = () => null }) => {
       className={classes.join(" ")}
       href={getUrl(blok.url)}
       target={blok.target ? "_blank" : null}
-      rel={blok.target ? "noreferrer" : null}
+      rel="noreferrer"
     >
       <Icon name={blok.left_icon} />
       {blok.text}

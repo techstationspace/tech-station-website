@@ -1,28 +1,22 @@
 import React from "react";
-// Stories
-import Page from "../stories/page";
-import Project from "../stories/project";
-// Bloks
 import Section from "../bloks/section";
-// Components
 import Display from "../components/display";
 import Reel from "../components/reel";
-// Elements
+import Collection from "../components/collection";
 import Heading from "../elements/heading";
 import Tale from "../elements/tale";
 import Media from "../elements/media";
 import Action from "../elements/action";
 
 const Components = {
-  page: Page,
-  project: Project,
   section: Section,
-  reel: Reel,
-  heading: Heading,
   display: Display,
+  reel: Reel,
+  collection: Collection,
+  heading: Heading,
   tale: Tale,
-  action: Action,
   media: Media,
+  action: Action,
 };
 
 const ComponentNotFound = ({ componentName }) => (

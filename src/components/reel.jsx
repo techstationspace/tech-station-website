@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import SbEditable from "storyblok-react";
 import DynamicComponent from "../utils/dynamicComponent";
-import { createClasses, gaps } from "../utils/utils";
+import { createClasses } from "../utils/utils";
 import Icon from "../elements/icon";
 
 const Reel = ({ blok, parent }) => {
-  const { innerWidth: width } = window;
+  const width = {};
+  if (typeof window !== "undefined") {
+    width.innerWidth = window.innerWidth;
+  } else {
+    width.innerWidth = 1024;
+  }
   const slideProps = parent || {};
 
   const slides =
@@ -107,7 +112,7 @@ Reel.propTypes = {
   blok: PropTypes.shape({
     body: PropTypes.array,
     responsive: PropTypes.bool,
-    showSlides: PropTypes.oneOf(["1", "2", "3", "4"]),
+    showSlides: PropTypes.oneOf(["1", "2", "3", "4", "5", "6", "7", "8"]),
     scrollSlides: PropTypes.oneOf(["1", "2", "3", "4"]),
   }),
 };

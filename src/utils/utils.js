@@ -4,14 +4,12 @@ const createClasses = (props, styles) => {
   classes.push(props.component);
   !!styles.length &&
     styles.map((key) => {
-      if (!!props[key]) {
-        if (typeof props[key] === "boolean") {
-          classes.push(`__${key}`);
-        } else if (directProps.includes(key)) {
-          classes.push(`__${props[key]}`);
-        } else {
-          classes.push(`__${key}_${props[key]}`);
-        }
+      if (!!props[key] && typeof props[key] === "boolean") {
+        return classes.push(`__${key}`);
+      } else if (!!props[key] && directProps.includes(key)) {
+        return classes.push(`__${props[key]}`);
+      } else {
+        return classes.push(`__${key}_${props[key]}`);
       }
     });
   return classes;
@@ -51,7 +49,7 @@ const defaultLang = process.env.DEFAULT_LANG;
 const getUrl = (link) => {
   let url = link.cached_url || "";
   const isHome = url.includes("home");
-  const isDefaultLang = url.includes(defaultLang);
+  const isDefaultLang = url.includes(`/${defaultLang}`);
   const isInternal = link.url === "";
 
   if (isInternal) {

@@ -1,5 +1,4 @@
 const path = require("path");
-
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -26,72 +25,61 @@ function detectLanguage(slug) {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  ////////////////////////////////////// QUERY HEADER, FOOTERS AND COACHES
-  const queryHeaders = await graphql(`
+  const queryStories = await graphql(`
     query {
-      allStoryblokEntry(filter: { field_component: { eq: "header" } }) {
+      headers: allStoryblokEntry(
+        filter: { field_component: { eq: "header" } }
+      ) {
         edges {
           node {
             uuid
+            field_component
+            full_slug
             content
           }
         }
       }
-    }
-  `);
-  if (queryHeaders.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query headers.`);
-    return;
-  }
-  const headers = queryHeaders.data.allStoryblokEntry.edges;
-  // console.log("headers", headers)
-
-  const queryFooters = await graphql(`
-    query {
-      allStoryblokEntry(filter: { field_component: { eq: "footer" } }) {
+      footers: allStoryblokEntry(
+        filter: { field_component: { eq: "footer" } }
+      ) {
         edges {
           node {
             uuid
+            field_component
+            full_slug
             content
           }
         }
       }
-    }
-  `);
-  if (queryFooters.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query footers.`);
-    return;
-  }
-  const footers = queryFooters.data.allStoryblokEntry.edges;
-  // console.log("footers", footers)
-
-  const queryCoaches = await graphql(`
-    query {
-      allStoryblokEntry(filter: { field_component: { eq: "coach" } }) {
+      pages: allStoryblokEntry(filter: { field_component: { eq: "page" } }) {
         edges {
           node {
             uuid
+            field_component
+            full_slug
             content
           }
         }
       }
-    }
-  `);
-  if (queryCoaches.error) {
-    reporter.panicOnBuild(`Error while running GraphQL query coaches`);
-    return;
-  }
-  const coaches = queryCoaches.data.allStoryblokEntry.edges;
-  // console.log("coaches", coaches)
-
-  ////////////////////////////////////// QUERY AND CREATE PAGES
-  const queryPages = await graphql(`
-    query {
-      allStoryblokEntry(filter: { field_component: { eq: "page" } }) {
+      projects: allStoryblokEntry(
+        filter: { field_component: { eq: "project" } }
+      ) {
         edges {
           node {
-            name
-            id
+            uuid
+            field_component
+            full_slug
+            content
+          }
+        }
+      }
+      courses: allStoryblokEntry(
+        filter: { field_component: { eq: "course" } }
+      ) {
+        edges {
+          node {
+            uuid
+            field_component
             full_slug
             content
           }
@@ -99,153 +87,59 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
   `);
-  if (queryPages.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query pages.`);
+  if (queryStories.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query stories.`);
     return;
   }
-  const pages = queryPages.data.allStoryblokEntry.edges;
-  // console.log("pages", pages);
+  // console.log(queryStories.data);
 
-  const pageTemplate = path.resolve("./src/templates/pageTemplate.js");
-  pages.forEach((entry) => {
-    const data = entry.node;
-    const path = pagePath(data.full_slug);
-    const language = detectLanguage(data.full_slug);
-    const content = JSON.parse(data.content);
+  const stories = {
+    header: queryStories.data.headers.edges,
+    footer: queryStories.data.footers.edges,
+    page: queryStories.data.pages.edges,
+    project: queryStories.data.projects.edges,
+    course: queryStories.data.courses.edges,
+  };
 
-    const header = headers.find(
-      (header) => header.node.uuid === content.header
-    );
-    const footer = footers.find(
-      (footer) => footer.node.uuid === content.footer
-    );
+  const templates = {
+    page: path.resolve("./src/templates/pageTemplate.js"),
+    project: path.resolve("./src/templates/projectTemplate.js"),
+    course: path.resolve("./src/templates/courseTemplate.js"),
+  };
 
-    const page = {
-      path: path,
-      component: pageTemplate,
-      context: {
-        story: data,
-        settings: {
-          languages: {
-            current: language,
-            list: languages,
+  Object.keys(templates).map((key) => {
+    const template = templates[key];
+
+    stories[key].forEach((story) => {
+      const data = story.node;
+      const path = pagePath(data.full_slug);
+      const language = detectLanguage(data.full_slug);
+      const content = JSON.parse(data.content);
+
+      const header = stories.header.find(
+        ({ node }) => node.uuid === content.header
+      );
+      const footer = stories.footer.find(
+        ({ node }) => node.uuid === content.footer
+      );
+
+      const page = {
+        path: path,
+        component: template,
+        context: {
+          story: data,
+          settings: {
+            header: header,
+            footer: footer,
+            languages: {
+              current: language,
+              list: languages,
+            },
           },
-          header: header,
-          footer: footer,
         },
-      },
-    };
-    createPage(page);
-    // console.log("page: ", page);
-  });
-
-  ////////////////////////////////////// QUERY AND CREATE PROJECTS
-  const queryProjects = await graphql(`
-    query {
-      allStoryblokEntry(filter: { field_component: { eq: "project" } }) {
-        edges {
-          node {
-            name
-            id
-            full_slug
-            content
-          }
-        }
-      }
-    }
-  `);
-  if (queryProjects.error) {
-    reporter.panicOnBuild(`Error while running GraphQL query projects`);
-    return;
-  }
-  const projects = queryProjects.data.allStoryblokEntry.edges;
-  // console.log("projects", projects);
-
-  const projectTemplate = path.resolve("./src/templates/projectTemplate.js");
-  projects.forEach((entry) => {
-    const data = entry.node;
-    const path = pagePath(data.full_slug);
-    const language = detectLanguage(data.full_slug);
-    const content = JSON.parse(data.content);
-
-    const header = headers.find(
-      (header) => header.node.uuid === content.header
-    );
-    const footer = footers.find(
-      (footer) => footer.node.uuid === content.footer
-    );
-
-    const project = {
-      path: path,
-      component: projectTemplate,
-      context: {
-        story: data,
-        settings: {
-          languages: {
-            current: language,
-            list: languages,
-          },
-          header: header,
-          footer: footer,
-        },
-      },
-    };
-    createPage(project);
-    // console.log("project: ", project);
-  });
-
-  ////////////////////////////////////// QUERY AND CREATE COURSES
-  const queryCourses = await graphql(`
-    query {
-      allStoryblokEntry(filter: { field_component: { eq: "course" } }) {
-        edges {
-          node {
-            name
-            id
-            full_slug
-            content
-          }
-        }
-      }
-    }
-  `);
-  if (queryCourses.error) {
-    reporter.panicOnBuild(`Error while running GraphQL query courses`);
-    return;
-  }
-  const courses = queryCourses.data.allStoryblokEntry.edges;
-  // console.log("courses", courses);
-
-  const courseTemplate = path.resolve("./src/templates/courseTemplate.js");
-  courses.forEach((entry) => {
-    const data = entry.node;
-    const path = pagePath(data.full_slug);
-    const language = detectLanguage(data.full_slug);
-    const content = JSON.parse(data.content);
-
-    const header = headers.find(
-      (header) => header.node.uuid === content.header
-    );
-    const footer = footers.find(
-      (footer) => footer.node.uuid === content.footer
-    );
-
-    const course = {
-      path: path,
-      component: courseTemplate,
-      context: {
-        story: data,
-        // settings: {
-        //   languages: {
-        //     current: language,
-        //     list: languages,
-        //   },
-        //   header: header,
-        //   footer: footer,
-        // },
-      },
-    };
-    createPage(course);
-    // console.log("course: ", course);
+      };
+      createPage(page);
+      // console.log(page);
+    });
   });
 };

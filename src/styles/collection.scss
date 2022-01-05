@@ -1,0 +1,28 @@
+.collection.__grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.collection--coach {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: stretch;
+  gap: .5rem;
+  max-width: 25%;
+  &-image {
+    height: auto;
+    justify-self: start;
+    align-self: stretch;
+  }
+  &-content {
+    padding: .75rem;
+  }
+}
+
+.collection.__timeline {
+
+}

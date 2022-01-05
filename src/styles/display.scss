@@ -57,7 +57,7 @@
     }
     &.__col,
     &.__card {
-      & > .__align_#{$align} {
+      &.__align_#{$align} {
         justify-content: $align;
       }
     }
@@ -70,7 +70,7 @@
     }
     &.__col,
     &.__card {
-      & > .__justify_#{$justify} {
+      &.__justify_#{$justify} {
         align-items: $justify;
       }
     }

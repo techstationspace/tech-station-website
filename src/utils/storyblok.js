@@ -63,7 +63,7 @@ export default function useStoryblok(originalStory, location) {
   }
 
   useEffect(() => {
-    if (location.search.includes("_storyblok")) {
+    if (location?.search.includes("_storyblok")) {
       addBridge(initEventListeners);
     }
   }, []);

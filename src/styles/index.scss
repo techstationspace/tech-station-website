@@ -24,8 +24,10 @@ $icon-path: "fonts/icon" !default;
 @import "./header.scss";
 @import "./footer.scss";
 @import "./container.scss";
+@import "./cover.scss";
 @import "./section.scss";
 @import "./reel.scss";
+@import "./collection.scss";
 @import "./display.scss";
 @import "./media.scss";
 @import "./action.scss";
@@ -33,7 +35,7 @@ $icon-path: "fonts/icon" !default;
 @import "./icon.scss";
 
 // Base unit
-$base-unit: 16px;
+$base-unit: 15px;
 
 // Global styles
 html {

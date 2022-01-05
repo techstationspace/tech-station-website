@@ -20,6 +20,7 @@ module.exports = {
       options: {
         accessToken: process.env.STORY_BLOK,
         version: process.env.NODE_ENV === "production" ? "published" : "draft",
+        homeSlug: 'home',
       },
     },
     /*
