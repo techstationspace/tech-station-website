@@ -6,12 +6,7 @@ import { createClasses } from "../utils/utils";
 import Icon from "../elements/icon";
 
 const Reel = ({ blok, parent }) => {
-  const width = {};
-  if (typeof window !== "undefined") {
-    width.innerWidth = window.innerWidth;
-  } else {
-    width.innerWidth = 1024;
-  }
+  const width = typeof window !== "undefined" ? window.innerWidth : 1024;
   const slideProps = parent || {};
 
   const slides =
