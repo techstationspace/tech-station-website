@@ -1,11 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SbEditable from "storyblok-react";
+import StoryblokClient from "storyblok-js-client";
 import DynamicComponent from "../utils/dynamicComponent";
 import { createClasses } from "../utils/utils";
 
+const sbClient = new StoryblokClient({
+  accessToken: `${process.env.STORY_BLOK}`,
+  cache: {
+    clear: "auto",
+    type: "memory",
+  },
+});
+
 const Footer = ({ blok }) => {
   const footerClasses = createClasses(blok, ["style"]);
+  console.log(process.env.STORY_BLOK);
+  const copyright = sbClient.richTextResolver.render(blok.copyright);
 
   const bodyProps = {
     action: {
@@ -14,7 +25,7 @@ const Footer = ({ blok }) => {
     },
     display: {
       size: "quarter",
-      gap: "small"
+      gap: "small",
     },
   };
 
@@ -37,7 +48,10 @@ const Footer = ({ blok }) => {
           <div className="footer--wrapper">{body}</div>
         </div>
         <div className="footer--copyright">
-          <div className="footer--wrapper">{blok.copyright}</div>
+          <div
+            className="footer--wrapper"
+            dangerouslySetInnerHTML={{ __html: copyright }}
+          />
         </div>
       </footer>
     </SbEditable>
@@ -51,7 +65,7 @@ Footer.propTypes = {
       alt: PropTypes.string,
     }),
     menus: PropTypes.arrayOf(PropTypes.object),
-    copyright: PropTypes.string,
+    copyright: PropTypes.any,
     style: PropTypes.oneOf(["primary", "secondary", "dark", "light"]),
   }),
 };

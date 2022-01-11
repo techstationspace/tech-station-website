@@ -6,8 +6,9 @@ import Footer from "../bloks/footer";
 import "../styles/index.scss";
 
 const Layout = ({ settings, children }) => {
-  const header = JSON.parse(settings.header.node.content);
-  const footer = JSON.parse(settings.footer.node.content);
+  let { header, footer } = settings;
+  header = header?.node && JSON.parse(header.node.content);
+  footer = footer?.node && JSON.parse(footer.node.content);
 
   return (
     <>

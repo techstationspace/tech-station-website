@@ -8,7 +8,7 @@ const Media = ({ blok, parent }) => {
   blok.size = blok.size || parentProps?.size || 100;
   const image = () => (
     <img
-      className="media media--image"
+      className="media __image"
       width={`${blok.size}%`}
       src={blok.image.filename}
       alt={blok.image.alt}
@@ -19,9 +19,9 @@ const Media = ({ blok, parent }) => {
     <div
       style={{
         backgroundImage: `url(${blok.image.filename})`,
-        paddingTop: `${blok.size}%`,
+        // paddingTop: `${blok.size}%`,
       }}
-      className="media media--cover"
+      className="media __cover"
       title={blok.image.alt}
     />
   );

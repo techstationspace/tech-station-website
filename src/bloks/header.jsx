@@ -6,13 +6,11 @@ import { createClasses, styleSwitch } from "../utils/utils";
 import Dropdown from "../elements/dropdown";
 import Icon from "../elements/icon";
 
-const defaultLang = process.env.DEFAULT_LANG;
-
 const Header = ({ blok, languages }) => {
+  const defaultLang = "it";
+
   const [showMenu, setShowMenu] = useState(false);
   const currentLang = languages.current;
-  console.log(currentLang);
-  console.log(defaultLang);
 
   const menuProps = {
     action: {

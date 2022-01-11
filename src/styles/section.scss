@@ -23,6 +23,7 @@
   &--wrapper {
     min-height: inherit;
     > .display {
+      position: unset !important;
       min-height: inherit;
       &:not(:last-child) {
         margin-bottom: $section-spacing-default * 0.75;

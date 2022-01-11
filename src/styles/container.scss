@@ -9,10 +9,11 @@
 .container__responsive {
   @extend .container;
   @include mobileOnly {
-    max-width: calc(100% - 2rem);
+    width: calc(100% - 2rem);
   }
-  @include fromTablet {
-    max-width: calc(100% - 4rem);
+  @include untilTablet {
+
+    width: calc(100% - 4rem);
   }
   @include fromLaptop {
     max-width: 996px;

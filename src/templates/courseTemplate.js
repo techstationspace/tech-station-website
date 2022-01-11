@@ -16,7 +16,7 @@ const CourseIndex = ({ pageContext, location }) => {
     ));
 
   const coverStyles = {
-    backgroundImage: content.image.filename
+    backgroundImage: content.image?.filename
       ? `url(${content.image.filename})`
       : "",
   };

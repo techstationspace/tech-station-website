@@ -1,6 +1,6 @@
 const createClasses = (props, styles) => {
   const classes = [];
-  const directProps = ["direction", "type", "style"];
+  const directProps = ["direction", "type", "style", "gap", "size"];
   classes.push(props.component);
   !!styles.length &&
     styles.map((key) => {
@@ -8,26 +8,11 @@ const createClasses = (props, styles) => {
         return classes.push(`__${key}`);
       } else if (!!props[key] && directProps.includes(key)) {
         return classes.push(`__${props[key]}`);
-      } else {
+      } else if (!!props[key]) {
         return classes.push(`__${key}_${props[key]}`);
       }
     });
   return classes;
-};
-
-const gaps = {
-  none: "0",
-  small: ".75rem",
-  default: "1.25rem",
-  mid: "1.75rem",
-  large: "3rem",
-};
-
-const widths = {
-  quarter: "25%",
-  oneThird: "33.3333%",
-  half: "50%",
-  full: "100%",
 };
 
 const styleSwitch = (style) => {
@@ -65,4 +50,4 @@ const getUrl = (link) => {
   return url;
 };
 
-export { createClasses, styleSwitch, getUrl, gaps, widths };
+export { createClasses, styleSwitch, getUrl };

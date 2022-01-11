@@ -1,14 +1,24 @@
 .media {
-  &--image {
+  &.__image {
     height: auto;
     max-width: 20em;
     max-height: 30em;
   }
 
-  &--cover {
-    width: 100%;
-    padding-top: 100%;
+  // &--cover {
+  //   width: 100%;
+  //   padding-top: 100%;
+  //   background-size: cover;
+  //   background-position: center;
+  // }
+  &.__cover {
     background-size: cover;
     background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
   }
 }

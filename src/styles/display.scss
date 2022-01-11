@@ -3,11 +3,40 @@
 
   // Sizes
   flex: 1 1;
-  @extend .display__responsive;
+  @include mobileOnly {
+    flex: 1 0 $display-mobile-min-width !important;
+    > .media {
+      order: 0;
+    }
+  }
 
-  &.__sized {
-    flex: none;
-    @extend .display__responsive;
+  @each $name, $size, $resize in $display-size {
+    &.__#{$name} {
+      flex: 1 0 $display-min-width;
+      width: $size;
+    }
+  }
+
+  @each $name, $gap in $display-gap {
+    &.__#{$name} {
+      margin-left: -$gap;
+      margin-right: -$gap;
+      > .text,
+      > .display,
+      > .media {
+        padding-right: $gap;
+        padding-left: $gap;
+      }
+      > .action {
+        margin-right: $gap;
+        margin-left: $gap;
+      }
+    }
+  }
+
+  > .text,
+  > .media {
+    flex: 1 1;
   }
 
   // Directions
@@ -46,7 +75,6 @@
   }
 
   &.__slide {
-
   }
 
   // Alignements and justifications
@@ -87,12 +115,4 @@
 }
 
 .display__responsive {
-  @include mobileOnly {
-    flex: 1 0 $display-mobile-min-width;
-    width: 100% !important;
-  }
-  @include tabletOnly {
-    flex: 1 0 $display-tablet-min-width;
-    width: 100% !important;
-  }
 }

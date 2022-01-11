@@ -3,8 +3,7 @@ import Section from "../bloks/section";
 import Display from "../components/display";
 import Reel from "../components/reel";
 import Collection from "../components/collection";
-import Heading from "../elements/heading";
-import Tale from "../elements/tale";
+import Text from "../elements/text";
 import Media from "../elements/media";
 import Action from "../elements/action";
 
@@ -13,8 +12,7 @@ const Components = {
   display: Display,
   reel: Reel,
   collection: Collection,
-  heading: Heading,
-  tale: Tale,
+  text: Text,
   media: Media,
   action: Action,
 };

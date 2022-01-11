@@ -1,4 +1,5 @@
 .header {
+  font-size: .9rem;
   height: $header-height;
   @include mobileOnly {
     height: $header-height - 1rem;

@@ -82,7 +82,10 @@ const Coach = ({ data }) => {
       <div className="collection--coach-content">
         <h6 className="collection--coach-title">{data.full_name}</h6>
         <small className="collection--coach-subtitle">{data.subject}</small>
-        {description}
+        <div
+          className="collection--coach-descriotion"
+          dangerouslySetInnerHTML={{ _html: description }}
+        />
         <div className="collection--coach-link">{links}</div>
       </div>
     </div>

@@ -2,11 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import SbEditable from "storyblok-react";
 import DynamicComponent from "../utils/dynamicComponent";
-import { createClasses, gaps, widths } from "../utils/utils";
+import { createClasses } from "../utils/utils";
 
-const Display = ({ blok, parent, children }) => {
-  const childs = !!blok.body ? blok.body.length - 1 : 0;
-
+const Display = ({ blok, parent }) => {
   const bodyProps = parent || {};
   if (blok.type === "card") {
     bodyProps.action.size = "small";
@@ -24,26 +22,17 @@ const Display = ({ blok, parent, children }) => {
       );
     });
 
-  const displayClasses = createClasses(blok, ["align", "justify", "type"]);
-
-  const parentProps = parent?.display || {};
-
-  const displayStyles = {};
-  const displaySize = blok.size || parentProps.size;
-  const displayGap = blok.gap || parentProps.gap || "default";
-  const gapAmount = `${gaps[displayGap || "default"]} * ${childs}`;
-
-  if (!!displaySize) {
-    displayStyles.width = `calc(${widths[displaySize]} - (${gapAmount}))`;
-    displayClasses.push("__sized");
-  }
-  displayStyles.gap = gaps[displayGap];
+  const displayClasses = createClasses(blok, [
+    "align",
+    "justify",
+    "type",
+    "gap",
+    "size",
+  ]);
 
   return (
     <SbEditable content={blok} key={blok._uid}>
-      <div className={displayClasses.join(" ")} style={displayStyles}>
-        {children || body}
-      </div>
+      <div className={displayClasses.join(" ")}>{body}</div>
     </SbEditable>
   );
 };
@@ -61,7 +50,7 @@ Display.propTypes = {
     type: PropTypes.oneOf(["", "row", "col", "card", "slide"]),
     align: PropTypes.oneOf(["", "start", "center", "end", "stretch"]),
     justify: PropTypes.oneOf(["", "start", "center", "end", "stretch"]),
-    gap: PropTypes.oneOf(["", "small", "mid", "large"]),
+    gap: PropTypes.oneOf(["", "default", "small", "mid", "large"]),
     size: PropTypes.oneOf(["", "quarter", "oneThird", "half", "full"]),
   }),
 };

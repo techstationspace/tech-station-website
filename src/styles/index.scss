@@ -1,5 +1,6 @@
 // Fonts families
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;600;700&display=swap");
 // Icon font
 $icon-family: "icon" !default;
 $icon-path: "fonts/icon" !default;
@@ -130,9 +131,59 @@ h5,
 h6,
 p,
 q {
-  margin: 0;
+  margin-top: 0;
 }
 
 div {
   box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul,
+ol {
+  li::marker {
+    font-size: 80%;
+    line-height: 1;
+    opacity: .5;
+  }
+}
+
+code {
+  font-size: 90%;
+  display: block;
+  padding: 0.5em 0.75em;
+  margin: 1rem 1.5rem;
+  background-color: $gray-lighten;
+}
+
+blockquote {
+  margin: 3rem 1rem;
+  text-align: center;
+  p {
+    position: relative;
+    display: inline-blok;
+    max-width: 80%;
+    margin: 0 auto;
+
+    &::before,
+    &::after {
+      position: absolute;
+      font-size: 3.5rem;
+      font-weight: bold;
+      line-height: 0;
+    }
+    &::before {
+      top: -0.5rem;
+      left: -1.5rem;
+      content: "\201D";
+    }
+    &::after {
+      bottom: -2rem;
+      right: -1.5rem;
+      content: "\201C";
+    }
+  }
 }

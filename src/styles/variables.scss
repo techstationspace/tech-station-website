@@ -51,11 +51,21 @@ $info-dark: #539ec9;
 $default-background: $white;
 $default-color: $gray-darken;
 
+// Styles
+$style-primary: (
+  title-color: $primary,
+  title-link-color: $primary-dark,
+  subtititle-color: $primary,
+  subtitle-link-color: $primary-dark,
+  link-color: $primary,
+  paragraph-color: $gray-dark,
+);
+
 // Typhography
-$primary-font-family: "Open Sans", serif;
-$secondary-font-family: $primary-font-family;
+$primary-font-family: "Open Sans", sans-serif;
+$secondary-font-family: "Roboto Mono", monospace;
 // Default
-$default-size: 1rem;
+$default-size: 1em;
 $default-weight: 400;
 $default-line: normal;
 $default-spacing: normal;
@@ -63,25 +73,25 @@ $default-margin: 0;
 // Heading titles
 $h1-style: (
   family: $secondary-font-family,
-  size: 3.125rem,
+  size: 3.125em,
   weight: 900,
   line: 1.1,
   spacing: -0.05rem,
   margin: 0.75rem,
-  mobile-size: 2.5rem,
+  mobile-size: 2.5em,
 );
 $h2-style: (
   family: $secondary-font-family,
-  size: 2.5rem,
+  size: 2.5em,
   weight: 800,
   line: 1.1,
   spacing: -0.05rem,
   margin: 0.75rem,
-  mobile-size: 2.25rem,
+  mobile-size: 2.25em,
 );
 $h3-style: (
   family: $secondary-font-family,
-  size: 2rem,
+  size: 2em,
   weight: 700,
   line: 1,
   spacing: normal,
@@ -90,7 +100,7 @@ $h3-style: (
 // Heading subtitles
 $h4-style: (
   family: $primary-font-family,
-  size: 1.75rem,
+  size: 1.75em,
   weight: 700,
   line: 1,
   spacing: normal,
@@ -98,7 +108,7 @@ $h4-style: (
 );
 $h5-style: (
   family: $primary-font-family,
-  size: 1.5rem,
+  size: 1.5em,
   weight: 600,
   line: normal,
   spacing: normal,
@@ -106,7 +116,7 @@ $h5-style: (
 );
 $h6-style: (
   family: $primary-font-family,
-  size: 1.5rem,
+  size: 1.5em,
   weight: 600,
   line: normal,
   spacing: normal,
@@ -115,16 +125,16 @@ $h6-style: (
 // Quote q
 $quote-style: (
   family: $primary-font-family,
-  size: 1.25rem,
+  size: 1.25em,
   weight: 600,
-  line: 1.1,
-  spacing: normal,
+  line: 1.25,
+  spacing: 0.05rem,
   margin: 1.125rem,
 );
 // Paragraph p
 $paragraph-style: (
   family: $primary-font-family,
-  size: 1rem,
+  size: 1em,
   weight: 400,
   line: normal,
   spacing: normal,
@@ -133,7 +143,7 @@ $paragraph-style: (
 // Caption small
 $small-style: (
   family: $secondary-font-family,
-  size: 0.75rem,
+  size: 0.75em,
   weight: 400,
   line: 1.1,
   spacing: normal,
@@ -141,7 +151,7 @@ $small-style: (
 );
 
 // action
-$action-size-default: 1rem;
+$action-size-default: 1em;
 $action-weight-default: 600;
 $button-radius-default: 0.25rem;
 
@@ -151,9 +161,9 @@ $action-button-style-default: (
   background: $action-link-style-default,
 );
 $action-size: (
-  small: 0.75rem,
-  mid: 1.125rem,
-  large: 1.25rem,
+  small: 0.75em,
+  mid: 1.125em,
+  large: 1.25em,
 );
 $action-style: primary $white $primary, secondary $white $secondary,
   dark $white $gray-darken, light $gray-darken $white,
@@ -188,8 +198,20 @@ $section-height: (
 // Display
 $display-mobile-min-width: 240px;
 $display-tablet-min-width: 320px;
+$display-min-width: 120px;
+$display-gap: (
+  default: .75rem,
+  small: 0.25rem,
+  mid: 1.25rem,
+  large: 1.5rem,
+);
+$display-size: (
+  quarter: 25%,
+  oneThird: 33.3333%,
+  half: 50%,
+  full: 100%,
+);
 
-$display-gap-default: 1rem;
 $display-card-shadow: 0 2px 8px transparentize(black, 0.75);
 
 // Icons
@@ -205,74 +227,79 @@ $icon-style: (
   dark: $gray-darken,
   light: $white,
 );
-
-$icon-accordion-fold: "\e900";
-$icon-accordion-unfold: "\e901";
-$icon-action-add: "\e902";
-$icon-action-circle-add: "\e903";
-$icon-action-circle-clear: "\e904";
-$icon-action-circle-filled-add: "\e905";
-$icon-action-circle-filled-clear: "\e906";
-$icon-action-circle-filled-info: "\e907";
-$icon-action-circle-filled-remove: "\e908";
-$icon-action-circle-filled-settings: "\e909";
-$icon-action-circle-remove: "\e90a";
-$icon-action-clear: "\e90b";
-$icon-action-delete: "\e90c";
-$icon-action-info: "\e90d";
-$icon-action-remove: "\e90e";
-$icon-alarm-add: "\e90f";
-$icon-alarm-default: "\e910";
-$icon-alarm-off: "\e911";
-$icon-alarm-on: "\e912";
-$icon-alert-circle-empty: "\e913";
-$icon-alert-circle-full: "\e914";
-$icon-alert-explosion: "\e915";
-$icon-alert-hexagonal: "\e916";
-$icon-alert-triangle: "\e917";
-$icon-arrow-down: "\e918";
-$icon-arrow-left: "\e919";
-$icon-arrow-right: "\e91a";
-$icon-arrow-up: "\e91b";
-$icon-calendar-date: "\e91c";
-$icon-calendar-default: "\e91d";
-$icon-checkbox-checked: "\e91e";
-$icon-checkbox-null: "\e91f";
-$icon-checkbox-unchecked: "\e920";
-$icon-dart-down: "\e921";
-$icon-dart-left: "\e922";
-$icon-dart-right: "\e923";
-$icon-dart-up: "\e924";
-$icon-display-float: "\e925";
-$icon-display-full: "\e926";
-$icon-interact-close: "\e927";
-$icon-interact-delete: "\e928";
-$icon-interact-done-all: "\e929";
-$icon-interact-done: "\e92a";
-$icon-interact-update: "\e92b";
-$icon-map-location: "\e92c";
-$icon-menu-hamburger: "\e92d";
-$icon-menu-points-vertical: "\e92e";
-$icon-menu-setting: "\e92f";
-$icon-menu-points-horizontal: "\e930";
-$icon-notification-disabled: "\e931";
-$icon-notification-none: "\e932";
-$icon-notification-notify: "\e933";
-$icon-notification-ring: "\e934";
-$icon-operation-download: "\e935";
-$icon-operation-upload: "\e936";
-$icon-organize-grid: "\e937";
-$icon-organize-list: "\e938";
-$icon-radio-checked: "\e939";
-$icon-radio-unchecked: "\e93a";
-$icon-star-empty: "\e93b";
-$icon-star-full: "\e93c";
-$icon-star-half: "\e93d";
-$icon-triangle-down: "\e93e";
-$icon-triangle-up: "\e93f";
-$icon-user-add-group: "\e940";
-$icon-user-add: "\e941";
-$icon-user-defalut: "\e942";
-$icon-user-group: "\e943";
-$icon-visibility-hidden: "\e944";
-$icon-visibility-visible: "\e945";
+$icon-name: (
+  alarm-add: "\e900",
+  alarm-default: "\e901",
+  alarm-off: "\e902",
+  alarm-on: "\e903",
+  arrow-up: "\e904",
+  arrow-down: "\e905",
+  arrow-right: "\e906",
+  arrow-left: "\e907",
+  checkbox-checked: "\e908",
+  checkbox-null: "\e909",
+  checkbox-unchecked: "\e90a",
+  radio-checked: "\e90b",
+  radio-unchecked: "\e90c",
+  star-empty: "\e90d",
+  star-full: "\e90e",
+  star-half: "\e90f",
+  alert-circle-empty: "\e910",
+  alert-circle-full: "\e911",
+  alert-explosion: "\e912",
+  alert-hexagonal: "\e913",
+  alert-triangle: "\e914",
+  dart-up: "\e915",
+  dart-down: "\e916",
+  dart-right: "\e917",
+  dart-left: "\e918",
+  triangle-down: "\e919",
+  triangle-up: "\e91a",
+  organize-grid: "\e91b",
+  organize-list: "\e91c",
+  display-float: "\e91d",
+  display-full: "\e91e",
+  interact-done-all: "\e91f",
+  interact-done: "\e920",
+  interact-close: "\e921",
+  interact-update: "\e922",
+  interact-delete: "\e923",
+  action-add: "\e924",
+  action-clear: "\e925",
+  action-remove: "\e926",
+  action-circle-add: "\e927",
+  action-circle-remove: "\e928",
+  action-circle-clear: "\e929",
+  action-info: "\e92a",
+  action-circle-filled-add: "\e92b",
+  action-circle-filled-remove: "\e92c",
+  action-circle-filled-clear: "\e92d",
+  action-circle-filled-info: "\e92e",
+  action-circle-filled-settings: "\e92f",
+  action-delete: "\e930",
+  accordion-fold: "\e931",
+  accordion-unfold: "\e932",
+  menu-hamburger: "\e933",
+  menu-opoints: "\e934",
+  menu-vpoints: "\e935",
+  menu-setting: "\e936",
+  operation-download: "\e937",
+  operation-upload: "\e938",
+  visibility-hidden: "\e939",
+  visibility-visible: "\e93a",
+  user-add-group: "\e93b",
+  user-add: "\e93c",
+  user-defalut: "\e93d",
+  user-group: "\e93e",
+  notification-disabled: "\e93f",
+  notification-none: "\e940",
+  notification-notify: "\e941",
+  notification-ring: "\e942",
+  calendar-Date: "\e943",
+  calendar-Default: "\e944",
+  map-location: "\e945",
+  social-facebook: "\e946",
+  social-instagram: "\e947",
+  social-linkedin: "\e948",
+  social-twitter: "\e949",
+);
