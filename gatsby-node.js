@@ -3,7 +3,7 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const defaultLanguage = process.env.DEFAULT_LANG;
+const defaultLanguage = process.env.GATSBY_DEFAULT_LANG;
 const languages = [defaultLanguage];
 const indexPage = "home";
 

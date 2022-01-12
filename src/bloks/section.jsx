@@ -24,7 +24,7 @@ const Section = ({ blok }) => {
       );
     });
 
-  const sectionClasses = createClasses(blok, ["height", "style", "space"]);
+  const sectionClasses = createClasses(blok, ["height", "theme", "space"]);
 
   const wrapperClasses = [
     "section--wrapper",
@@ -48,7 +48,7 @@ Section.propTypes = {
     id: PropTypes.string,
     body: PropTypes.array,
     responsive: PropTypes.bool,
-    style: PropTypes.oneOf(["", "primary", "secondary", "dark", "light"]),
+    theme: PropTypes.oneOf(["", "primary", "secondary", "dark", "light"]),
     height: PropTypes.oneOf([
       "",
       "full",

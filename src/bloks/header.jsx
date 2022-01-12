@@ -6,9 +6,9 @@ import { createClasses, styleSwitch } from "../utils/utils";
 import Dropdown from "../elements/dropdown";
 import Icon from "../elements/icon";
 
-const Header = ({ blok, languages }) => {
-  const defaultLang = "it";
+const defaultLang = process.env.GATSBY_DEFAULT_LANG;
 
+const Header = ({ blok, languages }) => {
   const [showMenu, setShowMenu] = useState(false);
   const currentLang = languages.current;
 

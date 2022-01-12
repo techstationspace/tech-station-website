@@ -5,7 +5,7 @@ import StoryblokClient from "storyblok-js-client";
 import { createClasses } from "../utils/utils";
 
 const sbClient = new StoryblokClient({
-  accessToken: `${process.env.STORY_BLOK}`,
+  accessToken: `${process.env.GATSBY_STORY_BLOK}`,
   cache: {
     clear: "auto",
     type: "memory",

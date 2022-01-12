@@ -30,7 +30,7 @@ const styleSwitch = (style) => {
   }
 };
 
-const defaultLang = process.env.DEFAULT_LANG;
+const defaultLang = process.env.GATSBY_DEFAULT_LANG;
 const getUrl = (link) => {
   let url = link.cached_url || "";
   const isHome = url.includes("home");

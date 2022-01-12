@@ -18,7 +18,7 @@ module.exports = {
     {
       resolve: "gatsby-source-storyblok",
       options: {
-        accessToken: process.env.STORY_BLOK,
+        accessToken: process.env.GATSBY_STORY_BLOK,
         version: process.env.NODE_ENV === "production" ? "published" : "draft",
         homeSlug: 'home',
       },
@@ -28,7 +28,7 @@ module.exports = {
       resolve: "gatsby-plugin-mailchimp",
       options: {
         // string; add your MC list endpoint here; see instructions below
-        endpoint: process.env.MAIL_CHIMP,
+        endpoint: process.env.GATSBY_MAIL_CHIMP,
         timeout: 3500,
       },
     },
