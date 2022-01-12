@@ -5,7 +5,7 @@
   font-size: map-get($style, "size");
   font-weight: map-get($style, "weight");
   line-height: map-get($style, "line");
-  letter-spacing: map-get($style, "space");
+  letter-spacing: map-get($style, "spacing");
   margin-bottom: map-get($style, "margin");
   @if (map-get($style, "mobile-size")) {
     @include mobileOnly {
@@ -49,7 +49,7 @@ blockquote > p {
 .text {
   $alignments: left, right, center;
   @each $align in $alignments {
-    &.align__#{$align} {
+    &.__align_#{$align} {
       text-align: $align;
     }
   }

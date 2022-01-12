@@ -15,18 +15,18 @@ const createClasses = (props, styles) => {
   return classes;
 };
 
-const styleSwitch = (style) => {
-  switch (style) {
-    case "primary":
-      return "secondary";
-    case "secondary":
-      return "primary";
+const themeSwitch = (theme) => {
+  switch (theme) {
     case "light":
-      return "primary";
-    case "dark":
+      return "dark";
+    case "primary_background":
       return "secondary";
-    default:
+    case "secondary_background":
       return "primary";
+    case "dark_background":
+      return "light";
+    default:
+      return theme;
   }
 };
 
@@ -50,4 +50,4 @@ const getUrl = (link) => {
   return url;
 };
 
-export { createClasses, styleSwitch, getUrl };
+export { createClasses, themeSwitch, getUrl };

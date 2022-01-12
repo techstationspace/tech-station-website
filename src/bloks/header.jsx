@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import SbEditable from "storyblok-react";
 import DynamicComponent from "../utils/dynamicComponent";
-import { createClasses, styleSwitch } from "../utils/utils";
+import { createClasses, themeSwitch } from "../utils/utils";
 import Dropdown from "../elements/dropdown";
 import Icon from "../elements/icon";
 
-const defaultLang = process.env.GATSBY_DEFAULT_LANG;
+// const defaultLang = process.env.GATSBY_DEFAULT_LANG;
+const defaultLang = "it";
 
 const Header = ({ blok, languages }) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -18,7 +19,7 @@ const Header = ({ blok, languages }) => {
       lang !== currentLang &&
       languagesList.push({
         text: lang.toUpperCase(),
-        url: `/${lang === defaultLang ? "" : lang}`,
+        url: `/${lang === defaultLang ? "/" : lang}`,
       })
   );
   console.log(languagesList);
@@ -43,7 +44,7 @@ const Header = ({ blok, languages }) => {
 
   const actionProps = {
     action: {
-      style: styleSwitch(blok.style),
+      style: themeSwitch(blok.style),
       type: "button",
     },
   };

@@ -40,11 +40,6 @@
     }
   }
 
-  > .text,
-  > .media {
-    flex: 1 1;
-  }
-
   // Directions
   $display-type: (
     row: row,
@@ -52,12 +47,21 @@
     card: column,
     slide: row,
   );
-  @each $label, $type in $display-type {
-    &.__#{$label} {
+
+  @each $name, $type in $display-type {
+    &.__#{$name} {
       display: flex;
       flex-wrap: wrap;
       flex-direction: $type;
+      @if $type == row {
+        > .text,
+        > .media {
+          flex: 1 1;
+        }
+      
+      }
     }
+    
   }
 
   &.__card {
@@ -85,6 +89,7 @@
 
   // Alignements and justifications
   $alignments: start, center, end, stretch;
+
   @each $align in $alignments {
     &.__align_#{$align} {
       align-items: $align;
@@ -98,6 +103,7 @@
   }
 
   $justifications: start, center, end, stretch;
+
   @each $justify in $justifications {
     &.__justify_#{$justify} {
       justify-content: $justify;
@@ -109,6 +115,7 @@
       }
     }
   }
+
   &.__col,
   &.__card {
     & > .display {

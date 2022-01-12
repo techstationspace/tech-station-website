@@ -20,7 +20,7 @@ const Text = ({ blok, parent }) => {
 
   return (
     <SbEditable content={blok} key={blok._uid}>
-      <div className={textClasses} dangerouslySetInnerHTML={{ __html: body }} />
+      <div className={textClasses.join(" ")} dangerouslySetInnerHTML={{ __html: body }} />
     </SbEditable>
   );
 };

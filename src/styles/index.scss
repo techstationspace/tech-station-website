@@ -21,6 +21,7 @@ $icon-path: "fonts/icon" !default;
 // Imports
 @import "./variables.scss";
 @import "./mediaquery.scss";
+@import "./theme.scss";
 @import "./text.scss";
 @import "./header.scss";
 @import "./footer.scss";
@@ -147,8 +148,12 @@ ol {
   li::marker {
     font-size: 80%;
     line-height: 1;
-    opacity: .5;
+    opacity: 0.5;
   }
+}
+
+hr {
+  margin: 0.75rem 0.25rem;
 }
 
 code {

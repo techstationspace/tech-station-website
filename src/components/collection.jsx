@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import StoryblokClient from "storyblok-js-client";
 
 const sbClient = new StoryblokClient({
-  accessToken: `${process.env.STORY_BLOK}`,
+  accessToken: `${process.env.GATSBY_STORY_BLOK}`,
   cache: {
     clear: "auto",
     type: "memory",
@@ -84,7 +84,7 @@ const Coach = ({ data }) => {
         <small className="collection--coach-subtitle">{data.subject}</small>
         <div
           className="collection--coach-descriotion"
-          dangerouslySetInnerHTML={{ _html: description }}
+          dangerouslySetInnerHTML={{ __html: description }}
         />
         <div className="collection--coach-link">{links}</div>
       </div>

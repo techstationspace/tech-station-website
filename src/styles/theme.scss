@@ -1,0 +1,54 @@
+@use "sass:map";
+
+$themes: (
+  primary: $theme-primary,
+  secondary: $theme-secondary,
+  dark: $theme-dark,
+  light: $theme-light,
+  primary_background: $theme-background-primary,
+  secondary_background: $theme-background-secondary,
+  dark_background: $theme-background-dark,
+);
+
+@each $name, $theme in $themes {
+  .__theme_#{$name} {
+    background-color: map-get($theme, "background-color");
+    h1,
+    h2,
+    h3 {
+      color: map-get($theme, "title-color");
+      a {
+        color: map-get($theme, "title-link-color");
+      }
+    }
+    h4,
+    h5,
+    h6 {
+      color: map-get($theme, "subtititle-color");
+      a {
+        color: map-get($theme, "subtititle-link-color");
+      }
+    }
+    a {
+      color: map-get($theme, "link-color");
+    }
+    p {
+      color: map-get($theme, "paragraph-color");
+    }
+    b {
+      color: map-get($theme, "paragraph-color");
+    }
+    ul {
+      li {
+      }
+    }
+    ol {
+      li {
+      }
+    }
+    code {
+    }
+    blockquote {
+    }
+  }
+}

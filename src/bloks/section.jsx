@@ -2,14 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import SbEditable from "storyblok-react";
 import DynamicComponent from "../utils/dynamicComponent";
-import { createClasses, styleSwitch } from "../utils/utils";
+import { createClasses, themeSwitch } from "../utils/utils";
 
 const Section = ({ blok }) => {
-  const { image } = blok;
-
   const bodyProps = {
     action: {
-      style: styleSwitch(blok.style),
+      style: themeSwitch(blok.theme),
     },
   };
   const body =
@@ -33,10 +31,7 @@ const Section = ({ blok }) => {
 
   return (
     <SbEditable content={blok} key={blok._uid}>
-      <section
-        id={blok.id}
-        className={sectionClasses.join(" ")}
-      >
+      <section id={blok.id} className={sectionClasses.join(" ")}>
         <div className={wrapperClasses.join(" ")}>{body}</div>
       </section>
     </SbEditable>
@@ -48,7 +43,16 @@ Section.propTypes = {
     id: PropTypes.string,
     body: PropTypes.array,
     responsive: PropTypes.bool,
-    theme: PropTypes.oneOf(["", "primary", "secondary", "dark", "light"]),
+    theme: PropTypes.oneOf([
+      "",
+      "primary",
+      "secondary",
+      "dark",
+      "light",
+      "background_primary",
+      "background_secondary",
+      "background_dark",
+    ]),
     height: PropTypes.oneOf([
       "",
       "full",

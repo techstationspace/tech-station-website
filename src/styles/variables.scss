@@ -51,14 +51,70 @@ $info-dark: #539ec9;
 $default-background: $white;
 $default-color: $gray-darken;
 
-// Styles
-$style-primary: (
+// Themes
+
+$theme-primary: (
+  background-color: inherit,
   title-color: $primary,
   title-link-color: $primary-dark,
   subtititle-color: $primary,
   subtitle-link-color: $primary-dark,
   link-color: $primary,
   paragraph-color: $gray-dark,
+);
+$theme-secondary: (
+  background-color: inherit,
+  title-color: $secondary,
+  title-link-color: $secondary-dark,
+  subtititle-color: $secondary,
+  subtitle-link-color: $secondary-dark,
+  link-color: $secondary,
+  paragraph-color: $gray-dark,
+);
+$theme-dark: (
+  background-color: inherit,
+  title-color: $gray-darken,
+  title-link-color: $gray-dark,
+  subtititle-color: $gray-middle-dark,
+  subtitle-link-color: $gray-middle,
+  link-color: $gray-darken,
+  paragraph-color: $gray-dark,
+);
+$theme-light: (
+  background-color: inherit,
+  title-color: $white,
+  title-link-color: $gray-lighten,
+  subtititle-color: $gray-light,
+  subtitle-link-color: $gray-middle-light,
+  link-color: $primary,
+  paragraph-color: $gray-light,
+);
+$theme-background-primary: (
+  background-color: $primary,
+  title-color: $white,
+  title-link-color: $gray-light,
+  subtititle-color: $gray-light,
+  subtitle-link-color: $gray-middle-light,
+  link-color: $white,
+  paragraph-color: $gray-lighten,
+);
+$theme-background-secondary: (
+  background-color: $secondary,
+  title-color: $white,
+  title-link-color: $gray-light,
+  subtititle-color: $gray-light,
+  subtitle-link-color: $gray-middle-light,
+  link-color: $white,
+  paragraph-color: $gray-lighten,
+);
+$theme-background-dark: (
+  background-color: $gray-darken,
+  title-color: $white,
+  title-link-color: $gray-light,
+  subtititle-color: $gray-light,
+  subtitle-link-color: $gray-middle-light,
+  link-color: $white,
+  paragraph-color: $gray-lighten,
 );
 
 // Typhography
@@ -73,10 +129,10 @@ $default-margin: 0;
 // Heading titles
 $h1-style: (
   family: $secondary-font-family,
-  size: 3.125em,
+  size: 4em,
   weight: 900,
   line: 1.1,
-  spacing: -0.05rem,
+  spacing: -0.1rem,
   margin: 0.75rem,
   mobile-size: 2.5em,
 );
