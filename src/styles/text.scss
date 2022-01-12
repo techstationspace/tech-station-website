@@ -45,3 +45,12 @@ small {
 blockquote > p {
   @include fontStyle($quote-style);
 }
+
+.text {
+  $alignments: left, right, center;
+  @each $align in $alignments {
+    &.align__#{$align} {
+      text-align: $align;
+    }
+  }
+}

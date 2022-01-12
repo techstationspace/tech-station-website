@@ -42,6 +42,10 @@
   }
   &.__link {
     color: $action-link-style-default;
+    opacity: 0.75;
+    &:hover {
+      opacity: 1;
+    }
     &:disabled {
       color: $gray-middle-light;
     }
@@ -51,7 +55,7 @@
     padding: $action-size-default * 0.375 $action-size-default * 1.125;
   }
   @each $name, $size in $action-size {
-    &.__size_#{$name} {
+    &.__#{$name} {
       font-size: $size;
       gap: $size * 0.375;
       &.__button {

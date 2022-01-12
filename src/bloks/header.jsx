@@ -12,6 +12,17 @@ const Header = ({ blok, languages }) => {
   const [showMenu, setShowMenu] = useState(false);
   const currentLang = languages.current;
 
+  const languagesList = [];
+  languages.list.map(
+    (lang) =>
+      lang !== currentLang &&
+      languagesList.push({
+        text: lang.toUpperCase(),
+        url: `/${lang === defaultLang ? "" : lang}`,
+      })
+  );
+  console.log(languagesList);
+
   const menuProps = {
     action: {
       style: "light",
@@ -49,7 +60,6 @@ const Header = ({ blok, languages }) => {
     });
 
   const headerClasses = createClasses(blok, ["style", "fixed"]);
-
   const toggleIcon = showMenu ? "interact-close" : "menu-hamburger";
 
   return (
@@ -70,10 +80,7 @@ const Header = ({ blok, languages }) => {
             <Dropdown
               styles="header--lang"
               text={currentLang}
-              list={languages.list.map((lang) => ({
-                text: lang.toUpperCase(),
-                url: `/${lang === defaultLang ? "" : lang}`,
-              }))}
+              list={languagesList}
             />
           )}
 

@@ -25,24 +25,17 @@ const Section = ({ blok }) => {
     });
 
   const sectionClasses = createClasses(blok, ["height", "style", "space"]);
-  !!image && !!image.filename && sectionClasses.push("__has_background");
 
   const wrapperClasses = [
     "section--wrapper",
     blok.responsive ? "container" : "container__responsive",
   ];
 
-  const sectionStyles = {
-    backgroundImage:
-      !!image && !!image.filename ? `url(${image.filename})` : null,
-  };
-
   return (
     <SbEditable content={blok} key={blok._uid}>
       <section
         id={blok.id}
         className={sectionClasses.join(" ")}
-        style={sectionStyles}
       >
         <div className={wrapperClasses.join(" ")}>{body}</div>
       </section>

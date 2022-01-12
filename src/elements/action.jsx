@@ -20,9 +20,6 @@ const Action = ({ blok, parent, value, disabled, onChange = () => null }) => {
   const parentProps = parent?.action || {};
 
   blok.style = blok.style || parentProps.style;
-  if (!!blok.left_icon) {
-    console.log(blok.style);
-  }
   blok.type = blok.type || parentProps.type || actionType;
   blok.size = blok.size || parentProps.size;
 

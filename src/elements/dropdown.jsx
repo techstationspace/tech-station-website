@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
 const Dropdown = ({ text, list, styles }) => {
+  console.log(list);
   const ref = useRef(null);
   const [_visibility, setVisibility] = useState(false);
 
@@ -31,7 +32,7 @@ const Dropdown = ({ text, list, styles }) => {
       >
         {text}
       </button>
-      {list.length > 1 && (
+      {!!list.length && (
         <nav className={`dropdown--list ${_visibility ? "active" : ""}`}>
           {list.map((item, i) => (
             <a

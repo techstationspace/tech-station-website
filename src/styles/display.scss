@@ -12,8 +12,13 @@
 
   @each $name, $size, $resize in $display-size {
     &.__#{$name} {
-      flex: 1 0 $display-min-width;
+      flex: none;
       width: $size;
+      @include untilTablet {
+        @if $size < 50% {
+          width: 50%;
+        }
+      }
     }
   }
 
@@ -21,6 +26,7 @@
     &.__#{$name} {
       margin-left: -$gap;
       margin-right: -$gap;
+      row-gap: calc($gap / 2);
       > .text,
       > .display,
       > .media {

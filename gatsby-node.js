@@ -138,7 +138,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           },
         },
       };
-      createPage(page);
+      if (key === "page" || typeof header === "object") {
+        createPage(page);
+      }
       // console.log(page);
     });
   });

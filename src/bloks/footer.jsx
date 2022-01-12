@@ -15,7 +15,6 @@ const sbClient = new StoryblokClient({
 
 const Footer = ({ blok }) => {
   const footerClasses = createClasses(blok, ["style"]);
-  console.log(process.env.STORY_BLOK);
   const copyright = sbClient.richTextResolver.render(blok.copyright);
 
   const bodyProps = {

@@ -14,7 +14,7 @@ const sbClient = new StoryblokClient({
 const Text = ({ blok, parent }) => {
   const parentProps = parent?.text || {};
   blok.style = blok.style || parentProps?.style;
-  const textClasses = createClasses(blok, ["style"]);
+  const textClasses = createClasses(blok, ["style", "align"]);
 
   const body = sbClient.richTextResolver.render(blok.body);
 
@@ -34,6 +34,7 @@ Text.propTypes = {
   blok: PropTypes.shape({
     style: PropTypes.oneOf(["", "primary", "secondary", "dark", "light"]),
     body: PropTypes.object,
+    align: PropTypes.oneOf(["", "left", "right", "center"]),
   }),
 };
 
