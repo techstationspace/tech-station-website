@@ -7,9 +7,9 @@ import Dropdown from "../elements/dropdown";
 import Icon from "../elements/icon";
 
 // const defaultLang = process.env.GATSBY_DEFAULT_LANG;
-const defaultLang = "it";
 
 const Header = ({ blok, languages }) => {
+  const defaultLang = "it";
   const [showMenu, setShowMenu] = useState(false);
   const currentLang = languages.current;
 
@@ -19,7 +19,7 @@ const Header = ({ blok, languages }) => {
       lang !== currentLang &&
       languagesList.push({
         text: lang.toUpperCase(),
-        url: `/${lang === defaultLang ? "/" : lang}`,
+        url: `/${lang === defaultLang ? "" : lang}`,
       })
   );
   console.log(languagesList);

@@ -47,6 +47,7 @@ blockquote > p {
 }
 
 .text {
+  z-index: $text-index;
   $alignments: left, right, center;
   @each $align in $alignments {
     &.__align_#{$align} {

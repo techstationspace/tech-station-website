@@ -16,19 +16,18 @@
     font-weight: 600;
   }
   &--list {
-    // font-size: 80%;
     font-weight: 600;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     background-color: inherit;
-    // border-top: 1px solid $gray-light;
     transition: visibility 0s ease-out 0.23s, opacity 0.23s ease-out;
     opacity: 0;
     visibility: hidden;
     flex-direction: column;
     display: flex;
+    z-index: $dropdown-index;
 
     &.active {
       visibility: visible;

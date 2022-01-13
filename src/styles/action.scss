@@ -8,6 +8,7 @@
   &::first-letter {
     text-transform: uppercase;
   }
+
   &:not(::first-letter) {
     text-transform: lowercase;
   }
@@ -17,9 +18,11 @@
   gap: $action-size-default * 0.375;
 
   transition: all 0.32s ease-out;
+
   &:hover {
     transition: all 0.23s ease-in;
   }
+
   &:disabled {
     cursor: default;
   }
@@ -40,6 +43,7 @@
       background-color: $gray-middle-light;
     }
   }
+
   &.__link {
     color: $action-link-style-default;
     opacity: 0.75;
@@ -50,10 +54,12 @@
       color: $gray-middle-light;
     }
   }
+
   &.__rounded {
     border-radius: 999px;
     padding: $action-size-default * 0.375 $action-size-default * 1.125;
   }
+
   @each $name, $size in $action-size {
     &.__#{$name} {
       font-size: $size;

@@ -31,9 +31,11 @@ const Display = ({ blok, parent }) => {
   ]);
 
   return (
-    <SbEditable content={blok} key={blok._uid}>
-      <div className={displayClasses.join(" ")}>{body}</div>
-    </SbEditable>
+    <div className={displayClasses.join(" ")}>
+      <SbEditable content={blok} key={blok._uid}>
+        {body}
+      </SbEditable>
+    </div>
   );
 };
 
