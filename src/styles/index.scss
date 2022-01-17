@@ -21,6 +21,8 @@ $icon-path: "fonts/icon" !default;
 // Imports
 @import "./variables.scss";
 @import "./mediaquery.scss";
+@import "./mixin.scss";
+@import "./helper.scss";
 @import "./theme.scss";
 @import "./text.scss";
 @import "./header.scss";
@@ -82,6 +84,8 @@ body {
   font-weight: $default-weight;
   line-height: $default-line;
   letter-spacing: $default-spacing;
+
+  position: relative;
 }
 
 a {

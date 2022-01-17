@@ -1,0 +1,24 @@
+.hidden {
+  &__mobile {
+    @include mobileOnly {
+      display: none;
+    }
+  }
+  &__tablet {
+    @include untilTablet {
+      display: none;
+    }
+  }
+  &__laptop {
+    @include untilLaptop {
+      display: none;
+    }
+  }
+}
+.visible {
+  &__desktop {
+    @include fromDesktop {
+      visibility: visible;
+    }
+  }
+}

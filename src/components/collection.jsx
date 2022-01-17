@@ -59,7 +59,14 @@ const Collection = ({ blok }) => {
   return (
     <div className={collectionClasses.join(" ")}>
       {!!items.length &&
-        items.map((item) => <Template key={item.id} data={item.content} />)}
+        items.map((item) => (
+          <div
+            className="item"
+            style={{ order: item.content.order || items.length }}
+          >
+            <Template key={item.id} data={item.content} />
+          </div>
+        ))}
     </div>
   );
 };
@@ -73,7 +80,7 @@ const Coach = ({ data }) => {
     ));
 
   return (
-    <div className="collection--coach ">
+    <div className="collection--coach">
       <img
         className="collection--coach-image"
         src={data.image.filename}
@@ -83,10 +90,12 @@ const Coach = ({ data }) => {
         <h6 className="collection--coach-title">{data.full_name}</h6>
         <small className="collection--coach-subtitle">{data.subject}</small>
         <div
-          className="collection--coach-descriotion"
+          className="collection--coach-description hidden__mobile"
           dangerouslySetInnerHTML={{ __html: description }}
         />
-        <div className="collection--coach-link">{links}</div>
+        {!!data.links.length && (
+          <div className="collection--coach-link">{links}</div>
+        )}
       </div>
     </div>
   );

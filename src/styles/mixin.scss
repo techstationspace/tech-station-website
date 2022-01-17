@@ -1,0 +1,27 @@
+@use "sass:map";
+
+@mixin responsive-prop($prop, $vals) {
+  @each $break, $value in $vals {
+    @if $break == mobile {
+      @include mobileOnly {
+        #{$prop}: $value;
+      }
+    } @else if $break == tablet {
+      @include tabletOnly {
+        #{$prop}: $value;
+      }
+    } @else if $break == laptop {
+      @include laptopOnly {
+        #{$prop}: $value;
+      }
+    } @else if $break == desktop {
+      @include desktopOnly {
+        #{$prop}: $value;
+      }
+    } @else if $break == widescreen {
+      @include fromWidescreen {
+        #{$prop}: $value;
+      }
+    }
+  }
+}
