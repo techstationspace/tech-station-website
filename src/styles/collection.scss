@@ -1,28 +1,43 @@
 .collection.__grid {
   display: flex;
   flex-wrap: wrap;
-  align-items: start;
-  justify-content: start;
-  gap: 1rem;
+  align-items: stretch;
+  justify-content: center;
+  margin: -1rem;
+  > .item {
+    flex: none;
+    display: inherit;
+    align-items: stretch;
+    padding: 1rem;
+    width: 25%;
+    @include responsive-prop(
+      width,
+      (
+        mobile: 50%,
+        tablet: 33.3333%,
+        laptop: 25%,
+      )
+    );
+  }
 }
 
 .collection--coach {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: stretch;
-  gap: .5rem;
-  max-width: 25%;
+  border-radius: 3px;
+  box-shadow: $display-card-shadow;
   &-image {
     height: auto;
     justify-self: start;
     align-self: stretch;
   }
   &-content {
-    padding: .75rem;
+    font-size: .875em;
+    padding: 0.75rem;
+  }
+  &-link {
+    margin-top: .5em;
+    color: $primary !important;
   }
 }
 
 .collection.__timeline {
-
 }
