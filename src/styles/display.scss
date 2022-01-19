@@ -1,131 +1,105 @@
-.display {
+.rows,
+.cols {
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
+  flex: 1 1 0;
+}
 
-  // Sizes
-  flex: 1 1;
-  @include mobileOnly {
-    flex: 1 0 $display-mobile-min-width !important;
-    > .media {
-      order: 0;
-    }
-  }
-
-  @each $name, $size, $resize in $display-size {
-    &.__#{$name} {
-      flex: none;
-      width: $size;
-      @include untilTablet {
-        @if $size < 50% {
-          width: 50%;
-        }
-      }
-    }
-  }
-
-  @each $name, $gap in $display-gap {
-    &.__#{$name} {
-      margin-left: -$gap;
-      margin-right: -$gap;
-      row-gap: calc($gap / 2);
-      > .text,
-      > .display,
-      > .media {
-        padding-right: $gap;
-        padding-left: $gap;
-      }
-      > .action {
-        margin-right: $gap;
-        margin-left: $gap;
-      }
-    }
-  }
-
-  // Directions
-  $display-type: (
-    row: row,
-    col: column,
-    card: column,
-    slide: row,
-  );
-
-  @each $name, $type in $display-type {
-    &.__#{$name} {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: $type;
-      @if $type == row {
-        > .text,
-        > .media {
-          flex: 1 1;
-        }
-      
-      }
-    }
-    
-  }
-
-  &.__card {
-    background-color: $white;
-    border-radius: 3px;
-    color: $gray-darken;
-    overflow: hidden;
-    box-shadow: $display-card-shadow;
-    margin: 0.75rem;
-
-    & > .display {
-      width: 100%;
-      padding: 0 0.75rem;
-      &:first-child {
-        padding-top: 0.75rem;
-      }
-      &:last-child {
-        padding-bottom: 0.75rem;
-      }
-    }
-  }
-
-  &.__slide {
-  }
-
-  // Alignements and justifications
+.cols {
   $alignments: start, center, end, stretch;
-
   @each $align in $alignments {
     &.__align_#{$align} {
       align-items: $align;
     }
-    &.__col,
-    &.__card {
-      &.__align_#{$align} {
-        justify-content: $align;
-      }
-    }
   }
 
   $justifications: start, center, end, stretch;
-
   @each $justify in $justifications {
     &.__justify_#{$justify} {
       justify-content: $justify;
     }
-    &.__col,
-    &.__card {
-      &.__justify_#{$justify} {
-        align-items: $justify;
-      }
+  }
+  @each $name, $gap in $display-gap {
+    &.__#{$name} {
+      margin: -$gap;
+      @include responsive-prop(
+        margin,
+        (
+          mobile: -0.5rem,
+          tabletOnly: -1rem,
+        )
+      );
     }
   }
 
-  &.__col,
-  &.__card {
-    & > .display {
-      @include untilTablet {
-        flex: 1 0 auto;
-        width: 100% !important;
+  > .col {
+    position: relative;
+    flex: 1 1 0;
+    @include mobileOnly {
+      flex: 1 0 $display-mobile-min-width !important;
+    }
+
+    &--action {
+      min-width: fit-content;
+    }
+
+    @each $name, $size, $resize in $display-size {
+      &.__#{$name} {
+        flex: none;
+        width: $size;
+        @include untilTablet {
+          @if $size < 50% {
+            width: 50%;
+          }
+        }
+      }
+    }
+
+    @each $name, $gap in $display-gap {
+      &.__#{$name} {
+        padding: $gap;
+        @include responsive-prop(
+          padding,
+          (
+            mobile: 0.5rem,
+            tablet: 1rem,
+          )
+        );
       }
     }
   }
 }
 
-.display__responsive {
+.rows {
+  flex-direction: column;
+
+  $alignments: start, center, end, stretch;
+  @each $align in $alignments {
+    &.__align_#{$align} {
+      justify-content: $align;
+    }
+  }
+
+  $justifications: start, center, end, stretch;
+  @each $justify in $justifications {
+    &.__justify_#{$justify} {
+      align-items: $justify;
+    }
+  }
+
+  @each $name, $gap in $display-gap {
+    &.__#{$name} {
+      position: relative;
+      > *:not(:last-child) {
+        margin-bottom: $gap;
+        @include mobileOnly {
+          margin-bottom: 0.5rem;
+        }
+        @include tabletOnly {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
 }

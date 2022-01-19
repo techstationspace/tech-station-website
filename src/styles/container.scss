@@ -2,26 +2,26 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1;
 
   min-height: inherit;
   height: inherit;
-}
-.container__responsive {
-  @extend .container;
-  @include mobileOnly {
-    width: calc(100% - 2rem);
-  }
-  @include untilTablet {
 
-    width: calc(100% - 4rem);
-  }
-  @include fromLaptop {
-    max-width: 996px;
-  }
-  @include fromDesktop {
-    max-width: 1240px;
-  }
-  @include fromWidescreen {
-    max-width: 1440px;
+  &.__responsive {
+    @include mobileOnly {
+      width: calc(100% - 2rem);
+    }
+    @include tabletOnly {
+      width: calc(100% - 4rem);
+    }
+    @include fromLaptop {
+      max-width: 996px;
+    }
+    @include fromDesktop {
+      max-width: 1240px;
+    }
+    @include fromWidescreen {
+      max-width: 1440px;
+    }
   }
 }

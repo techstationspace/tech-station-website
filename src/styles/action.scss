@@ -4,6 +4,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  z-index: inherit;
 
   &::first-letter {
     text-transform: uppercase;

@@ -32,9 +32,9 @@ const Action = ({ blok, parent, value, disabled, onChange = () => null }) => {
       target={blok.target ? "_blank" : null}
       rel="noreferrer"
     >
-      <Icon name={blok.left_icon} />
+      <Icon blok={{ name: blok.left_icon }} />
       {blok.text}
-      <Icon name={blok.right_icon} />
+      <Icon blok={{ name: blok.right_icon }} />
     </a>
   );
 
@@ -44,9 +44,9 @@ const Action = ({ blok, parent, value, disabled, onChange = () => null }) => {
       onClick={() => fireClick(blok.function, value || null)}
       disabled={disabled}
     >
-      <Icon name={blok.left_icon} />
+      <Icon blok={{ name: blok.left_icon }} />
       {blok.text}
-      <Icon name={blok.right_icon} />
+      <Icon blok={{ name: blok.right_icon }} />
     </button>
   );
 

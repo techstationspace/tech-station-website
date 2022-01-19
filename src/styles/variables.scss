@@ -4,13 +4,6 @@ $break-tablet: 1024px;
 $break-laptop: 1366px;
 $break-desktop: 1920px;
 
-:export {
-  breakMobile: $break-mobile;
-  breakTablet: $break-tablet;
-  breakLaptop: $break-laptop;
-  breakDesktop: $break-desktop;
-}
-
 // Colors
 $primary: #2c264c;
 $primary-dark: adjust_hue(desaturate(darken($primary, 8), 8), 14);
@@ -87,11 +80,11 @@ $theme-light: (
   subtititle-color: $gray-light,
   subtitle-link-color: $gray-middle-light,
   link-color: $primary,
-  paragraph-color: $gray-light,
+  paragraph-color: $gray-lighten,
 );
 $theme-background-primary: (
   background-color: $primary,
-  title-color: $white,
+  title-color: $gray-lighten,
   title-link-color: $gray-light,
   subtititle-color: $gray-light,
   subtitle-link-color: $gray-middle-light,
@@ -100,7 +93,7 @@ $theme-background-primary: (
 );
 $theme-background-secondary: (
   background-color: $secondary,
-  title-color: $white,
+  title-color: $gray-lighten,
   title-link-color: $gray-light,
   subtititle-color: $gray-light,
   subtitle-link-color: $gray-middle-light,
@@ -109,7 +102,7 @@ $theme-background-secondary: (
 );
 $theme-background-dark: (
   background-color: $gray-darken,
-  title-color: $white,
+  title-color: $gray-lighten,
   title-link-color: $gray-light,
   subtititle-color: $gray-light,
   subtitle-link-color: $gray-middle-light,
@@ -120,6 +113,7 @@ $theme-background-dark: (
 // Typhography
 $primary-font-family: "Open Sans", sans-serif;
 $secondary-font-family: "Roboto Mono", monospace;
+
 // Default
 $default-size: 1em;
 $default-weight: 400;
@@ -206,6 +200,15 @@ $small-style: (
   margin: 0.5rem,
 );
 
+// columns
+$columns_default_gap: 1em;
+$columns_gaps: (
+  none: 0,
+  small: calc($columns_default_gap / 2),
+  medium: calc($columns_default_gap * 1.5),
+  large: calc($columns_default_gap * 3),
+);
+
 // action
 $action-size-default: 1em;
 $action-weight-default: 600;
@@ -226,9 +229,11 @@ $action-style: primary $white $primary, secondary $white $secondary,
   service $gray-middle-dark $gray-lighten;
 
 // Z axis
-$media-index: 0;
-$text-index: 5;
-$dropdown-index: 10;
+$section-index: 0;
+$media-index: 5;
+$column-index: 10;
+$text-index: 15;
+$dropdown-index: 40;
 $header-index: 50;
 $modal-index: 100;
 
@@ -259,7 +264,7 @@ $display-mobile-min-width: 240px;
 $display-tablet-min-width: 320px;
 $display-min-width: 120px;
 $display-gap: (
-  default: .75rem,
+  default: 0.75rem,
   small: 0.25rem,
   mid: 1.25rem,
   large: 1.5rem,
@@ -274,11 +279,17 @@ $display-size: (
 $display-card-shadow: 0 2px 8px transparentize(black, 0.75);
 
 // Icons
+// Icon font
+$icon-family: "Material Icons" !default;
+$social-family: "social-icons" !default;
+$social-icon-path: "fonts/social" !default;
+
 $icon-size-default: 1rem;
 $icon-size: (
   small: 0.75rem,
   mid: 1.5rem,
   large: 2rem,
+  huge: 4rem,
 );
 $icon-style: (
   primary: $primary,
@@ -286,79 +297,27 @@ $icon-style: (
   dark: $gray-darken,
   light: $white,
 );
-$icon-name: (
-  alarm-add: "\e900",
-  alarm-default: "\e901",
-  alarm-off: "\e902",
-  alarm-on: "\e903",
-  arrow-up: "\e904",
-  arrow-down: "\e905",
-  arrow-right: "\e906",
-  arrow-left: "\e907",
-  checkbox-checked: "\e908",
-  checkbox-null: "\e909",
-  checkbox-unchecked: "\e90a",
-  radio-checked: "\e90b",
-  radio-unchecked: "\e90c",
-  star-empty: "\e90d",
-  star-full: "\e90e",
-  star-half: "\e90f",
-  alert-circle-empty: "\e910",
-  alert-circle-full: "\e911",
-  alert-explosion: "\e912",
-  alert-hexagonal: "\e913",
-  alert-triangle: "\e914",
-  dart-up: "\e915",
-  dart-down: "\e916",
-  dart-right: "\e917",
-  dart-left: "\e918",
-  triangle-down: "\e919",
-  triangle-up: "\e91a",
-  organize-grid: "\e91b",
-  organize-list: "\e91c",
-  display-float: "\e91d",
-  display-full: "\e91e",
-  interact-done-all: "\e91f",
-  interact-done: "\e920",
-  interact-close: "\e921",
-  interact-update: "\e922",
-  interact-delete: "\e923",
-  action-add: "\e924",
-  action-clear: "\e925",
-  action-remove: "\e926",
-  action-circle-add: "\e927",
-  action-circle-remove: "\e928",
-  action-circle-clear: "\e929",
-  action-info: "\e92a",
-  action-circle-filled-add: "\e92b",
-  action-circle-filled-remove: "\e92c",
-  action-circle-filled-clear: "\e92d",
-  action-circle-filled-info: "\e92e",
-  action-circle-filled-settings: "\e92f",
-  action-delete: "\e930",
-  accordion-fold: "\e931",
-  accordion-unfold: "\e932",
-  menu-hamburger: "\e933",
-  menu-opoints: "\e934",
-  menu-vpoints: "\e935",
-  menu-setting: "\e936",
-  operation-download: "\e937",
-  operation-upload: "\e938",
-  visibility-hidden: "\e939",
-  visibility-visible: "\e93a",
-  user-add-group: "\e93b",
-  user-add: "\e93c",
-  user-defalut: "\e93d",
-  user-group: "\e93e",
-  notification-disabled: "\e93f",
-  notification-none: "\e940",
-  notification-notify: "\e941",
-  notification-ring: "\e942",
-  calendar-Date: "\e943",
-  calendar-Default: "\e944",
-  map-location: "\e945",
-  social-facebook: "\e946",
-  social-instagram: "\e947",
-  social-linkedin: "\e948",
-  social-twitter: "\e949",
+
+$social-icons: (
+  google: "\ea89",
+  facebook: "\ea91",
+  instagram: "\ea92",
+  whatsapp: "\ea93",
+  spotify: "\ea94",
+  telegram: "\ea95",
+  twitter: "\ea96",
+  rss: "\ea9c",
+  youtube: "\ea9d",
+  vimeo: "\eaa1",
+  flickr: "\eaa5",
+  behance: "\eaa9",
+  steam: "\eaad",
+  github: "\eab0",
+  trello: "\eab3",
+  tumblr: "\eaba",
+  soundcloud: "\eac4",
+  skype: "\eac5",
+  linkedin: "\eac9",
+  pinterest: "\ead1",
+  git: "\eae7",
 );

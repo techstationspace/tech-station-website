@@ -13,9 +13,11 @@ const Reel = ({ blok, parent }) => {
     blok.body &&
     blok.body.map((childBlok) => {
       return (
-        <div key={childBlok._uid} className="reel--slide">
-          <DynamicComponent blok={childBlok} parent={{ ...slideProps }} />
-        </div>
+        <DynamicComponent
+          key={childBlok._uid}
+          blok={childBlok}
+          parent={{ ...slideProps }}
+        />
       );
     });
 
@@ -91,9 +93,13 @@ const ReelButton = ({ flow, style, handleClick = () => null }) => (
     onClick={() => handleClick(flow)}
   >
     <Icon
-      name={`arrow-${flow === "prev" ? "left" : "right"}`}
-      size="large"
-      style={style || "light"}
+      blok={{
+        name: `arrow-${
+          flow === "prev" ? "arrow_back_ios" : "arrow_forward_ios"
+        }`,
+        size: "large",
+        style: style || "light",
+      }}
     />
   </button>
 );

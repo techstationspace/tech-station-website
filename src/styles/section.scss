@@ -1,53 +1,37 @@
 .section {
   display: flex;
   position: relative;
+  overflow: hidden;
+  z-index: $section-index;
+
   // Space prop
   padding: $section-spacing-default 0;
 
-  @each $label, $space in $section-spacing {
-    &.__space_#{$label} {
-      padding: $space 0;
-    }
-    &.__space_#{$label} .section--wrapper > .display:not(:last-child) {
-      margin-bottom: $space * 0.75;
-    }
-  }
   // Height prop
-  min-height: auto;
   @each $label, $height in $section-height {
     &.__height_#{$label} {
       min-height: calc(($height * 1vh) - $header-height);
+      .container > .columns {
+        min-height: inherit;
+      }
     }
   }
 
-  &--wrapper {
-    min-height: inherit;
-    > .display {
+  .container {
+    > *:not(:last-child) {
       position: unset !important;
-      min-height: inherit;
       &:not(:last-child) {
         margin-bottom: $section-spacing-default * 0.75;
       }
     }
   }
 
-  &.__has_background {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  $x-positions: top, center, bottom;
-  @each $pos in $x-positions {
-    &.__#{$pos}_x {
-      background-position-x: $pos;
+  @each $label, $space in $section-spacing {
+    &.__space_#{$label} {
+      padding: $space 0;
     }
-  }
-
-  $y-positions: right, center, left;
-  @each $pos in $y-positions {
-    &.__#{$pos}_x {
-      background-position-y: $pos;
+    &.__space_#{$label} .container > *:not(:last-child) {
+      margin-bottom: $space * 0.75;
     }
   }
 

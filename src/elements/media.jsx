@@ -15,12 +15,14 @@ const Media = ({ blok, parent }) => {
     />
   );
 
+  const backgroundStyles = [];
+  blok?.overlay && backgroundStyles.push(blok.overlay);
+  blok.image?.filename && backgroundStyles.push(`url(${blok.image.filename})`);
+
+  console.log(backgroundStyles.join(","));
   const background = () => (
     <div
-      style={{
-        backgroundImage: `url(${blok.image.filename})`,
-        // paddingTop: `${blok.size}%`,
-      }}
+      style={{ backgroundImage: backgroundStyles.join(",") }}
       className="media __cover"
       title={blok.image.alt}
     />
@@ -30,6 +32,7 @@ const Media = ({ blok, parent }) => {
     <SbEditable content={blok} key={blok._uid}>
       {!!blok.link.cached_url ? (
         <a
+          className="media--link"
           href={!!blok.link ? getUrl(blok.link) : null}
           rel={blok.target ? "noreferrer" : null}
         >
@@ -49,6 +52,7 @@ Media.propTypes = {
     }),
   }),
   blok: PropTypes.shape({
+    overlay: PropTypes.string,
     image: PropTypes.shape({
       filename: PropTypes.string,
       alt: PropTypes.string,

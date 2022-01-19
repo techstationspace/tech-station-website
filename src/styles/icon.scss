@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "#{$social-family}";
+  src: url("../#{$social-icon-path}/#{$social-family}.ttf?rfkhc7")
+      format("truetype"),
+    url("../#{$social-icon-path}/#{$social-family}.woff?rfkhc7") format("woff"),
+    url("../#{$social-icon-path}/#{$social-family}.svg?rfkhc7##{$social-family}")
+      format("svg");
+}
+
 .icon {
   color: inherit;
   font-family: $icon-family;
@@ -6,8 +15,15 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
+  display: inline-block;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga";
 
   height: $icon-size-default;
   width: $icon-size-default;
@@ -25,10 +41,15 @@
       color: $style;
     }
   }
-  @each $name, $code in $icon-name {
-    &.icon--#{$name} {
-      &:before {
-        content: $code;
+
+  &.social {
+    font-family: $social-family;
+
+    @each $social, $code in $social-icons {
+      &_#{$social} {
+        &:before {
+          content: $code;
+        }
       }
     }
   }

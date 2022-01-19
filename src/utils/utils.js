@@ -1,7 +1,7 @@
-const createClasses = (props, styles) => {
+const createClasses = (props, styles, name) => {
   const classes = [];
   const directProps = ["direction", "type", "style", "gap", "size"];
-  classes.push(props.component);
+  classes.push(name || props.component);
   !!styles.length &&
     styles.map((key) => {
       if (!!props[key] && typeof props[key] === "boolean") {
@@ -11,6 +11,22 @@ const createClasses = (props, styles) => {
       } else if (!!props[key]) {
         return classes.push(`__${key}_${props[key]}`);
       }
+      return;
+    });
+  return classes;
+};
+
+const getClasses = (props, styles, component) => {
+  const classes = [];
+  classes.push(component || props.component);
+  !!styles.length &&
+    styles.map((key) => {
+      const prop = props[key];
+      if (!!prop) {
+        const isboolean = typeof prop === "boolean";
+        return classes.push(isboolean ? `_${key}` : `${key}_${prop}`);
+      }
+      return;
     });
   return classes;
 };
@@ -50,4 +66,4 @@ const getUrl = (link) => {
   return url;
 };
 
-export { createClasses, themeSwitch, getUrl };
+export { createClasses, themeSwitch, getUrl, getClasses };

@@ -1,0 +1,130 @@
+$columns_justifications: (
+  left: start,
+  center: center,
+  right: end,
+  adapt: stretch,
+  spaced: space-between,
+);
+
+$columns_alignments: (
+  top: start,
+  center: center,
+  bottom: end,
+  adapt: stretch,
+  spaced: space-between,
+);
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+
+  // Columns alignments
+  @each $label, $align in $columns_alignments {
+    &.align_#{$label} {
+      align-items: $align;
+    }
+  }
+
+  // Columns justifications
+  @each $label, $justify in $columns_justifications {
+    &.justify_#{$label} {
+      justify-content: $justify;
+    }
+  }
+
+  // Columns gaps
+  margin: -$columns_default_gap;
+  > .column {
+    margin: $columns_default_gap;
+  }
+
+  @each $label, $gap in $columns_gaps {
+    &.gap_#{$label} {
+      margin: -$gap;
+      > .column {
+        margin: $gap;
+      }
+    }
+  }
+}
+
+.column {
+  flex: 1 1 0;
+  z-index: $column-index;
+
+  // column sizes
+  $column_sizes: (
+    quarter: 25%,
+    one_third: 33.3333%,
+    half: 50%,
+    two_third: 66.6666%,
+    three_quarter: 75%,
+    full: 100%,
+  );
+  @each $label, $size in $column_sizes {
+    &.size_#{$label} {
+      flex: none;
+      width: $size;
+    }
+  }
+  // Column alignments
+  @each $label, $align in $columns_alignments {
+    &.align_#{$label} {
+      align-self: $align;
+    }
+  }
+
+  // column reorders
+  @for $order from 1 through 10 {
+    @include mobileOnly {
+      &.reorder_#{$order} {
+        order: $order;
+      }
+    }
+  }
+
+  // Responsive
+  @include mobileOnly {
+    flex-grow: 1 !important;
+    flex-shrink: 1 !important;
+    flex-basis: calc(($break-mobile - 2rem) / 2) !important;
+  }
+  @include tabletOnly {
+    flex-grow: 1 !important;
+    flex-shrink: 1 !important;
+    flex: 1 1 calc(($break-tablet - 4rem) / 4) !important;
+  }
+
+  .content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: inherit;
+
+    &.direction_column {
+      flex-direction: column;
+      align-items: start;
+      // Content justifications
+      @each $label, $justify in $columns_justifications {
+        &.justify_#{$label} {
+          align-items: $justify;
+        }
+      }
+    }
+    // content gaps
+    gap: $columns_default_gap;
+    @each $label, $gap in $columns_gaps {
+      &.gap_#{$label} {
+        gap: $gap;
+      }
+    }
+
+    // Column justifications
+    @each $label, $justify in $columns_justifications {
+      &.justify_#{$label} {
+        justify-content: $justify;
+      }
+    }
+  }
+}

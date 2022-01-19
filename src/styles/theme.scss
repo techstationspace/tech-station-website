@@ -17,38 +17,20 @@ $themes: (
     h2,
     h3 {
       color: map-get($theme, "title-color");
-      a {
-        color: map-get($theme, "title-link-color");
-      }
     }
     h4,
     h5,
     h6 {
       color: map-get($theme, "subtititle-color");
-      a {
-        color: map-get($theme, "subtititle-link-color");
-      }
     }
     a {
       color: map-get($theme, "link-color");
     }
-    p {
+    p, li {
       color: map-get($theme, "paragraph-color");
     }
     b {
       color: map-get($theme, "paragraph-color");
-    }
-    ul {
-      li {
-      }
-    }
-    ol {
-      li {
-      }
-    }
-    code {
-    }
-    blockquote {
     }
   }
 }

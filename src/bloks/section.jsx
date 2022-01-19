@@ -5,7 +5,7 @@ import DynamicComponent from "../utils/dynamicComponent";
 import { createClasses, themeSwitch } from "../utils/utils";
 
 const Section = ({ blok }) => {
-  const bodyProps = {
+  const parent = {
     action: {
       style: themeSwitch(blok.theme),
     },
@@ -16,7 +16,7 @@ const Section = ({ blok }) => {
       return (
         <DynamicComponent
           blok={childBlok}
-          parent={{ ...bodyProps }}
+          parent={parent}
           key={childBlok._uid}
         />
       );
@@ -24,15 +24,13 @@ const Section = ({ blok }) => {
 
   const sectionClasses = createClasses(blok, ["height", "theme", "space"]);
 
-  const wrapperClasses = [
-    "section--wrapper",
-    blok.responsive ? "container" : "container__responsive",
-  ];
+  const contanierClasses = ["container"];
+  !blok.responsive && contanierClasses.push("__responsive");
 
   return (
     <SbEditable content={blok} key={blok._uid}>
       <section id={blok.id} className={sectionClasses.join(" ")}>
-        <div className={wrapperClasses.join(" ")}>{body}</div>
+        <div className={contanierClasses.join(" ")}>{body}</div>
       </section>
     </SbEditable>
   );
@@ -49,9 +47,9 @@ Section.propTypes = {
       "secondary",
       "dark",
       "light",
-      "background_primary",
-      "background_secondary",
-      "background_dark",
+      "primary_background",
+      "secondary_background",
+      "dark_background",
     ]),
     height: PropTypes.oneOf([
       "",

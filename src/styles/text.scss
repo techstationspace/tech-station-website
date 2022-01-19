@@ -38,6 +38,9 @@ h6 {
 // others tags
 p {
   @include fontStyle($paragraph-style);
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 small {
   @include fontStyle($small-style);
@@ -48,10 +51,49 @@ blockquote > p {
 
 .text {
   z-index: $text-index;
+  @include mobileOnly {
+    text-align: left !important;
+  }
+
+  > *:last-child {
+    margin-bottom: 0 !important;
+  }
+
   $alignments: left, right, center;
   @each $align in $alignments {
     &.__align_#{$align} {
       text-align: $align;
+    }
+  }
+
+  $styles: (
+    primary: $theme-primary,
+    secondary: $theme-secondary,
+    dark: $theme-dark,
+    light: $theme-light,
+  );
+
+  @each $name, $theme in $styles {
+    &.__#{$name} {
+      h1,
+      h2,
+      h3 {
+        color: map-get($theme, "title-color");
+      }
+      h4,
+      h5,
+      h6 {
+        color: map-get($theme, "subtititle-color");
+      }
+      a {
+        color: map-get($theme, "link-color");
+      }
+      p {
+        color: map-get($theme, "paragraph-color");
+      }
+      b {
+        color: map-get($theme, "paragraph-color");
+      }
     }
   }
 }

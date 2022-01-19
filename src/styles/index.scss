@@ -1,22 +1,7 @@
 // Fonts families
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;600;700&display=swap");
-// Icon font
-$icon-family: "icon" !default;
-$icon-path: "fonts/icon" !default;
-@font-face {
-  font-family: "#{$icon-family}";
-  src: url("../#{$icon-path}/#{$icon-family}.eot?jujil1");
-  src: url("../#{$icon-path}/#{$icon-family}.eot?jujil1#iefix")
-      format("embedded-opentype"),
-    url("../#{$icon-path}/#{$icon-family}.ttf?jujil1") format("truetype"),
-    url("../#{$icon-path}/#{$icon-family}.woff?jujil1") format("woff"),
-    url("../#{$icon-path}/#{$icon-family}.svg?jujil1##{$icon-family}")
-      format("svg");
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 // Imports
 @import "./variables.scss";
@@ -24,6 +9,7 @@ $icon-path: "fonts/icon" !default;
 @import "./mixin.scss";
 @import "./helper.scss";
 @import "./theme.scss";
+@import "./columns.scss";
 @import "./text.scss";
 @import "./header.scss";
 @import "./footer.scss";
@@ -195,4 +181,9 @@ blockquote {
       content: "\201C";
     }
   }
+}
+
+.build_status {
+  background-color: black;
+  padding: 0.25rem 0;
 }

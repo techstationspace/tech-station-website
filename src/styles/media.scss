@@ -1,16 +1,18 @@
 .media {
   &.__image {
     height: auto;
-    max-width: 20em;
-    max-height: 30em;
+    margin: 0 auto;
+  }
+  @include mobileOnly {
+    &--link {
+      width: 100%;
+    }
+    &.__image {
+      width: 100% !important;
+      max-width: 100%;
+    }
   }
 
-  // &--cover {
-  //   width: 100%;
-  //   padding-top: 100%;
-  //   background-size: cover;
-  //   background-position: center;
-  // }
   &.__cover {
     background-size: cover;
     background-position: center;
@@ -20,5 +22,20 @@
     bottom: 0;
     right: 0;
     z-index: $media-index;
+
+    $x-positions: top, center, bottom;
+    @each $pos in $x-positions {
+      &.__#{$pos}_x {
+        background-position-x: $pos;
+      }
+    }
+  
+    $y-positions: right, center, left;
+    @each $pos in $y-positions {
+      &.__#{$pos}_x {
+        background-position-y: $pos;
+      }
+    }
+  
   }
 }

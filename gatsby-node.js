@@ -132,6 +132,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             header: header,
             footer: footer,
             languages: {
+              default: defaultLanguage,
               current: language,
               list: languages,
             },

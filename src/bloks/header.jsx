@@ -9,7 +9,7 @@ import Icon from "../elements/icon";
 // const defaultLang = process.env.GATSBY_DEFAULT_LANG;
 
 const Header = ({ blok, languages }) => {
-  const defaultLang = "it";
+  const defaultLang = languages.default;
   const [showMenu, setShowMenu] = useState(false);
   const currentLang = languages.current;
 
@@ -22,7 +22,6 @@ const Header = ({ blok, languages }) => {
         url: `/${lang === defaultLang ? "" : lang}`,
       })
   );
-  console.log(languagesList);
 
   const menuProps = {
     action: {
@@ -61,12 +60,12 @@ const Header = ({ blok, languages }) => {
     });
 
   const headerClasses = createClasses(blok, ["style", "fixed"]);
-  const toggleIcon = showMenu ? "interact-close" : "menu-hamburger";
+  const toggleIcon = showMenu ? "close" : "menu";
 
   return (
     <SbEditable content={blok} key={blok._uid}>
       <header className={headerClasses.join(" ")}>
-        <div className="header--wrapper">
+        <div className="header--container">
           <a
             className="header--logo"
             href={`/${currentLang === defaultLang ? "" : currentLang}`}
@@ -89,7 +88,7 @@ const Header = ({ blok, languages }) => {
             className="header--toggle"
             onClick={() => setShowMenu(!showMenu)}
           >
-            <Icon name={toggleIcon} />
+            <Icon blok={{ name: toggleIcon }} />
           </button>
         </div>
       </header>

@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
+import Icon from "./icon";
 
 const Dropdown = ({ text, list, styles }) => {
-  console.log(list);
   const ref = useRef(null);
   const [_visibility, setVisibility] = useState(false);
 
@@ -31,6 +31,12 @@ const Dropdown = ({ text, list, styles }) => {
         onClick={() => setVisibility(!_visibility)}
       >
         {text}
+        <Icon
+          blok={{
+            name: `arrow_drop_${_visibility ? "up" : "down"}`,
+            size: "small",
+          }}
+        />
       </button>
       {!!list.length && (
         <nav className={`dropdown--list ${_visibility ? "active" : ""}`}>

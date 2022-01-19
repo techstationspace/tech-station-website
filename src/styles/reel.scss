@@ -1,20 +1,17 @@
 .reel {
+  min-height: inherit;
+
   &--container {
     overflow: hidden;
     height: auto;
+    min-height: inherit;
   }
 
   &--wrapper {
+    min-height: inherit;
     display: flex;
     height: 100%;
     transition: transform 0.23s;
-  }
-  &--slide {
-    flex: 1;
-    height: 100%;
-    display: inherit;
-    align-items: center;
-    justify-content: center;
   }
   &--button {
     position: absolute;

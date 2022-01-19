@@ -14,7 +14,11 @@ const ProjectIndex = ({ pageContext, location }) => {
     ));
 
   return (
-    <Layout location={location} settings={settings}>
+    <Layout
+      location={location}
+      settings={settings}
+      showBuildStatus={location?.search.includes("_storyblok")}
+    >
       {body}
     </Layout>
   );

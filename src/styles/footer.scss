@@ -6,15 +6,6 @@
     margin-bottom: 1.25rem;
   }
 
-  &--wrapper {
-    display: flex;
-    align-items: start;
-    justify-content: start;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-    @extend .container__responsive;
-  }
-
   &--menu {
     padding: 1rem 0;
   }
@@ -39,5 +30,8 @@
     padding: 1rem 0;
     color: $gray-middle-light;
     background-color: $gray-darken;
+    a {
+      color: $white;
+    }
   }
 }

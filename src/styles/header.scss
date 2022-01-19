@@ -1,6 +1,8 @@
 .header {
-  font-size: .9rem;
+  font-size: 0.9rem;
   height: $header-height;
+  position: relative;
+
   @include mobileOnly {
     height: $header-height - 1rem;
   }
@@ -10,14 +12,15 @@
   background-color: $white;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 
-  &--wrapper {
+  &--container {
     height: inherit;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: inherit;
-    column-gap: 1rem;
-    @extend .container__responsive;
+    gap: 2rem;
+    @extend .container;
+    @extend .__responsive;
   }
 
   &--logo {
@@ -45,11 +48,20 @@
       top: 100%;
       left: 0;
       right: 0;
-      padding: 0.75rem;
+      @include responsive-prop(
+        padding,
+        (
+          mobile: 0.5rem 1rem,
+          tablet: 1rem 2rem,
+        )
+      );
       background-color: inherit;
       flex-direction: column;
       row-gap: 1rem;
       align-items: stretch;
+      > .header--nav {
+        align-items: end;
+      }
 
       &.active {
         visibility: visible;
@@ -62,8 +74,8 @@
     display: inline-flex;
     align-items: start;
     flex-direction: inherit;
-    column-gap: 0.5rem;
-    row-gap: 0.5rem;
+    column-gap: 0.75rem;
+    row-gap: 0.75rem;
     @include untilTablet {
       & > * {
         align-items: stretch !important;

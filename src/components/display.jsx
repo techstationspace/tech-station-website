@@ -5,37 +5,45 @@ import DynamicComponent from "../utils/dynamicComponent";
 import { createClasses } from "../utils/utils";
 
 const Display = ({ blok, parent }) => {
-  const bodyProps = parent || {};
+  const bodyProps = { ...parent } || {};
   if (blok.type === "card") {
     bodyProps.action.size = "small";
   }
+  bodyProps.display = { gap: blok.gap };
 
   const body =
     blok.body &&
     blok.body.map((childBlok) => {
-      return (
+      const innerClasses = [];
+      innerClasses.push(`${blok.type}--${childBlok.component}`);
+      blok.gap && innerClasses.push(`__${blok.gap}`);
+      if (childBlok.component === "display") {
+        childBlok.size && innerClasses.push(`__${childBlok.size}`);
+      }
+      return !!childBlok.background ? (
         <DynamicComponent
+          key={childBlok._uid}
           blok={childBlok}
           parent={{ ...bodyProps }}
-          key={childBlok._uid}
         />
+      ) : (
+        <div key={childBlok._uid} className={innerClasses.join(" ")}>
+          <DynamicComponent blok={childBlok} parent={{ ...bodyProps }} />
+        </div>
       );
     });
 
-  const displayClasses = createClasses(blok, [
-    "align",
-    "justify",
-    "type",
-    "gap",
-    "size",
-  ]);
+  blok.gap = parent.display?.gap || blok.gap;
+  const displayClasses = createClasses(
+    blok,
+    ["align", "justify", "gap"],
+    `${blok.type}s`
+  );
 
   return (
-    <div className={displayClasses.join(" ")}>
-      <SbEditable content={blok} key={blok._uid}>
-        {body}
-      </SbEditable>
-    </div>
+    <SbEditable content={blok} key={blok._uid}>
+      <div className={displayClasses.join(" ")}>{body}</div>
+    </SbEditable>
   );
 };
 
@@ -49,7 +57,7 @@ Display.propTypes = {
   }),
   blok: PropTypes.shape({
     body: PropTypes.array,
-    type: PropTypes.oneOf(["", "row", "col", "card", "slide"]),
+    type: PropTypes.oneOf(["", "rows", "cols", "card", "slide"]),
     align: PropTypes.oneOf(["", "start", "center", "end", "stretch"]),
     justify: PropTypes.oneOf(["", "start", "center", "end", "stretch"]),
     gap: PropTypes.oneOf(["", "default", "small", "mid", "large"]),

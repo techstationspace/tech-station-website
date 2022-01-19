@@ -40,7 +40,7 @@ const CourseIndex = ({ pageContext, location }) => {
           <h5>{content.title}</h5>
           {!!content.start && (
             <p className="cover--label">
-              <Icon name="calendar-date" />
+              <Icon blok={{ name: "event" }} />
               <span>{new Date(content.start).toLocaleDateString("it-IT")}</span>
               -
               {!!content.end && (
@@ -50,7 +50,7 @@ const CourseIndex = ({ pageContext, location }) => {
           )}
           {!!content.location && (
             <p className="cover--label">
-              <Icon name="map-location" /> {content.location}
+              <Icon blok={{ name: "place" }} /> {content.location}
             </p>
           )}
           <Action blok={actionProps} />
@@ -60,7 +60,11 @@ const CourseIndex = ({ pageContext, location }) => {
   );
 
   return (
-    <Layout location={location} settings={settings}>
+    <Layout
+      location={location}
+      settings={settings}
+      showBuildStatus={location?.search.includes("_storyblok")}
+    >
       {cover}
       {body}
     </Layout>
