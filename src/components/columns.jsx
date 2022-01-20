@@ -21,7 +21,7 @@ const Columns = ({ blok, parent }) => {
 
 Columns.propTypes = {
   blok: PropTypes.shape({
-    body: PropTypes.object,
+    body: PropTypes.array,
     gap: PropTypes.oneOf(["", "none", "small", "medium", "large"]),
     align: PropTypes.oneOf(["", "top", "center", "bottom", "adapt"]),
     justify: PropTypes.oneOf(["", "left", "center", "right", "spaced"]),

@@ -30,7 +30,7 @@ const Column = ({ blok, parent }) => {
 
 Column.propTypes = {
   blok: PropTypes.shape({
-    body: PropTypes.object,
+    body: PropTypes.array,
     size: PropTypes.oneOf([
       "",
       "quarter",

@@ -1,27 +1,30 @@
 .media {
-  &.__image {
+  display: block;
+  text-align: center;
+  width: 100%;
+
+  &--link {
+    cursor: pointer;
+  }
+
+  &--image {
     height: auto;
-    margin: 0 auto;
   }
   @include mobileOnly {
     &--link {
       width: 100%;
+      height: auto;
+      // overflow: hidden;
     }
-    &.__image {
+    &--image {
       width: 100% !important;
       max-width: 100%;
     }
   }
 
-  &.__cover {
+  &--background {
     background-size: cover;
     background-position: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: $media-index;
 
     $x-positions: top, center, bottom;
     @each $pos in $x-positions {
@@ -29,13 +32,23 @@
         background-position-x: $pos;
       }
     }
-  
+
     $y-positions: right, center, left;
     @each $pos in $y-positions {
       &.__#{$pos}_x {
         background-position-y: $pos;
       }
     }
-  
+  }
+
+  &--background,
+  &--link,
+  &.__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: $media-index;
   }
 }

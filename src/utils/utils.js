@@ -11,7 +11,6 @@ const createClasses = (props, styles, name) => {
       } else if (!!props[key]) {
         return classes.push(`__${key}_${props[key]}`);
       }
-      return;
     });
   return classes;
 };
@@ -26,7 +25,6 @@ const getClasses = (props, styles, component) => {
         const isboolean = typeof prop === "boolean";
         return classes.push(isboolean ? `_${key}` : `${key}_${prop}`);
       }
-      return;
     });
   return classes;
 };

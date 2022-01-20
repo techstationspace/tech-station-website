@@ -17,21 +17,9 @@
     }
   }
 
-  .container {
-    > *:not(:last-child) {
-      position: unset !important;
-      &:not(:last-child) {
-        margin-bottom: $section-spacing-default * 0.75;
-      }
-    }
-  }
-
   @each $label, $space in $section-spacing {
     &.__space_#{$label} {
       padding: $space 0;
-    }
-    &.__space_#{$label} .container > *:not(:last-child) {
-      margin-bottom: $space * 0.75;
     }
   }
 
@@ -42,6 +30,25 @@
     &.__#{$name} {
       color: $color;
       background-color: $background;
+    }
+  }
+
+  &.__cover {
+    .text {
+      text-shadow: -1px 1px 6px rgb(255 255 255 / 20%);
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+
+        backdrop-filter: blur(3px);
+        border-radius: 8rem;
+        margin: -1.5rem;
+        z-index: -1;
+      }
     }
   }
 }

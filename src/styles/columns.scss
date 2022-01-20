@@ -35,14 +35,14 @@ $columns_alignments: (
   // Columns gaps
   margin: -$columns_default_gap;
   > .column {
-    margin: $columns_default_gap;
+    padding: $columns_default_gap;
   }
 
   @each $label, $gap in $columns_gaps {
     &.gap_#{$label} {
       margin: -$gap;
       > .column {
-        margin: $gap;
+        padding: $gap;
       }
     }
   }
@@ -51,6 +51,7 @@ $columns_alignments: (
 .column {
   flex: 1 1 0;
   z-index: $column-index;
+  position: relative;
 
   // column sizes
   $column_sizes: (
@@ -88,11 +89,12 @@ $columns_alignments: (
     flex-grow: 1 !important;
     flex-shrink: 1 !important;
     flex-basis: calc(($break-mobile - 2rem) / 2) !important;
+    width: unset !important;
   }
   @include tabletOnly {
     flex-grow: 1 !important;
     flex-shrink: 1 !important;
-    flex: 1 1 calc(($break-tablet - 4rem) / 4) !important;
+    flex-basis: calc(($break-tablet - 4rem) / 4) !important;
   }
 
   .content {
@@ -101,15 +103,14 @@ $columns_alignments: (
     display: flex;
     flex-wrap: wrap;
     z-index: inherit;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
 
-    &.direction_column {
-      flex-direction: column;
-      align-items: start;
-      // Content justifications
-      @each $label, $justify in $columns_justifications {
-        &.justify_#{$label} {
-          align-items: $justify;
-        }
+    // Content justifications
+    @each $label, $justify in $columns_justifications {
+      &.justify_#{$label} {
+        align-items: $justify;
       }
     }
     // content gaps
@@ -119,11 +120,12 @@ $columns_alignments: (
         gap: $gap;
       }
     }
-
-    // Column justifications
-    @each $label, $justify in $columns_justifications {
-      &.justify_#{$label} {
-        justify-content: $justify;
+    &.direction_row {
+      // Column justifications
+      @each $label, $justify in $columns_justifications {
+        &.justify_#{$label} {
+          justify-content: $justify;
+        }
       }
     }
   }

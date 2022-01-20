@@ -6,44 +6,60 @@ import { getUrl } from "../utils/utils";
 const Media = ({ blok, parent }) => {
   const parentProps = parent?.media || {};
   blok.size = blok.size || parentProps?.size || 100;
-  const image = () => (
-    <img
-      className="media __image"
-      width={`${blok.size}%`}
-      src={blok.image.filename}
-      alt={blok.image.alt}
-    />
-  );
 
-  const backgroundStyles = [];
-  blok?.overlay && backgroundStyles.push(blok.overlay);
-  blok.image?.filename && backgroundStyles.push(`url(${blok.image.filename})`);
+  const mediaClasses = ["media"];
+  blok.background && mediaClasses.push("__background");
 
-  console.log(backgroundStyles.join(","));
-  const background = () => (
-    <div
-      style={{ backgroundImage: backgroundStyles.join(",") }}
-      className="media __cover"
-      title={blok.image.alt}
-    />
-  );
-  const MediaType = !!blok.background ? background : image;
+  const Content = blok.background ? Background : Image;
   return (
     <SbEditable content={blok} key={blok._uid}>
-      {!!blok.link.cached_url ? (
-        <a
-          className="media--link"
-          href={!!blok.link ? getUrl(blok.link) : null}
-          rel={blok.target ? "noreferrer" : null}
-        >
-          <MediaType />
-        </a>
-      ) : (
-        <MediaType />
-      )}
+      <div className={mediaClasses.join(" ")} id={blok.id || ""}>
+        {!!blok.link.cached_url ? (
+          <Link blok={blok}>
+            <Content blok={blok} />
+          </Link>
+        ) : (
+          <Content blok={blok} />
+        )}
+      </div>
     </SbEditable>
   );
 };
+
+const Link = ({ blok, children }) => (
+  <a
+    className="media--link"
+    href={getUrl(blok.link)}
+    target={blok.target ? "_blank" : "_self"}
+    rel="noreferrer"
+  >
+    {children}
+  </a>
+);
+
+const Background = ({ blok }) => {
+  const styles = {};
+
+  const layers = [];
+  blok?.overlay && layers.push(blok.overlay);
+  blok.image?.filename && layers.push(`url(${blok.image.filename})`);
+  styles.backgroundImage = layers;
+
+  styles.paddingTop = `${blok.size || 0}%`;
+
+  return (
+    <div className="media--background" style={styles} title={blok.image.alt} />
+  );
+};
+
+const Image = ({ blok }) => (
+  <img
+    className="media--image"
+    src={blok.image.filename}
+    alt={blok.image.alt}
+    width={`${blok.size}%`}
+  />
+);
 
 Media.propTypes = {
   parent: PropTypes.shape({
@@ -52,6 +68,7 @@ Media.propTypes = {
     }),
   }),
   blok: PropTypes.shape({
+    id: PropTypes.string,
     overlay: PropTypes.string,
     image: PropTypes.shape({
       filename: PropTypes.string,

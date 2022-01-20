@@ -14,6 +14,12 @@
     justify-content: center;
     align-items: center;
     font-weight: 600;
+    position: relative;
+    .icon {
+      position: absolute;
+      z-index: inherit;
+      right: 0;
+    }
   }
   &--list {
     font-weight: 600;
@@ -41,7 +47,7 @@
     font-weight: inherit;
     text-transform: uppercase;
     text-align: center;
-    padding: 0.5em 0.25em;
+    padding: 1em;
     opacity: 0.75;
     transition: all 0.23s ease-out;
     &:hover {

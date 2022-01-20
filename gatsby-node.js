@@ -23,7 +23,7 @@ function detectLanguage(slug) {
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
 
   const queryStories = await graphql(`
     query {
@@ -54,6 +54,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       pages: allStoryblokEntry(filter: { field_component: { eq: "page" } }) {
         edges {
           node {
+            slug
             uuid
             field_component
             full_slug
@@ -66,6 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       ) {
         edges {
           node {
+            slug
             uuid
             field_component
             full_slug
@@ -78,6 +80,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       ) {
         edges {
           node {
+            slug
             uuid
             field_component
             full_slug
@@ -139,10 +142,43 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           },
         },
       };
-      if (key === "page" || typeof header === "object") {
+      if (key === "page" && typeof header === "object") {
         createPage(page);
+        return console.log(`create page: ${path}`);
       }
-      // console.log(page);
     });
   });
+
+  const redirects = [
+    {
+      from: "/techstation-press/",
+      to: "/chi-siamo",
+    },
+    {
+      from: "/diventa-un-ambassador/",
+      to: "/chi-siamo",
+    },
+    {
+      from: "/coding-school/",
+      to: "/progetti",
+    },
+    {
+      from: "/coding-school-online/",
+      to: "/progetti",
+    },
+  ];
+
+  redirects.length &&
+    redirects.map((redirect) => {
+      if (
+        typeof redirect.from === "string" &&
+        typeof redirect.to === "string"
+      ) {
+        createRedirect({
+          fromPath: redirect.from,
+          toPath: redirect.to,
+        });
+      }
+      return console.log(`redirect: ${redirect.from} => ${redirect.to})`);
+    });
 };

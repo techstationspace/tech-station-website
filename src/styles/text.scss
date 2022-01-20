@@ -50,10 +50,8 @@ blockquote > p {
 }
 
 .text {
+  position: relative;
   z-index: $text-index;
-  @include mobileOnly {
-    text-align: left !important;
-  }
 
   > *:last-child {
     margin-bottom: 0 !important;
@@ -63,6 +61,11 @@ blockquote > p {
   @each $align in $alignments {
     &.__align_#{$align} {
       text-align: $align;
+      @if $align == "right" {
+        @include mobileOnly {
+          text-align: left !important;
+        }
+      }
     }
   }
 

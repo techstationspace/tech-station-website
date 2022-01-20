@@ -25,15 +25,11 @@
   text-rendering: optimizeLegibility;
   font-feature-settings: "liga";
 
-  height: $icon-size-default;
-  width: $icon-size-default;
   font-size: $icon-size-default * 1.25;
 
   @each $name, $size in $icon-size {
     &.__#{$name} {
       font-size: $size * 1.25;
-      height: $size;
-      width: $size;
     }
   }
   @each $name, $style in $icon-style {

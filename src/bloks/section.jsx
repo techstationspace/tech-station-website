@@ -10,6 +10,14 @@ const Section = ({ blok }) => {
       style: themeSwitch(blok.theme),
     },
   };
+
+  const sectionClasses = createClasses(blok, ["height", "theme", "space"]);
+  const hasBackground = blok.body.filter((b) => b.component === "media").length;
+  !!hasBackground && sectionClasses.push("__cover");
+
+  const contanierClasses = ["container"];
+  !blok.responsive && contanierClasses.push("__responsive");
+
   const body =
     blok.body &&
     blok.body.map((childBlok) => {
@@ -21,11 +29,6 @@ const Section = ({ blok }) => {
         />
       );
     });
-
-  const sectionClasses = createClasses(blok, ["height", "theme", "space"]);
-
-  const contanierClasses = ["container"];
-  !blok.responsive && contanierClasses.push("__responsive");
 
   return (
     <SbEditable content={blok} key={blok._uid}>

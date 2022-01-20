@@ -18,7 +18,10 @@ const Layout = ({ settings, children, showBuildStatus }) => {
       {showBuildStatus && (
         <div className="build_status">
           <div className="container __responsive">
-            <img src="https://api.netlify.com/api/v1/badges/e3c67c1e-fe5c-4bd4-a25c-334b91b2e7a9/deploy-status" />
+            <img
+              alt="netlify-status"
+              src="https://api.netlify.com/api/v1/badges/e3c67c1e-fe5c-4bd4-a25c-334b91b2e7a9/deploy-status"
+            />
           </div>
         </div>
       )}

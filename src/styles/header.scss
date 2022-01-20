@@ -1,7 +1,9 @@
 .header {
   font-size: 0.9rem;
   height: $header-height;
-  position: relative;
+  z-index: $header-index;
+  position: sticky;
+  top: 0;
 
   @include mobileOnly {
     height: $header-height - 1rem;
@@ -51,8 +53,8 @@
       @include responsive-prop(
         padding,
         (
-          mobile: 0.5rem 1rem,
-          tablet: 1rem 2rem,
+          mobile: 0.5rem 1.5rem,
+          tablet: 1rem 3rem,
         )
       );
       background-color: inherit;
@@ -75,7 +77,7 @@
     align-items: start;
     flex-direction: inherit;
     column-gap: 0.75rem;
-    row-gap: 0.75rem;
+    row-gap: 1.25rem;
     @include untilTablet {
       & > * {
         align-items: stretch !important;
@@ -84,23 +86,22 @@
   }
 
   &--lang {
+    padding: 0 !important;
+    button {
+      padding: 1rem;
+    }
     @include untilTablet {
       order: -1;
     }
   }
 
   &--toggle {
+    padding: 1rem;
     display: none;
     color: inherit;
     @include untilTablet {
       display: block;
     }
-  }
-
-  &.__fixed {
-    z-index: $header-index;
-    position: sticky;
-    top: 0;
   }
 
   $styles: primary $white $primary-dark, secondary $white $secondary-dark,
