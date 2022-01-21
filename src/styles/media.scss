@@ -14,10 +14,9 @@
     &--link {
       width: 100%;
       height: auto;
-      // overflow: hidden;
     }
     &--image {
-      width: 100% !important;
+      width: 100%;
       max-width: 100%;
     }
   }
@@ -42,7 +41,6 @@
   }
 
   &--background,
-  &--link,
   &.__background {
     position: absolute;
     top: 0;
@@ -51,4 +49,8 @@
     right: 0;
     z-index: $media-index;
   }
+}
+
+#footerLogo .media--image {
+  width: 30%;
 }

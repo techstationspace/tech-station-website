@@ -66,8 +66,30 @@ $columns_alignments: (
     &.size_#{$label} {
       flex: none;
       width: $size;
+      @include tabletOnly {
+        // flex-grow: 1 !important;
+        @if $size < 51% {
+          min-width: 50%;
+          flex-basis: 320px !important;
+        }
+      }
     }
   }
+
+  // Respèonsive
+  @include mobileOnly {
+    min-width: 100% !important;
+    flex-grow: 1 !important;
+    flex-basis: 320px !important;
+
+    .content {
+      align-items: start !important;
+      &.direction_row {
+        justify-content: start !important;
+      }
+    }
+  }
+
   // Column alignments
   @each $label, $align in $columns_alignments {
     &.align_#{$label} {
@@ -82,19 +104,6 @@ $columns_alignments: (
         order: $order;
       }
     }
-  }
-
-  // Responsive
-  @include mobileOnly {
-    flex-grow: 1 !important;
-    flex-shrink: 1 !important;
-    flex-basis: calc(($break-mobile - 2rem) / 2) !important;
-    width: unset !important;
-  }
-  @include tabletOnly {
-    flex-grow: 1 !important;
-    flex-shrink: 1 !important;
-    flex-basis: calc(($break-tablet - 4rem) / 4) !important;
   }
 
   .content {
@@ -121,6 +130,7 @@ $columns_alignments: (
       }
     }
     &.direction_row {
+      flex-direction: row;
       // Column justifications
       @each $label, $justify in $columns_justifications {
         &.justify_#{$label} {

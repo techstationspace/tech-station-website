@@ -142,7 +142,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           },
         },
       };
-      if (key === "page" && typeof header === "object") {
+      if (key !== "coach" && typeof header === "object") {
         createPage(page);
         return console.log(`create page: ${path}`);
       }
@@ -151,20 +151,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const redirects = [
     {
-      from: "/techstation-press/",
+      from: "/techstation-press",
       to: "/chi-siamo",
+      redirectInBrowser: true,
     },
     {
-      from: "/diventa-un-ambassador/",
+      from: "/diventa-un-ambassador",
       to: "/chi-siamo",
+      redirectInBrowser: true,
     },
     {
-      from: "/coding-school/",
+      from: "/coding-school",
       to: "/progetti",
+      redirectInBrowser: true,
     },
     {
-      from: "/coding-school-online/",
+      from: "/coding-school-online",
       to: "/progetti",
+      redirectInBrowser: true,
     },
   ];
 

@@ -6,6 +6,9 @@
 
   // Space prop
   padding: $section-spacing-default 0;
+  .container > .columns:not(:last-child) {
+    margin-bottom: calc($section-spacing-default / 2);
+  }
 
   // Height prop
   @each $label, $height in $section-height {
@@ -20,6 +23,9 @@
   @each $label, $space in $section-spacing {
     &.__space_#{$label} {
       padding: $space 0;
+      .container > .columns:not(:last-child) {
+        margin-bottom: calc($space / 2);
+      }
     }
   }
 
