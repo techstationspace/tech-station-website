@@ -12,8 +12,13 @@ const Layout = ({ settings, children, showBuildStatus }) => {
 
   return (
     <>
-      <Helmet title="Website template" defer={false}>
-        Seo
+      <Helmet title="Techstation padova" defer={false}>
+        <html lang={settings.languages.current} />
+        <link rel="canonical" href={settings.path} />
+        <meta
+          name="description"
+          content="Associazione culturale, Promuoviamo la cultura digitale per rivoluzionare il mondo del lavoro."
+        />
       </Helmet>
       {showBuildStatus && (
         <div className="build_status">

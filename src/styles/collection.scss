@@ -24,17 +24,25 @@
 .collection--coach {
   border-radius: 3px;
   box-shadow: $display-card-shadow;
+
+  &-title {
+    margin-bottom: 0.125em;
+  }
+  &-heading {
+    margin-bottom: 0.75rem;
+  }
+
   &-image {
     height: auto;
     justify-self: start;
     align-self: stretch;
   }
   &-content {
-    font-size: .875em;
+    font-size: 0.875em;
     padding: 0.75rem;
   }
   &-link {
-    margin-top: .5em;
+    margin-top: 0.5em;
     color: $primary !important;
   }
 }

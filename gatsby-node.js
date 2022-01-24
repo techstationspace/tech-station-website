@@ -132,6 +132,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         context: {
           story: data,
           settings: {
+            path: path,
             header: header,
             footer: footer,
             languages: {
@@ -142,7 +143,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           },
         },
       };
-      if (key !== "coach" && typeof header === "object") {
+
+      if (key !== "coach" && !!content.body) {
         createPage(page);
         return console.log(`create page: ${path}`);
       }

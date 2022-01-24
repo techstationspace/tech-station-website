@@ -87,8 +87,10 @@ const Coach = ({ data }) => {
         alt={data.image.alt}
       />
       <div className="collection--coach-content">
-        <h6 className="collection--coach-title">{data.full_name}</h6>
-        <small className="collection--coach-subtitle">{data.subject}</small>
+        <div className="collection--coach-heading">
+          <h6 className="collection--coach-title">{data.full_name}</h6>
+          <small className="collection--coach-subtitle">{data.subject}</small>
+        </div>
         <div
           className="collection--coach-description hidden__mobile"
           dangerouslySetInnerHTML={{ __html: description }}

@@ -1,11 +1,13 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "tech-station-website",
+    siteUrl: "https://techstationpadova.it/",
+    title: "Techstation padova",
+    description:
+      "Associazione culturale, Promuoviamo la cultura digitale per rivoluzionare il mondo del lavoro.",
   },
   plugins: [
     "gatsby-plugin-sass",
@@ -20,7 +22,7 @@ module.exports = {
       options: {
         accessToken: process.env.GATSBY_STORY_BLOK,
         version: process.env.NODE_ENV === "production" ? "published" : "draft",
-        homeSlug: 'home',
+        homeSlug: "home",
       },
     },
     /*
