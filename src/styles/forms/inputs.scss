@@ -1,0 +1,64 @@
+.checkbox {
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+
+  input {
+    margin-left: -0.25rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.input {
+  width: 100%;
+  font-size: .875em;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: $gray-lighten;
+  padding: 0.25rem;
+  border-radius: 3px;
+
+  &--icon {
+    color: $gray-middle;
+    cursor: pointer;
+  }
+
+  &--text,
+  &--email,
+  &--password,
+  &--tel,
+  &--text-area {
+    font-size: inherit;
+    background-color: inherit;
+    flex: 1 1 auto;
+    padding: 0.5rem;
+    color: $gray-darken;
+    resize: none;
+
+    &::placeholder {
+      color: transparentize($gray-darken, 0.7);
+      font-weight: 400;
+    }
+  }
+}
+
+.select {
+  font-size: .875em;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: $gray-lighten;
+  padding: 0.25rem;
+  border-radius: 3px;
+
+  select {
+    font-size: inherit;
+    background-color: inherit;
+    flex: 1 1 auto;
+    padding: 0.5rem;
+  }
+}

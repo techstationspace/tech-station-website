@@ -4,15 +4,14 @@ import SbEditable from "storyblok-react";
 import { createClasses, getUrl } from "../utils/utils";
 import Icon from "./icon";
 
-const Action = ({ blok, parent, value, disabled, onChange = () => null }) => {
-  const fireClick = (fn, val) => {
-    switch (fn) {
+const Action = ({ blok, parent, disabled, doAction = () => null }) => {
+  const fireClick = (event) => {
+    switch (blok.function) {
       case "logger":
         console.log(`Button ${blok.text} pressed!`);
         break;
-      default:
-        onChange(val);
-        break;
+      case "submit":
+        doAction(event);
     }
   };
 
@@ -41,7 +40,7 @@ const Action = ({ blok, parent, value, disabled, onChange = () => null }) => {
   const button = (
     <button
       className={classes.join(" ")}
-      onClick={() => fireClick(blok.function, value || null)}
+      onClick={(e) => fireClick(e)}
       disabled={disabled}
     >
       <Icon blok={{ name: blok.left_icon }} />

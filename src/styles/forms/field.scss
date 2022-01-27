@@ -1,0 +1,42 @@
+.field {
+  font-size: 1rem;
+  &.__required {
+    .field--label::after {
+      content: " *";
+      font-size: 80%;
+      vertical-align: text-top;
+      opacity: 70%;
+    }
+  }
+
+  &--label {
+    &::first-letter {
+      text-transform: uppercase;
+    }
+    display: block;
+    font-size: 0.875em;
+    font-weight: 600;
+    color: $gray-dark;
+  }
+
+  > .field--label {
+    margin-bottom: 0.5rem;
+  }
+
+  &--link {
+    color: $primary;
+    line-height: 1;
+    text-decoration: underline;
+  }
+
+  &--info {
+    font-size: 0.75em;
+    color: $gray-middle-light;
+  }
+
+  &--error {
+    margin-top: .25rem;
+    font-size: 0.625em;
+    color: $error !important;
+  }
+}

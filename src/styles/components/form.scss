@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  // width: 100%;
+  flex-direction: column;
+
+  align-items: end;
+  justify-content: stretch;
+  > .field {
+    flex: 1 1 100%;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+}

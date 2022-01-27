@@ -32,5 +32,8 @@ $themes: (
     b {
       color: map-get($theme, "paragraph-color");
     }
+    label {
+      color: map-get($theme, "title-color")
+    }
   }
 }
