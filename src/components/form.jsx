@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import SbEditable from "storyblok-react";
 import StoryblokClient from "storyblok-js-client";
 import DynamicComponent from "../utils/dynamicComponent";
+import formSubmit from "../utils/formSubmit";
 
 const sbClient = new StoryblokClient({
   accessToken: `${process.env.GATSBY_STORY_BLOK}`,
@@ -18,6 +19,7 @@ const Form = ({ blok }) => {
   const [step, setStep] = useState(steps[0]);
   const [fields, setFields] = useState({});
   const _fields = { ...fields };
+  const [formError, setFormError] = useState(null);
 
   useEffect(() => {
     const components = ["input", "checkbox", "select"];
@@ -64,17 +66,40 @@ const Form = ({ blok }) => {
     return !validations.includes(false);
   };
 
-  const submitForm = (event) => {
+  const submitForm = async (event) => {
     event.preventDefault();
     const isFormValid = validateFields();
 
     if (isFormValid) {
-      console.log("Form is valid");
-      setStep("success");
+      console.log(blok.target);
+      const submission = await formSubmit("mailchimp", fields);
+      debugger;
+      if (submission?.result !== "error") {
+        setFormError(null);
+        setStep("success");
+      } else {
+        const errorMessage = recognizeErrors(submission.message);
+        setFormError(errorMessage);
+      }
     } else {
       console.log("Check errors");
     }
     console.log(fields);
+  };
+
+  const recognizeErrors = (error) => {
+    const messages = {
+      invalidEmail: "L'indirizzo email non è valido.",
+      subscribed: "L'indirizzo email indicato è già registrato.",
+      default: "Si è verificato un errore.",
+    };
+    if (error.includes("subscribed")) {
+      return messages.subscribed;
+    } else if (error.includes("fake or invalid")) {
+      return messages.invalidEmail;
+    } else {
+      return messages.default;
+    }
   };
 
   let successMessage = sbClient.richTextResolver.render(blok.success);

@@ -6,7 +6,7 @@ import Field from "../form/field";
 const re = {
   email:
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-  tel: /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g,
+  phone: /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g,
   password: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
 };
 
@@ -89,7 +89,7 @@ Input.propTypes = {
     id: PropTypes.string,
     label: PropTypes.string,
     placeholder: PropTypes.string,
-    type: PropTypes.oneOf(["text", "email", "password", "tel", "message"]),
+    type: PropTypes.oneOf(["text", "email", "password", "phone", "message"]),
     required: PropTypes.bool,
     error: PropTypes.string,
   }),

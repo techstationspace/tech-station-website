@@ -1,14 +1,15 @@
 .form {
   display: flex;
-  // width: 100%;
-  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
+  align-items: center;
 
-  align-items: end;
-  justify-content: stretch;
   > .field {
-    flex: 1 1 100%;
-    width: 100%;
-    margin-bottom: 1.5rem;
+    flex: 1 1 18rem;
+    @include untilTablet {
+      flex-basis: 100%;
+      margin-bottom: 0.25rem;
+    }
   }
-  
 }
