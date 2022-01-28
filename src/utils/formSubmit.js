@@ -33,7 +33,6 @@ const formSubmit = (target, data) => {
 };
 
 const sendToMailchimp = async (email, fields) => {
-  debugger;
   const submission = await addToMailchimp(email, fields);
   return { result: submission.result, messagge: submission.msg };
 };

@@ -73,7 +73,6 @@ const Form = ({ blok }) => {
     if (isFormValid) {
       console.log(blok.target);
       const submission = await formSubmit("mailchimp", fields);
-      debugger;
       if (submission?.result !== "error") {
         setFormError(null);
         setStep("success");
@@ -133,6 +132,7 @@ const Form = ({ blok }) => {
       {step !== "success" ? (
         <form id={blok.name} className="form">
           {body}
+          {!!formError && <p>{formError}</p>}
         </form>
       ) : (
         <div className="success">
