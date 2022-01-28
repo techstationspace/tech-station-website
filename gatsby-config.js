@@ -25,7 +25,6 @@ module.exports = {
         homeSlug: "home",
       },
     },
-    /*
     {
       resolve: "gatsby-plugin-mailchimp",
       options: {
@@ -34,7 +33,6 @@ module.exports = {
         timeout: 3500,
       },
     },
-    */
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",

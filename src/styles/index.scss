@@ -9,20 +9,23 @@
 @import "./mixin.scss";
 @import "./helper.scss";
 @import "./theme.scss";
-@import "./columns.scss";
-@import "./text.scss";
-@import "./header.scss";
-@import "./footer.scss";
-@import "./container.scss";
-@import "./cover.scss";
-@import "./section.scss";
-@import "./reel.scss";
-@import "./collection.scss";
-@import "./display.scss";
-@import "./media.scss";
-@import "./action.scss";
-@import "./dropdown.scss";
-@import "./icon.scss";
+@import "./bloks/header.scss";
+@import "./bloks/footer.scss";
+@import "./bloks/container.scss";
+@import "./bloks/cover.scss";
+@import "./bloks/section.scss";
+@import "./components/columns.scss";
+@import "./components/reel.scss";
+@import "./components/form.scss";
+@import "./components/collection.scss";
+@import "./components/display.scss";
+@import "./elements/text.scss";
+@import "./elements/media.scss";
+@import "./elements/action.scss";
+@import "./elements/dropdown.scss";
+@import "./elements/icon.scss";
+@import "./forms/field.scss";
+@import "./forms/inputs.scss";
 
 // Base unit
 $base-unit: 15px;

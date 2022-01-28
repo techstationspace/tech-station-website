@@ -1,43 +1,32 @@
 import React from "react";
+import SbEditable from "storyblok-react";
 import PropTypes from "prop-types";
-import Field from "../elements/field";
+import Field from "../form/field";
 
-const Select = ({ blok, error }) => {
-  const errorMessage = error && blok.error;
+const Select = ({ blok, error, setFieldValue = () => null }) => {
   const options = blok.options
     .split(",")
     .map((i) => i.split(":").map((i) => i.trim()));
 
   const selectChange = (event) => {
-    console.log(event);
+    setFieldValue({ value: event.target.value, field: blok.id });
   };
 
   return (
-    <Field label={blok.label} error={errorMessage}>
-      <select className="select" id={blok.id} onChange={(e) => selectChange(e)}>
-        {blok.placeholder && (
-          <option className="select--placeholder" selected>
-            {blok.placeholder}
-          </option>
-        )}
-        {options.map((option) => (
-          <option className="select--option" value={option[0]}>
-            {option[1]}
-          </option>
-        ))}
-      </select>
-    </Field>
+    <SbEditable content={blok} key={blok._uid}>
+      <Field label={blok.label} required={blok.required} error={error}>
+        <div className="select">
+          <select id={blok.id} onChange={(e) => selectChange(e)} placeholder={blok.placeholder}>
+            {options.map((option, i) => (
+              <option key={i} className="select--option" value={option[1]}>
+                {option[0]}
+              </option>
+            ))}
+          </select>
+        </div>
+      </Field>
+    </SbEditable>
   );
-};
-
-Select.defaultProps = {
-  blok: {
-    label: "Select label",
-    placeholder: "Select an option",
-    options: "key one: 1, key two: 2",
-    required: false,
-    error: "Select error message",
-  },
 };
 
 Select.propTypes = {
@@ -49,7 +38,7 @@ Select.propTypes = {
     required: PropTypes.bool,
     error: PropTypes.string,
   }),
-  error: PropTypes.bool,
+  error: PropTypes.string,
 };
 
 export default Select;
