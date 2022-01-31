@@ -71,19 +71,16 @@ const Form = ({ blok }) => {
     const isFormValid = validateFields();
 
     if (isFormValid) {
-      console.log(blok.target);
       const submission = await formSubmit("mailchimp", fields);
       if (submission?.result !== "error") {
         setFormError(null);
         setStep("success");
       } else {
-        const errorMessage = recognizeErrors(submission.message);
+        console.log(submission);
+        const errorMessage = recognizeErrors(submission.messagge);
         setFormError(errorMessage);
       }
-    } else {
-      console.log("Check errors");
     }
-    console.log(fields);
   };
 
   const recognizeErrors = (error) => {
@@ -92,9 +89,9 @@ const Form = ({ blok }) => {
       subscribed: "L'indirizzo email indicato è già registrato.",
       default: "Si è verificato un errore.",
     };
-    if (error.includes("subscribed")) {
+    if (error && error.includes("subscribed")) {
       return messages.subscribed;
-    } else if (error.includes("fake or invalid")) {
+    } else if (error && error.includes("fake or invalid")) {
       return messages.invalidEmail;
     } else {
       return messages.default;

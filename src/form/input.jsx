@@ -21,7 +21,6 @@ const Input = ({ blok, error, value, setFieldValue = () => null }) => {
     "Minimum eight characters, at least one letter, one number and one special character";
 
   const validateInput = () => {
-    console.log(inputValue);
     if (!!inputValue) {
       if (Object.keys(re).includes(blok.type)) {
         if (String(inputValue).toLowerCase().match(re[blok.type])) {

@@ -3,7 +3,6 @@ import SbEditable from "storyblok-react";
 import PropTypes from "prop-types";
 
 const Checkbox = ({ blok, error, checked, setFieldValue = () => null }) => {
-  console.log(error);
   const fieldClasses = ["field"];
   blok.required && fieldClasses.push("__required");
   const checkboxChange = (event) => {
