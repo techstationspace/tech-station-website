@@ -153,38 +153,30 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const redirects = [
     {
-      from: "/techstation-press",
-      to: "/chi-siamo",
+      fromPath: "/techstation-press",
+      toPath: "/chi-siamo",
       redirectInBrowser: true,
     },
     {
-      from: "/diventa-un-ambassador",
-      to: "/chi-siamo",
+      fromPath: "/diventa-un-ambassador",
+      toPath: "/chi-siamo",
       redirectInBrowser: true,
     },
     {
-      from: "/coding-school",
-      to: "/progetti",
+      fromPath: "/coding-school",
+      toPath: "/progetti",
       redirectInBrowser: true,
     },
     {
-      from: "/coding-school-online",
-      to: "/progetti",
+      fromPath: "/coding-school-online",
+      toPath: "/progetti",
       redirectInBrowser: true,
     },
   ];
 
   redirects.length &&
     redirects.map((redirect) => {
-      if (
-        typeof redirect.from === "string" &&
-        typeof redirect.to === "string"
-      ) {
-        createRedirect({
-          fromPath: redirect.from,
-          toPath: redirect.to,
-        });
-      }
-      return console.log(`redirect: ${redirect.from} => ${redirect.to})`);
+      createRedirect(redirect);
+      return console.log(`redirect: ${redirect.fromPath} => ${redirect.toPath})`);
     });
 };
