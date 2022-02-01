@@ -168,6 +168,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       redirectInBrowser: true,
     },
     {
+      fromPath: "/coding-school/",
+      toPath: "/progetti",
+      redirectInBrowser: true,
+    },
+    {
       fromPath: "/coding-school-online",
       toPath: "/progetti",
       redirectInBrowser: true,
