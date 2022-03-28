@@ -182,6 +182,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   redirects.length &&
     redirects.map((redirect) => {
       createRedirect(redirect);
-      return console.log(`redirect: ${redirect.fromPath} => ${redirect.toPath})`);
+      return console.log(
+        `redirect: ${redirect.fromPath} => ${redirect.toPath})`
+      );
     });
+};
+
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+
+  // Look for /404/ path
+  if (page.path.match(/^\/404\/$/)) {
+    const oldPage = { ...page };
+
+    // Add page context
+    page.context = {
+      settings: {
+        header: false,
+        footer: false,
+        languages: {
+          default: defaultLanguage,
+          current: defaultLanguage,
+          list: languages,
+        },
+      },
+    };
+
+    // Recreate the modified page
+    deletePage(oldPage);
+    createPage(page);
+  }
 };

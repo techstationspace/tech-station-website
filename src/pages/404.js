@@ -1,54 +1,47 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from "react";
+import useStoryblok from "../utils/storyblok";
+import DynamicComponent from "../utils/dynamicComponent";
+import Layout from "../components/layout";
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+const PageNotFound = ({ pageContext, location }) => {
+  const { content } = useStoryblok({ content: null }, location);
+  const isEmbedded = location?.search.includes("_storyblok");
+  const { settings } = pageContext;
+  const { pathname } = location;
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+  const notFoundTemplate = (
+    <section className="section __height_full __cover __theme_primary_background">
+      <div className="container __responsive">
+        <div className="columns align_center">
+          <div className="column size_half">
+            <div className="content">
+              <h1>404 page</h1>
+              <p>Sorry, but {pathname} not exist...</p>
+              <a className="action __button __secondary __large" href="/">Back to homepage</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 
-// markup
-const NotFoundPage = () => {
-  return (
-    <main style={pageStyles}>
-      <title>Not found</title>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry{" "}
-        <span role="img" aria-label="Pensive emoji">
-          😔
-        </span>{" "}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
+  const body =
+    content?.body &&
+    content.body.map((childBlok) => (
+      <DynamicComponent blok={childBlok} key={childBlok._uid} />
+    ));
 
-export default NotFoundPage
+  return isEmbedded && !!content ? (
+    <Layout
+      location={location}
+      settings={settings}
+      showBuildStatus={location?.search.includes("_storyblok")}
+    >
+      {body}
+    </Layout>
+  ) : (
+    notFoundTemplate
+  );
+};
+
+export default PageNotFound;

@@ -10,11 +10,12 @@ const Media = ({ blok, parent }) => {
   const mediaClasses = ["media"];
   blok.background && mediaClasses.push("__background");
 
-  const Content = blok.background ? Background : Image;
+  const Content = blok.video ? Video : blok.background ? Background : Image;
+
   return (
     <SbEditable content={blok} key={blok._uid}>
       <div className={mediaClasses.join(" ")} id={blok.id || ""}>
-        {!!blok.link.cached_url ? (
+        {!!blok.link.cached_url && !blok.video ? (
           <Link blok={blok}>
             <Content blok={blok} />
           </Link>
@@ -25,6 +26,19 @@ const Media = ({ blok, parent }) => {
     </SbEditable>
   );
 };
+
+const Video = ({ blok }) => (
+  <div className="media--video">
+    <iframe
+      src={`${blok.link.cached_url}?autoplay=1&controls=0`}
+      title={"title"}
+      width="100%"
+      height="100%"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      frameBorder="0"
+    />
+  </div>
+);
 
 const Link = ({ blok, children }) => (
   <a
