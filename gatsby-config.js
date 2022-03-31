@@ -29,12 +29,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: process.env.GATSBY_GA,
-      },
-    },
-    {
       resolve: "gatsby-source-storyblok",
       options: {
         accessToken: process.env.GATSBY_STORY_BLOK,

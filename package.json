@@ -20,7 +20,6 @@
     "@mdx-js/react": "^1.6.22",
     "gatsby": "^4.3.0",
     "gatsby-plugin-cookiebot": "^1.0.3",
-    "gatsby-plugin-google-analytics": "^4.3.0",
     "gatsby-plugin-google-tagmanager": "^4.11.1",
     "gatsby-plugin-image": "^2.3.0",
     "gatsby-plugin-mailchimp": "^5.2.2",
