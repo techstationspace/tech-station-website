@@ -12,9 +12,16 @@ module.exports = {
   plugins: [
     "gatsby-plugin-sass",
     {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: process.env.GATSBY_GTM,
+        includeInDevelopment: true,
+      },
+    },
+    {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: "UA-136207823-1",
+        trackingId: process.env.GATSBY_GA,
       },
     },
     {
