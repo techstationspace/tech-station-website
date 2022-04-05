@@ -30,7 +30,7 @@ const Media = ({ blok, parent }) => {
 const Video = ({ blok }) => (
   <div className="media--video">
     <iframe
-      src={`${blok.link.cached_url}?autoplay=1&controls=0`}
+      src={`https://www.youtube.com/embed/${blok.link.cached_url}?autoplay=1&controls=0`}
       title={"title"}
       width="100%"
       height="100%"
