@@ -9,6 +9,12 @@ const CourseIndex = ({ pageContext, location }) => {
   const { content } = useStoryblok(pageContext.story, location);
   const { settings } = pageContext;
 
+  const preview =
+    content.preview &&
+    content.preview.map((childBlok) => (
+      <DynamicComponent blok={childBlok} key={childBlok._uid} />
+    ));
+
   const body =
     content.body &&
     content.body.map((childBlok) => (
@@ -21,21 +27,10 @@ const CourseIndex = ({ pageContext, location }) => {
       : "",
   };
 
-  const actionProps = {
-    component: "action",
-    text: "iscriviti al corso",
-    style: "primary",
-    type: "button",
-    size: "large",
-    url: {
-      cached_url: "#subscribe",
-    },
-  };
-
   const cover = (
     <section id={settings.slud} className="cover" style={coverStyles}>
-      <div className="cover--wrapper container__responsive">
-        <h1 className="cover--title">{content.title}</h1>
+      <div className="cover--wrapper container __responsive">
+        <div className="cover--preview">{preview}</div>
         <div className="cover--box">
           <h5>{content.title}</h5>
           {!!content.start && (
@@ -53,7 +48,7 @@ const CourseIndex = ({ pageContext, location }) => {
               <Icon blok={{ name: "place" }} /> {content.location}
             </p>
           )}
-          <Action blok={actionProps} />
+          {!!content?.subscribe && <Action blok={content?.subscribe[0]} />}
         </div>
       </div>
     </section>

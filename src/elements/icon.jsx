@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import SbEditable from "storyblok-react";
 
 const Icon = ({ blok }) => {
-  const isSocialIcon = blok.name.includes("social");
+  const isSocialIcon = blok?.name && blok.name.includes("social");
   const iconClasses = ["icon"];
   isSocialIcon && iconClasses.push("social");
   isSocialIcon && iconClasses.push(blok.name);
