@@ -59,7 +59,9 @@
       flex: 1 1 240px;
       width: 100%;
       min-width: 240px !important;
-      margin: 0 -0.5rem;
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
+      margin-bottom: 1rem;
     }
     &--preview {
       width: 100%;
