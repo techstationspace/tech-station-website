@@ -26,6 +26,10 @@ const CourseIndex = ({ pageContext, location }) => {
       ? `url(${content.image.filename})`
       : "",
   };
+  const startDate = new Date(content.start.replace(/-/g, "/")).toLocaleDateString();
+  const endtDate = new Date(content.end.replace(/-/g, "/")).toLocaleDateString();
+
+  console.log(startDate, endtDate);
 
   const cover = (
     <section id={settings.slud} className="cover" style={coverStyles}>
@@ -36,11 +40,8 @@ const CourseIndex = ({ pageContext, location }) => {
           {!!content.start && (
             <p className="cover--label">
               <Icon blok={{ name: "event" }} />
-              <span>{new Date(content.start).toLocaleDateString("it-IT")}</span>
-              -
-              {!!content.end && (
-                <span>{new Date(content.end).toLocaleDateString("it-IT")}</span>
-              )}
+              <span>{startDate}</span>-
+              {!!content.end && <span>{endtDate}</span>}
             </p>
           )}
           {!!content.location && (

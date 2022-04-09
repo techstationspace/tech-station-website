@@ -61,10 +61,11 @@ const Collection = ({ blok }) => {
       {!!items.length &&
         items.map((item) => (
           <div
+            key={item.id}
             className="item"
             style={{ order: item.content.order || items.length }}
           >
-            <Template key={item.id} data={item.content} />
+            <Template data={item.content} />
           </div>
         ))}
     </div>
