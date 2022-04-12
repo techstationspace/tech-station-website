@@ -29,8 +29,6 @@ const CourseIndex = ({ pageContext, location }) => {
   const startDate = new Date(content.start.replace(/-/g, "/")).toLocaleDateString();
   const endtDate = new Date(content.end.replace(/-/g, "/")).toLocaleDateString();
 
-  console.log(startDate, endtDate);
-
   const cover = (
     <section id={settings.slud} className="cover" style={coverStyles}>
       <div className="cover--wrapper container __responsive">

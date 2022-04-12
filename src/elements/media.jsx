@@ -27,18 +27,22 @@ const Media = ({ blok, parent }) => {
   );
 };
 
-const Video = ({ blok }) => (
-  <div className="media--video">
-    <iframe
-      src={`https://www.youtube.com/embed/${blok.link.cached_url}?autoplay=1&controls=0`}
-      title={"title"}
-      width="100%"
-      height="100%"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      frameBorder="0"
-    />
-  </div>
-);
+const Video = ({ blok }) => {
+  const autoplay = blok.autoplay ? "autoplay=1&" : "";
+  const url = blok.link.cached_url;
+  return (
+    <div className="media--video">
+      <iframe
+        src={`https://www.youtube.com/embed/${url}?${autoplay}controls=0`}
+        title={"title"}
+        width="100%"
+        height="100%"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        frameBorder="0"
+      />
+    </div>
+  );
+};
 
 const Link = ({ blok, children }) => (
   <a
