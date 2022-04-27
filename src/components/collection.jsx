@@ -100,6 +100,8 @@ const Collection = ({ blok }) => {
           ))}
       </div>
     );
+  } else {
+    return <div></div>
   }
 };
 
