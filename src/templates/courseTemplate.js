@@ -26,8 +26,12 @@ const CourseIndex = ({ pageContext, location }) => {
       ? `url(${content.image.filename})`
       : "",
   };
-  const startDate = new Date(content.start.replace(/-/g, "/")).toLocaleDateString();
-  const endtDate = new Date(content.end.replace(/-/g, "/")).toLocaleDateString();
+  const startDate = new Date(
+    content.start.replace(/-/g, "/")
+  ).toLocaleDateString();
+  const endtDate = new Date(
+    content.end.replace(/-/g, "/")
+  ).toLocaleDateString();
 
   const cover = (
     <section id={settings.slud} className="cover" style={coverStyles}>
@@ -57,6 +61,7 @@ const CourseIndex = ({ pageContext, location }) => {
     <Layout
       location={location}
       settings={settings}
+      meta={content.meta}
       showBuildStatus={location?.search.includes("_storyblok")}
     >
       {cover}

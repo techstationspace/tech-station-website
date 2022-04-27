@@ -17,6 +17,7 @@ const ProjectIndex = ({ pageContext, location }) => {
     <Layout
       location={location}
       settings={settings}
+      meta={content.meta}
       showBuildStatus={location?.search.includes("_storyblok")}
     >
       {body}

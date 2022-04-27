@@ -5,6 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     siteUrl: "https://techstationpadova.it/",
+    lang: "it",
     title: "Techstation padova",
     description:
       "Associazione culturale, Promuoviamo la cultura digitale per rivoluzionare il mondo del lavoro.",

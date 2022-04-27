@@ -1,25 +1,23 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import Seo from "./seo";
 import Header from "../bloks/header";
 import Footer from "../bloks/footer";
 
 import "../styles/index.scss";
 
-const Layout = ({ settings, children, showBuildStatus }) => {
+const Layout = ({ settings, children, showBuildStatus, meta = [] }) => {
   let { header, footer } = settings;
   header = header?.node && JSON.parse(header.node.content);
   footer = footer?.node && JSON.parse(footer.node.content);
 
   return (
     <>
-      <Helmet title="Techstation padova" defer={false}>
-        <html lang={settings.languages.current} />
-        <link rel="canonical" href={settings.path} />
-        <meta
-          name="description"
-          content="Associazione culturale, Promuoviamo la cultura digitale per rivoluzionare il mondo del lavoro."
-        />
-      </Helmet>
+      <Seo
+        language={settings.languages.current}
+        slug={settings.path}
+        meta={meta}
+      />
       {showBuildStatus && (
         <div className="build_status">
           <div className="container __responsive">
