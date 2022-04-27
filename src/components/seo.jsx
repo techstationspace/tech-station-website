@@ -18,6 +18,7 @@ const Seo = ({ meta, slug, language }) => {
     `
   );
   let title = site.siteMetadata?.title;
+  let description = site.siteMetadata?.description;
   const metaTags = [];
   const tags =
     meta.length &&
@@ -26,14 +27,14 @@ const Seo = ({ meta, slug, language }) => {
         case "title":
           title = text;
           return [
-            { name: `og:${type}`, content: text },
-            { name: `twitter:${type}`, content: text },
+            { name: "og:title", content: text },
+            { name: "twitter:title", content: text },
           ];
         case "description":
+          description = text;
           return [
-            { name: type, content: text },
-            { name: `og:${type}`, content: text },
-            { name: `twitter:${type}`, content: text },
+            { name: "og:description", content: text },
+            { name: "twitter:description", content: text },
           ];
         case "image":
           return [{ name: `og:${type}`, content: image.filename }];
@@ -57,6 +58,7 @@ const Seo = ({ meta, slug, language }) => {
       meta={metaTags.flat().concat()}
     >
       <link rel="canonical" href={`${site.siteMetadata?.siteUrl}/${slug}`} />
+      <meta name="description" content={description} />
     </Helmet>
   );
 };
