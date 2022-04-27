@@ -30,10 +30,15 @@ const Section = ({ blok }) => {
       );
     });
 
+  const Share = () => <div className="share s9-widget-wrapper"></div>;
+
   return (
     <SbEditable content={blok} key={blok._uid}>
       <section id={blok.id} className={sectionClasses.join(" ")}>
-        <div className={contanierClasses.join(" ")}>{body}</div>
+        <div className={contanierClasses.join(" ")}>
+          {body}
+          {blok?.share && <Share />}
+        </div>
       </section>
     </SbEditable>
   );

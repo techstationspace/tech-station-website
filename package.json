@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
+    "start": "gatsby develop -p 4320",
+    "build": "gatsby build -p 4372",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "restart": "gatsby clean && gatsby develop"
@@ -29,6 +29,7 @@
     "gatsby-plugin-sass": "^5.3.0",
     "gatsby-plugin-sharp": "^4.3.0",
     "gatsby-plugin-sitemap": "^5.3.0",
+    "gatsby-plugin-social9-socialshare": "^1.0.6",
     "gatsby-source-filesystem": "^4.3.0",
     "gatsby-source-storyblok": "^3.0.2",
     "gatsby-transformer-remark": "^5.3.0",

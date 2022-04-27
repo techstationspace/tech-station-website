@@ -148,7 +148,6 @@ const Project = ({ data }) => {
 };
 
 const Course = ({ data, link }) => {
-  console.log(data);
 
   const startDate =
     data?.start && new Date(data.start.replace(/-/g, "/")).toLocaleDateString();

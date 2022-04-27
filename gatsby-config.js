@@ -44,6 +44,14 @@ module.exports = {
         timeout: 3500,
       },
     },
+    {
+      resolve: "gatsby-plugin-social9-socialshare",
+      options: {
+        content: "9cc2c1782dbe4c09b68e3c5a86d72dd1",
+        async: true,
+        defer: true,
+      },
+    },
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
