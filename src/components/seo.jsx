@@ -59,6 +59,11 @@ const Seo = ({ meta, slug, language }) => {
     >
       <link rel="canonical" href={`${site.siteMetadata?.siteUrl}/${slug}`} />
       <meta name="description" content={description} />
+      <script
+        id="cookieyes"
+        type="text/javascript"
+        src="https://cdn-cookieyes.com/client_data/e13f0bffd3e4e7a5033333ea/script.js"
+      ></script>
     </Helmet>
   );
 };
