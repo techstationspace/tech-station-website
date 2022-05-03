@@ -20,16 +20,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-cookiebot",
-      options: {
-        cookiebotId: process.env.GATSBY_COOKIE_BOT, // Required. Site's Cookiebot ID.
-        manualMode: true, // Optional. Turns on Cookiebot's manual mode. Defaults to false.
-        blockGtm: false, //  Optional. Skip blocking of GTM. Defaults to true if manualMode is set to true.
-        includeInDevelopment: true, // Optional. Enables plugin in development. Will cause gatsby-plugin-google-tagmanager to thrown an error when pushing to dataLayer. Defaults to false.
-        pluginDebug: false, // Optional. Debug mode for plugin development. Defaults to false.
-      },
-    },
-    {
       resolve: "gatsby-source-storyblok",
       options: {
         accessToken: process.env.GATSBY_STORY_BLOK,
