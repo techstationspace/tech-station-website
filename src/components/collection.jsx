@@ -157,7 +157,6 @@ const Course = ({ data, link }) => {
     data?.end && new Date(data.end.replace(/-/g, "/")).toLocaleDateString();
 
   const background = { backgroundImage: `url(${data.image?.filename})` };
-  console.log(background);
   return (
     <div className="collection--course">
       <div className="collection--course-content">
