@@ -65,11 +65,14 @@
     &.__#{$name} {
       font-size: $size;
       gap: $size * 0.375;
+      .icon {
+        font-size: $size * 4 !important;
+      }
       &.__button {
-        padding: $size * 0.375 $size * 0.75;
+        padding: $size * 0.5 $size * 1.75;
       }
       &.__rounded {
-        padding: $size * 0.375 $size * 1.125;
+        padding: $size * 0.5 $size * 1.875;
       }
     }
   }
