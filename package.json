@@ -11,6 +11,7 @@
     "develop": "gatsby develop",
     "start": "gatsby develop -p 4320",
     "build": "gatsby build",
+    "build:dev": "GATSBY_ENV=development gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "restart": "gatsby clean && gatsby develop"
