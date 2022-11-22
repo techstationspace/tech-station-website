@@ -8,6 +8,6 @@ tasks:
   - name: dev
     openMode: split-right
 ports:
-  - port: 3000
+  - port: 4320
     onOpen: open-preview
 
