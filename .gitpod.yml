@@ -6,6 +6,7 @@ tasks:
   - init: yarn install && yarn run build:dev
     command: yarn run start
   - name: dev
+    openMode: split-right
 ports:
   - port: 3000
     onOpen: open-preview
