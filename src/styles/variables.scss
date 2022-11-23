@@ -11,7 +11,7 @@ $primary-darken: adjust_hue(desaturate(darken($primary, 16), 16), 14);
 $primary-light: desaturate(lighten($primary, 8), 4);
 $primary-lighten: adjust_hue(desaturate(lighten($primary, 71), 21), 14);
 
-$secondary: #eda20d;
+$secondary: #29EDE1;
 $secondary-dark: adjust_hue(desaturate(darken($secondary, 8), 8), 14);
 $secondary-darken: adjust_hue(desaturate(darken($secondary, 16), 16), 14);
 $secondary-light: desaturate(lighten($secondary, 8), 4);
