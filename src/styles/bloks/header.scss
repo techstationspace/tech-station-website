@@ -1,5 +1,5 @@
 .header {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   height: $header-height;
   z-index: $header-index;
   position: sticky;
@@ -109,8 +109,8 @@
 
   @each $name, $color, $background in $styles {
     &.__#{$name} {
-      color: $color;
-      background-color: $background;
+      color: $white;
+      background-color: $primary;
     }
   }
 }

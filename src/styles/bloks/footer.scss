@@ -21,7 +21,7 @@
     &.__#{$name} {
       .footer--menu {
         color: $color;
-        background-color: $background;
+        background-color: $primary
       }
     }
   }
@@ -29,7 +29,7 @@
     font-size: .75rem;
     padding: 1rem 0;
     color: $gray-middle-light;
-    background-color: $gray-darken;
+    background-color: $primary-dark;
     a {
       color: $white;
     }

@@ -5,7 +5,7 @@ $break-laptop: 1366px;
 $break-desktop: 1920px;
 
 // Colors
-$primary: #2c264c;
+$primary: #42115f;
 $primary-dark: adjust_hue(desaturate(darken($primary, 8), 8), 14);
 $primary-darken: adjust_hue(desaturate(darken($primary, 16), 16), 14);
 $primary-light: desaturate(lighten($primary, 8), 4);
@@ -18,7 +18,7 @@ $secondary-light: desaturate(lighten($secondary, 8), 4);
 $secondary-lighten: adjust_hue(desaturate(lighten($secondary, 59), 48), 14);
 
 $white: #fff;
-$black: #000;
+$black: #000000;
 $gray-darken: #353538;
 $gray-dark: #525252;
 $gray-middle-dark: #414143;
@@ -42,7 +42,7 @@ $info-dark: #539ec9;
 
 // Default color
 $default-background: $white;
-$default-color: $gray-darken;
+$default-color: $gray-middle;
 
 // Themes
 
